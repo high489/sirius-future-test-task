@@ -10,4 +10,5 @@ export default defineConfig({
     svgr(),
     tsconfigPaths(),
   ],
+  base: "/sirius-future-test-task/",
 })

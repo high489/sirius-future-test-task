@@ -1,15 +1,13 @@
 import './index.scss'
-import { useState } from 'react'
+import { AuthProvider } from '@app/hoc'
+import { RouterProvider } from 'react-router-dom'
+import { router } from '@app/router'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <button onClick={() => setCount((count) => count + 1)}>
-        count is {count}
-      </button>
-    </>
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   )
 }
 

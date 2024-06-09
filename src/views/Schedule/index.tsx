@@ -1,4 +1,4 @@
-import styles from './schedule.module.scss'
+//import styles from './schedule.module.scss'
 
 const Schedule = () => {
   return (

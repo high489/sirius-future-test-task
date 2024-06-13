@@ -7,10 +7,10 @@ interface RequiredAuthProps {
 
 const RequiredAuth = ({children}: RequiredAuthProps) => {
   const location = useLocation()
-  const { user } = useAuth()
-
-  if (!user) {
-    return <Navigate to='/login' state={{from: location}}/>
+  const { isAuthenticated } = useAuth()
+  
+  if (!isAuthenticated) {
+    return <Navigate to='/login' state={{ from: location }} />
   }
 
   return children

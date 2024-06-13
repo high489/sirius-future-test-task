@@ -9,7 +9,8 @@ import { RequiredAuth } from '@app/hoc'
 
 const router = createBrowserRouter(createRoutesFromElements(
   <>
-    <Route path='login' element={<Login />} /><Route path='/' element={
+    <Route path='login' element={<Login />} />
+    <Route path='/' element={
       <RequiredAuth>
         <Layout />
       </RequiredAuth>

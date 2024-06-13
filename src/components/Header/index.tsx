@@ -1,15 +1,15 @@
 //import styles from './header.module.scss'
-import { useNavigate } from 'react-router-dom'
-import { useAuth } from '@/app/hooks'
+import { useAuth } from '@app/hooks'
 
 const Header = () => {
-  const { user, signOut } = useAuth()
-  const navigate = useNavigate()
+  const { user, logout } = useAuth()
 
   return (
     <>
-      <h1>Welcome {user}</h1>
-      <button onClick={() => signOut(() => navigate('/', {replace: true}))}>Sign Out</button>
+      <h1>Добро пожаловать, {user?.name}</h1>
+      <button onClick={() => logout()}>
+        Sign Out
+      </button>
     </>
   )
 }

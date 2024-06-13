@@ -8,6 +8,7 @@ const Login = () => {
   const navigate = useNavigate()
   const [ username, setUsername ] = useState('')
   const [ password, setPassword ] = useState('')
+  const [showPassword, setShowPassword] = useState(false)
   const { data: users } = useGetUsersQuery()
   const { login } = useAuth()
 
@@ -40,12 +41,18 @@ const Login = () => {
         <br />
         <label>
           Password:
-          <input
-            placeholder='mike123 | anna321'
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+            <input
+              name='password'
+              type={showPassword ? 'text' : 'password'}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <span
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? '+' : '-'}
+            </span>
         </label>
         <br />
         <button type="submit">Login</button>

@@ -1,0 +1,18 @@
+.form-input-checkbox {
+  margin-bottom: 32px;
+  align-self: flex-start;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.form-input-checkbox label:nth-of-type(2) {
+  display: block;
+  cursor: pointer;
+  user-select: none;
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 135%;
+  color: var(--dark-gray);
+}

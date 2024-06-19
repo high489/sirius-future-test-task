@@ -1,7 +1,14 @@
 body {
   font-family: var(--font);
+  background-color: var(--bg-color);
 }
 
 button {
   font-family: var(--font);
+}
+
+.container {
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
 }

@@ -1,62 +1,23 @@
-//import styles from './login.module.scss'
-import { useNavigate } from 'react-router-dom'
-import { useState } from 'react';
-import { useGetUsersQuery } from '@app/store'
-import { useAuth } from '@app/hooks'
+import styles from './login.module.scss'
+
+import SiriusLogo from '@app/assets/images/Logomark_1_.svg?react'
+import { LoginControl } from '@/components'
 
 const Login = () => {
-  const navigate = useNavigate()
-  const [ username, setUsername ] = useState('')
-  const [ password, setPassword ] = useState('')
-  const [showPassword, setShowPassword] = useState(false)
-  const { data: users } = useGetUsersQuery()
-  const { login } = useAuth()
-
-  const handleSubmit = (event: any) => {
-    event.preventDefault()
-
-    const user = users?.find(u => u.username === username && u.password === password)
-
-    if (user) {
-      login(user)
-      navigate('/', { replace: true })
-    } else {
-      alert('Invalid username or password')
-    }
-  };
-
   return (
     <>
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Username:
-          <input
-            placeholder='mike | anna'
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </label>
-        <br />
-        <label>
-          Password:
-            <input
-              name='password'
-              type={showPassword ? 'text' : 'password'}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-            <span
-              onClick={() => setShowPassword(!showPassword)}
-            >
-              {showPassword ? '+' : '-'}
-            </span>
-        </label>
-        <br />
-        <button type="submit">Login</button>
-      </form>
+      <div className={`${styles.login} container`}>
+        <div className={`${styles['login-content']}`}>
+          <SiriusLogo className={`${styles['login-logo']}`} />
+          <h1 className={`${styles['login-title']}`}>Вход в Sirius Future</h1>
+          <LoginControl />
+        </div>
+
+        <div className={`${styles['login-language-selector']}`}>
+          <div className={`${styles['login-lang-ru']}`}>RU</div>
+          <div className={`${styles['login-lang-en']}`}>EN</div>
+        </div>
+      </div>
     </>
   )
 }

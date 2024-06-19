@@ -1,0 +1,50 @@
+.login {
+  min-height: 840px;
+}
+
+.login-content {
+  max-width: 340px;
+  width: 100%;
+  min-height: 536px;
+  margin: 152px auto 0;
+}
+
+.login-logo {
+  width: 100%;
+}
+
+.login-title {
+  width: 100%;
+  color: var(--dark);
+  font-size: 40px;
+  line-height: 35px;
+  font-weight: normal;
+  margin-bottom: 16px;
+  user-select: none;
+}
+
+.login-language-selector {
+  max-width: 64px;
+  width: 100%;
+  min-height: 22px;
+  margin: 99px auto 31px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  user-select: none;
+}
+
+.login-lang-ru {
+  color: var(--dark-violet);
+  font-size: 24px;
+  font-weight: normal;
+  line-height: 21px;
+}
+
+.login-lang-en {
+  color: var(--dark-gray);
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 135%;
+}

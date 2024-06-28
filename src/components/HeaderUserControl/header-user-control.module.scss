@@ -1,0 +1,100 @@
+.header-user-control {
+  width: 64px;
+  height: 42px;
+  position: relative;
+}
+
+.user-icon {
+  cursor: pointer;
+  user-select: none;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--dark-violet);
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-icon-img {
+  width: 42px;
+  height: 42px;
+}
+
+.arrow-down {
+  cursor: pointer;
+  position: absolute;
+  top: 9px;
+  right: 0;
+  width: 24px;
+  height: 24px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.arrow-down svg path {
+  stroke: var(--dark-violet);
+}
+
+.triangle {
+  z-index: 1;
+  position: absolute;
+  right: 37px;
+  top: 47px;
+}
+
+.triangle path {
+  fill: var(--dark-violet);
+  stroke: var(--dark-violet);
+}
+
+.user-options {
+  top: 55px;
+  right: 0;
+  width: 250px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.user-options-title {
+  user-select: none;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 135%;
+  margin: 0;
+  color: var(--dark);
+}
+
+.separator {
+  height: 1px;
+  margin-top: -0.5px;
+  background-color: var(--violet-light);
+}
+
+.logout-button {
+  cursor: pointer;
+  user-select: none;
+  height: 40px;
+  padding: 0;
+  margin-top: -0.5px;
+  background-color: var(--white);
+  border-width: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logout-button span {
+  margin-top: -0.5px;
+  color: var(--dark-blue);
+}
+
+.logout-button svg path {
+  stroke: var(--dark-blue);
+}

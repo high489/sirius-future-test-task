@@ -7,21 +7,23 @@ export interface CheckboxProps {
   name?: string
   checked?: boolean
   disabled?: boolean
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 const CustomCheckbox: FC<CheckboxProps> = ({ 
-  id, value, name, checked, disabled 
+  id, value, name, checked, disabled, onChange
 }) => {
   return (
     <>
       <label className={styles.checkbox}>
         <input
-          type="checkbox" 
+          type='checkbox'
           id={id}
           value={value}
           name={name}
           checked={checked}
           disabled={disabled}
+          onChange={onChange}
         />
         <span className={styles.checkmark}></span>
       </label>

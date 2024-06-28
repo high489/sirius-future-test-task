@@ -1,0 +1,64 @@
+.available-users {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 0.5px;
+}
+
+.user-item {
+  cursor: pointer;
+  user-select: none;
+  height: 48px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+}
+
+.user-icon {
+  user-select: none;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--dark-violet);
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-icon-img {
+  width: 32px;
+  height: 32px;
+}
+
+.user-name {
+  color: var(--dark);
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 135%;
+  align-self: center;
+}
+
+.current-user {
+  cursor: default;
+  background-color: var(--violet-light);
+  border-radius: 12px;
+}
+
+.current-user-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.current-user-info label {
+  margin-top: 3px;
+  color: var(--dark);
+  font-size: 10px;
+  font-weight: 300;
+  line-height: 12px;
+}
+
+.persistent-user-name {
+  margin-top: -0.5px;
+}

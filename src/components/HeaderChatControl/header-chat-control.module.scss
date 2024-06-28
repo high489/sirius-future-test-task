@@ -1,0 +1,37 @@
+.header-chat-control {
+  cursor: pointer;
+  width: 42px;
+  height: 42px;
+  background-color: var(--white);
+  border: 1px solid var(--dark-violet);
+  border-radius: 50%;
+  position: relative;
+}
+
+.chat-icon {
+  position: absolute;
+  top: 8px;
+  left: 7px;  
+}
+
+.notifications {
+  background-color: var(--alert-light);
+  color: var(--white);
+  border-radius: 10px;
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: -4px;
+  right: -4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.number {
+  user-select: none;
+  font-size: 10px;
+  font-weight: bold;
+  line-height: 8px;
+  margin-top: 1px;
+}

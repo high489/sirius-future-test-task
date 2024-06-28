@@ -1,0 +1,20 @@
+.modal-window {
+  padding: 29px;
+  position: absolute;
+  border: 1px solid var(--dark-violet);
+  border-radius: 12px;
+  background-color: var(--white);
+  z-index: 1;
+}
+
+.close-icon {
+  z-index: 1;
+  position: absolute;
+  right: 11px;
+  top: 11px;
+  cursor: pointer;
+}
+
+.close-icon path {
+  stroke: var(--dark-violet);
+}

@@ -1,0 +1,28 @@
+.content {
+  display: flex;
+  flex-grow: 1;
+}
+.aside {
+  width: 286px;
+  height: 728px;
+  //border: 1px solid var(--btn-violet);
+  flex-shrink: 0;
+}
+.main-container {
+  display: flex;
+  flex-direction: column;
+}
+.header {
+  width: 1154px;
+  height: 68px;
+  position: relative;
+}
+.main {
+  height: 100%;
+  //border: 1px solid var(--btn-violet);
+}
+.footer {
+  width: 1440px;
+  min-height: 112px;
+  border: 1px solid var(--btn-violet);
+}

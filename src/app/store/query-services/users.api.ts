@@ -1,6 +1,9 @@
 import { createApi, fakeBaseQuery } from '@reduxjs/toolkit/query/react'
 import { IUser } from '@app/models/IUser'
 
+import MikeAva from '@app/assets/images/mike.jpg'
+import AnnaAva from '@app/assets/images/anna.jpg'
+
 const initialState: IUser[] = [
   {
     id: 1,
@@ -8,6 +11,7 @@ const initialState: IUser[] = [
     email: 'mike123@mail.com',
     username: 'mike',
     password: 'mike123',
+    avatar: MikeAva,
   },
   {
     id: 2,
@@ -15,6 +19,7 @@ const initialState: IUser[] = [
     email: 'anna321@mail.com',
     username: 'anna',
     password: 'anna321',
+    avatar: AnnaAva,
   },
 ]
 

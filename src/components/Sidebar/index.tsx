@@ -1,16 +1,17 @@
 import styles from './sidebar.module.scss'
-import { NavLink } from 'react-router-dom'
+import { FC } from 'react'
 
-const Sidebar = () => {
-  const setActiveClass = ({ isActive }:any) => isActive ? `${styles['active-nav-link']}` : ''
-  
+import Logo from '@app/assets/images/logo.svg?react'
+import { Navbar, SidebarReferral } from '@/components'
+
+const Sidebar: FC = () => {
   return (
     <>
-      <aside>
-        <NavLink to="/" className={setActiveClass}>Home</NavLink>
-        <NavLink to="/schedule" className={setActiveClass}>Schedule</NavLink>
-        <NavLink to="/payment" className={setActiveClass}>Payment</NavLink>
-      </aside>
+      <div className={styles.sidebar}>
+        <Logo className={styles.logo} />
+        <Navbar />
+        <SidebarReferral />
+      </div>
     </>
   )
 }

@@ -22,15 +22,6 @@ const Layout = () => {
         </div>
         <footer className={styles.footer}>Footer</footer>
       </div>
-      {/* <aside>
-        <Sidebar />
-      </aside>
-      <header>
-        <Header />
-      </header>
-      <main>
-        <Outlet />
-      </main> */}
     </>
   )
 }

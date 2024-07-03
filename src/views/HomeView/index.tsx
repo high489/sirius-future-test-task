@@ -1,7 +1,7 @@
-//import styles from './home.module.scss'
+//import styles from './home-view.module.scss'
 import { useAppSelector, useAuth } from '@app/hooks'
 
-const Home = () => {
+const HomeView = () => {
   const { user: currentUser } = useAuth()
   const users = useAppSelector((state) => state.persistentUsers.users)
 
@@ -22,4 +22,4 @@ const Home = () => {
   )
 }
 
-export { Home }
+export { HomeView }

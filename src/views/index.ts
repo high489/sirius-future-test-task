@@ -1,4 +1,4 @@
-export { Login } from './Login'
-export { Home } from './Home'
-export { Schedule } from './Schedule'
-export { NotFound } from './NotFound'
+export { LoginView } from './LoginView'
+export { HomeView } from './HomeView'
+export { ScheduleView } from './ScheduleView'
+export { NotFoundView } from './NotFoundView'

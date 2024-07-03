@@ -1,0 +1,52 @@
+.sidebar-referral {
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+  width: 196px;
+  height: 128px;
+  margin-top: auto;
+  margin-bottom: 24px;
+  padding-top: 15.5px;
+  padding-left: 16px;
+  border-radius: 15px;
+  background-color: var(--bg-color);
+}
+
+.sidebar-referral-gift-box {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.sidebar-referral-title {
+  margin: 0;
+  margin-bottom: 4.5px;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 20px;
+  color: var(--dark);
+}
+
+.sidebar-referral-text {
+  width: 146px;
+  margin-bottom: 10px;
+  font-size: 10px;
+  font-weight: 300;
+  line-height: 12px;
+  white-space: pre-line;
+  color: var(--dark);
+}
+
+.sidebar-referral-btn {
+  cursor: pointer;
+  width: 68px;
+  border-radius: 15px;
+  border-width: 0;
+  padding: 7.5px 16.5px 8px 16px;
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 135%;
+  user-select: none;
+  color: var(--dark);
+  background-color: var(--blue);
+}

@@ -1,7 +1,7 @@
 import styles from './header-chat-control.module.scss'
 import { FC } from 'react'
 
-import ChatIcon from '@app/assets/images/chat-icon.svg?react'
+import ChatIcon from '@app/assets/icons/chat-icon.svg?react'
 
 interface HeaderChatControlProps {
   number: number

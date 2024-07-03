@@ -1,9 +1,9 @@
-import styles from './login.module.scss'
+import styles from './login-view.module.scss'
 
 import SiriusLogo from '@app/assets/images/Logomark_1_.svg?react'
 import { LoginControl } from '@/components'
 
-const Login = () => {
+const LoginView = () => {
   return (
     <>
       <div className={`${styles.login} container`}>
@@ -22,4 +22,4 @@ const Login = () => {
   )
 }
 
-export { Login }
+export { LoginView }

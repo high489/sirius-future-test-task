@@ -1,10 +1,8 @@
 import styles from './login-control.module.scss'
 import { FC, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useGetUsersQuery } from '@app/store'
-import { useAppDispatch } from '@app/hooks'
-import { rememberUser } from '@app/store'
-import { useAuth } from '@app/hooks'
+import { useGetUsersQuery, rememberUser } from '@app/store'
+import { useAppDispatch, useAuth } from '@app/hooks'
 
 import { FormInput, FormInputPassword, FormInputCheckbox, FormSubmitButton, CustomLink } from '@/ui'
 

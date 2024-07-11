@@ -1,9 +1,11 @@
 //import styles from './schedule-view.module.scss'
 
+import { CalendarControl } from "@/components"
+
 const ScheduleView = () => {
   return (
     <>
-      <h1>Schedule</h1>
+      <CalendarControl />
     </>
   )
 }

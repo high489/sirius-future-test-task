@@ -1,10 +1,12 @@
 import { ILesson } from "./ILesson";
 
-export interface Course {
-  id: number;
-  name: string;
-  instructor: string;
-  totalLessons: number;
-  registeredUsers: { userId: string, userName: string }[];
-  lessonsList: ILesson[];
+export interface ICourse {
+  id: number
+  subjectId: number
+  instructor: string
+  startDate: string | Date
+  endDate: string | Date
+  totalLessons: number
+  lessonsList: ILesson[]
+  //registeredUsers: { userId: string, userName: string }[]
 }

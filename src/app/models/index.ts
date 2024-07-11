@@ -1,0 +1,5 @@
+export * from './types'
+export type { IUser } from './IUser'
+export type { ISubject } from './ISubject'
+export type { ICourse } from './ICourse'
+export type { ILesson } from './ILesson'

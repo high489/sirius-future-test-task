@@ -1,6 +1,7 @@
 export interface ILesson {
-  id: number;
-  courseId: string;
-  date: Date;
-  duration: number;
+  id: number
+  courseId: number
+  date: string | Date
+  duration: number
+  isCanceled: boolean
 }

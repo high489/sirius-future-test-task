@@ -1,5 +1,5 @@
 import { createApi, fakeBaseQuery } from '@reduxjs/toolkit/query/react'
-import { IUser } from '@app/models/IUser'
+import { IUser } from '@app/models'
 
 import MikeAva from '@app/assets/images/mike.jpg'
 import AnnaAva from '@app/assets/images/anna.jpg'

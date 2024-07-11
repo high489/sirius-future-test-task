@@ -1,6 +1,6 @@
 import styles from './change-current-user-control.module.scss'
 import { FC } from 'react'
-import { IUser } from '@/app/models/IUser'
+import { IUser } from '@/app/models'
 
 interface AvailableUsersControl {
   currentUser: IUser | null

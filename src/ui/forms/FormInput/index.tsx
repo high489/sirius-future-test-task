@@ -7,9 +7,13 @@ interface FormInputProps {
   placeholder: string
   value: string
   setValue: (newValue: string) => void
+  id?: string
+  autoComplete?: string
 }
 
-const FormInput: FC<FormInputProps> = ({ type, name, placeholder, value, setValue }) => {
+const FormInput: FC<FormInputProps> = ({ 
+  type, name, placeholder, value, setValue, id, autoComplete,
+}) => {
   return (
     <>
       <input
@@ -18,6 +22,8 @@ const FormInput: FC<FormInputProps> = ({ type, name, placeholder, value, setValu
         name={name}
         placeholder={placeholder}
         value={value}
+        id={id}
+        autoComplete={autoComplete}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => 
           setValue(e.target.value)}
       />

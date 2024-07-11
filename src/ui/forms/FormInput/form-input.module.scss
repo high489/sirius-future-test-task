@@ -9,7 +9,30 @@
   font-weight: 400;
   line-height: 135%;
   color: var(--dark);
-  user-select: none;
+  user-select: auto;
+
+  &::placeholder {
+    font-size: 12px; // размер шрифта placeholder
+    font-weight: 900; // толщина шрифта placeholder
+    line-height: 135%; // высота строки placeholder
+    color: var(--dark); // цвет placeholder
+  }
+
+  &:focus::placeholder {
+    color: transparent;
+  }
+
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    box-shadow: 0 0 0px 1000px var(--white) inset;
+    -webkit-box-shadow: 0 0 0px 1000px var(--white) inset;
+    -webkit-text-fill-color: var(--dark);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 135%;
+  }
 }
 
 .form-input::placeholder {

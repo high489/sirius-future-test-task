@@ -9,10 +9,12 @@ interface FormInputPasswordProps {
   placeholder: string
   value: string
   setValue: (newValue: string) => void
+  id?: string
+  autoComplete?: string
 }
 
 const FormInputPassword: FC<FormInputPasswordProps> = ({
-  name, placeholder, value, setValue
+  name, placeholder, value, setValue, id, autoComplete,
 }) => {
   const [ showPassword, setShowPassword ] = useState(false)
   
@@ -24,6 +26,8 @@ const FormInputPassword: FC<FormInputPasswordProps> = ({
           name={name}
           placeholder={placeholder}
           value={value}
+          id={id}
+          autoComplete={autoComplete}
           setValue={setValue}
         />
         <ShowPassword

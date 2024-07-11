@@ -47,6 +47,8 @@ const LoginControl: FC = () => {
                 placeholder='E-mail'
                 value={email}
                 setValue={setEmail}
+                id='email'
+                autoComplete='email'
               />
             </div>
             <div className={`${styles['login-form-data-item']}`}>
@@ -55,6 +57,8 @@ const LoginControl: FC = () => {
                 placeholder='Пароль'
                 value={password}
                 setValue={setPassword}
+                id='password'
+                autoComplete='current-password'
               />
             </div>
           </div>

@@ -12,10 +12,15 @@
   user-select: auto;
 
   &::placeholder {
-    font-size: 12px; // размер шрифта placeholder
-    font-weight: 900; // толщина шрифта placeholder
-    line-height: 135%; // высота строки placeholder
-    color: var(--dark); // цвет placeholder
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 135%;
+    color: var(--dark-gray);
+    user-select: none;
+  }
+
+  &:focus {
+    outline: none;
   }
 
   &:focus::placeholder {
@@ -33,16 +38,4 @@
     font-weight: 400;
     line-height: 135%;
   }
-}
-
-.form-input::placeholder {
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 135%;
-  color: var(--dark-gray);
-  user-select: none;
-}
-
-.form-input:focus {
-  outline: none;
 }

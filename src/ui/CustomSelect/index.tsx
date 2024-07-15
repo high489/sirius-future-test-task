@@ -1,5 +1,5 @@
 import styles from './custom-select.module.scss'
-import { ChangeEvent, FC, useEffect, useState } from 'react'
+import { ChangeEvent, FC, useEffect, useRef, useState } from 'react'
 import { Option } from '@/app/models'
 
 import ArrowIcon from './assets/arrow-icon.svg?react'
@@ -33,6 +33,17 @@ const CustomSelect: FC<CustomSelectProps> = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [selectedOptions, setSelectedOptions] = useState<Option[]>([])
+  const customSelectRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (customSelectRef.current && 
+        !customSelectRef.current.contains(event.target as Node)) 
+        setIsOpen(false)
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
 
   useEffect(() => {
     if (value) {
@@ -80,7 +91,11 @@ const CustomSelect: FC<CustomSelectProps> = ({
 
   return (
     <>
-      <div className={`${styles['custom-select-wrapper']} ${className}`} style={style}>
+      <div
+        ref={customSelectRef}
+        className={`${styles['custom-select-wrapper']} ${className}`}
+        style={style}
+      >
         <div
           className={`${styles['custom-select']} ${disabled ? styles['disabled'] : ''}`}
           onClick={() => !disabled && setIsOpen(!isOpen)}

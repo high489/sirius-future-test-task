@@ -24,12 +24,8 @@ const ModalWindow: FC<ModalWindowProps> = ({
           setShowModal(false)
       }
     }
-
     document.addEventListener('mousedown', handleClickOutside)
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
-    }
+    return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
 
   return (

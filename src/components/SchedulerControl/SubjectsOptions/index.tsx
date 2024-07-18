@@ -1,21 +1,21 @@
-import styles from './calendar-subjects-options.module.scss'
+import styles from './subjects-options.module.scss'
 import { FC } from 'react'
 import { Option } from '@/app/models'
 
 import { CustomSelect } from '@/ui'
 
-interface CalendarSubjectsOptionsProps {
+interface SubjectsOptionsProps {
   selectedSubject: string | string[]
   setSelectedSubject: (newValue: string | string[]) => void
   subjectsOptions: Option[]
 }
 
-const CalendarSubjectsOptions: FC<CalendarSubjectsOptionsProps> = ({
+const SubjectsOptions: FC<SubjectsOptionsProps> = ({
   selectedSubject, setSelectedSubject, subjectsOptions,
 }) => {
   return (
     <>
-      <div className={`${styles['calendar-subjects-options']}`}>
+      <div className={`${styles['subjects-options']}`}>
         <CustomSelect
           options={subjectsOptions}
           onChange={setSelectedSubject}
@@ -29,4 +29,4 @@ const CalendarSubjectsOptions: FC<CalendarSubjectsOptionsProps> = ({
   )
 }
 
-export { CalendarSubjectsOptions }
+export { SubjectsOptions }

@@ -6,12 +6,12 @@ import { Outlet } from 'react-router-dom'
 const Layout = () => {
   return (
     <>
-      <div className='container'>
+      <div className={`container ${styles.layout}`}>
         <div className={styles.content}>
           <aside className={styles.aside}>
             <Sidebar />
           </aside>
-          <div className={`${styles['main-container']}`}>
+          <div className={styles['main-container']}>
             <header className={styles.header}>
               <Header />
             </header>

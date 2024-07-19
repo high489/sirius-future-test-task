@@ -1,5 +1,11 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+}
+
 .content {
   display: flex;
+
   // temporary
   // min-height: 728px;
   // height: 100%;
@@ -18,16 +24,23 @@
 }
 .header {
   width: 1154px;
-  height: 68px;
   position: relative;
+  
+  //temporary
+  //height: 68px;
 }
 .main {
   height: 100%;
   margin: 20px 50px 0px 32px;
-  //border: 1px solid var(--btn-violet);
+
+  // temporary
+  // border: 1px solid var(--btn-violet);
 }
 .footer {
-  width: 1440px;
+  width: 100%;
   min-height: 112px;
-  //border: 1px solid var(--btn-violet);
+  
+  // temporary
+  // background-color: var(--blue);
+  // border: 1px solid var(--btn-violet);
 }

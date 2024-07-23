@@ -2,18 +2,39 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 5px;
-  border: 1px solid #ccc;
-  background-color: var(--violet-light);
+  padding: 3px 4px 4px 4px;
+  background-color: var(--white);
 
   //temporary 
-  height: 101px;
+  height: 100px;
+}
+
+.day-number {
+  //border: 1px solid var(--btn-violet);
+  user-select: none;
+  align-self: flex-end;
+  height: 12px;
+
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 12px;
+  color: var(--dark);
 }
 
 .today {
-  color: var(--alert-light)
+  @extend .day-number;
+  color: var(--alert-light);
 }
 
 .not-current-month {
-  background-color: var(--blue);
+  @extend .day-number;
+  color: var(--semi-dark-gray);
+}
+
+.lessons {
+  //border: 1px solid var(--btn-violet);
+  border-radius: 2px;
+  height: 70px;
+  width: 100%;
+  margin-top: auto;
 }

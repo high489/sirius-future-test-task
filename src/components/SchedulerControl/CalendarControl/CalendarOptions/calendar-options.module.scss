@@ -1,6 +1,76 @@
 .calendar-options {
+  display: flex;
+  align-items: center;
+  gap: 32.5px;
 
   // temporary properties
-  background-color: var(--violet-light);
+  // background-color: var(--violet-light);
+  // height: 32px;
+}
+
+.month-selector {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.arrow {
+  cursor: pointer;
+  user-select: none;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.arrow.next {
+  transform: rotate(180deg);
+}
+
+.month-year {
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 125%;
+  color: var(--dark);
+}
+
+.other-options {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.today-button {
+  cursor: pointer;
+  user-select: none;
+  width: 85px;
   height: 32px;
+  padding: 8px 16px;
+  background-color: var(--white);
+  border: 1px solid var(--btn-violet);
+  border-radius: 15px;
+
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 135%;
+  color: var(--dark);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.questions {
+  cursor: pointer;
+  user-select: none;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

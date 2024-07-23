@@ -24,10 +24,13 @@ const CalendarGrid: FC<CalendarGridProps> = ({
 }) => {
   return (
     <>
-      <div className={`${styles['calendar-grid']}`}>
+    <div className={`${styles['calendar-grid']}`}>
+      <div className={`${styles['header-grid']}`}>
         {daysOfWeek.map(day => (
-          <div key={day} className={`${styles['grid-cell-header']}`}>{day}</div>
+          <div key={day} className={`${styles['week-day-header']}`}>{day}</div>
         ))}
+      </div>
+      <div className={`${styles['days-grid']}`}>
         {previousMonthArray.map(day => (
           <CalendarDay key={`prev-${day}`} day={day} isToday={false} isCurrentMonth={false} />
         ))}
@@ -46,6 +49,7 @@ const CalendarGrid: FC<CalendarGridProps> = ({
           <CalendarDay key={`next-${day}`} day={day} isToday={false} isCurrentMonth={false} />
         ))}
       </div>
+    </div>  
     </>
   )
 }

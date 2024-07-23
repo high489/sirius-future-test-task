@@ -25,7 +25,12 @@ const HeaderUserControl: FC = () => {
           <img className={`${styles['user-icon-img']}`} src={currentUser?.avatar} alt={currentUser?.name} />
         </div>
         
-        <div className={`${styles['arrow-down']}`}><ArrowDown /></div>
+        <div
+          className={`${styles['arrow-down']}`}
+          style={{ transform: showUserOptionsModal ? 'rotate(180deg)' : ''}}
+        >
+          <ArrowDown />
+        </div>
 
         {showUserOptionsModal && (<ModalWindowTriangle className={styles.triangle} />)}
         <ModalWindow

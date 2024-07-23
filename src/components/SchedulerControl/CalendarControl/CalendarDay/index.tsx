@@ -11,14 +11,23 @@ interface CalendarDayProps {
 const CalendarDay: FC<CalendarDayProps> = ({ day, isToday, isCurrentMonth, className }) => {
   return (
     <>
-    <div className={`
-        ${className}
-        ${styles['calendar-day']}
-        ${isToday ? styles.today : ''} 
-        ${!isCurrentMonth ? styles['not-current-month'] : ''}
-      `}>
-      <span className="day-number">{day}</span>
-    </div>
+      <div 
+        className={`
+          ${className}
+          ${styles['calendar-day']}
+        `}
+      >
+        <div className={
+          isToday
+          ? styles.today
+          : !isCurrentMonth
+            ? styles['not-current-month']
+            : styles['day-number']
+        }>
+          {day}
+        </div>
+        <div className={styles.lessons}></div>
+      </div>
     </>
   )
 }

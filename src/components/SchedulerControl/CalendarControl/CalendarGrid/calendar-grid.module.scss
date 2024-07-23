@@ -1,18 +1,39 @@
 .calendar-grid {
-  height: 100%;
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 5px;
-  
   // temporary properties
-  // background-color: var(--violet-light);
   // max-height: 529px;
+  .grid-layout {
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1px;
+  }
+
+  .header-grid {
+    @extend .grid-layout;
+    border-bottom: 1px solid var(--semi-dark-gray);
+    background-color: var(--white);
+  }
+
+  .days-grid {
+    @extend .grid-layout;
+    border: 1px solid var(--gray);
+    border-top: 0;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    background-color: var(--gray);
+  }
 }
 
-.grid-cell-header {
+.week-day-header {
+  user-select: none;
+  height: 24px;
+  padding: 0 6px;
   display: flex;
-  flex-direction: column;
+  justify-content: flex-end;
   align-items: center;
-  padding: 5px;
-  border: 1px solid #ccc;
+  background-color: var(--white);
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 135%;
+  color: var(--dark-gray);
 }

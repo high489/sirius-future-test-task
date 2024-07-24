@@ -21,6 +21,11 @@
     border-bottom-left-radius: 2px;
     border-bottom-right-radius: 2px;
     background-color: var(--gray);
+
+    & > div:nth-child(7n-1),
+    & > div:nth-child(7n) {
+      background-color: var(--weekend-gray);
+    }
   }
 }
 

@@ -32,9 +32,15 @@
 }
 
 .lessons {
-  //border: 1px solid var(--btn-violet);
-  border-radius: 2px;
-  height: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 2px;
+  
   width: 100%;
   margin-top: auto;
+  
+  // temporary
+  // border: 1px solid var(--btn-violet);
+  height: 70px;
 }

@@ -1,19 +1,26 @@
 import styles from './calendar-day.module.scss'
+import { ILesson } from '@/app/models'
 import { FC } from 'react'
+
+import { LessonCard } from '../LessonCard'
 
 interface CalendarDayProps {
   day: number
   isToday: boolean
   isCurrentMonth: boolean
-  className?: string
+  lessons?: ILesson[]
+  subjectName?: string
+  mainStyle?: string
 }
 
-const CalendarDay: FC<CalendarDayProps> = ({ day, isToday, isCurrentMonth, className }) => {
+const CalendarDay: FC<CalendarDayProps> = ({
+  day, isToday, isCurrentMonth, lessons, subjectName = '', mainStyle,
+}) => {
   return (
     <>
       <div 
         className={`
-          ${className}
+          ${mainStyle}
           ${styles['calendar-day']}
         `}
       >
@@ -26,7 +33,16 @@ const CalendarDay: FC<CalendarDayProps> = ({ day, isToday, isCurrentMonth, class
         }>
           {day}
         </div>
-        <div className={styles.lessons}></div>
+        <div className={styles.lessons}>
+          {lessons?.map(({ id, courseId, lessonStartDate, lessonEndDate }) => (
+            <LessonCard
+              key={`${courseId}-${id}`}
+              subjectName={subjectName}
+              lessonStartDate={lessonStartDate}
+              lessonEndDate={lessonEndDate}
+            />
+          ))}
+        </div>
       </div>
     </>
   )

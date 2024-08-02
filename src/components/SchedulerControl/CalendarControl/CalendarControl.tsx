@@ -1,13 +1,15 @@
 import styles from './calendar-control.module.scss'
+import { ISubject } from '@/app/models'
 import { FC, useState } from 'react'
 
 import { CalendarOptions, CalendarGrid } from './'
 
 interface CalendarControlProps {
   startOfWeek: 'sunday' | 'monday'
+  subject?: ISubject
 }
 
-const CalendarControl: FC<CalendarControlProps> = ({ startOfWeek }) => {
+const CalendarControl: FC<CalendarControlProps> = ({ startOfWeek, subject }) => {
   const [currentMonth, setCurrentMonth] = useState<number>(new Date().getMonth())
   const [currentYear, setCurrentYear] = useState<number>(new Date().getFullYear())
 
@@ -56,6 +58,7 @@ const CalendarControl: FC<CalendarControlProps> = ({ startOfWeek }) => {
           previousMonthArray={previousMonthArray}
           nextMonthArray={nextMonthArray}
           today={today}
+          subject={subject}
         />
       </div>
     </>

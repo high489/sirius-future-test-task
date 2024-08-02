@@ -1,0 +1,21 @@
+.lesson-card {
+  border-radius: 2px;
+  
+  // temporary
+  border: 1px solid var(--dark-violet);
+  height: 34px;
+}
+
+.lesson-time {
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 135%;
+  color: var(--dark);
+}
+
+.subject-name {
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 8px;
+  color: var(--dark);
+}

@@ -114,7 +114,7 @@ export const subjectsMockData: SubjectsMockData = {
           {id: 34, courseId: 2, lessonStartDate: '2024-06-10T13:00:00Z', lessonEndDate: '2024-06-10T14:00:00Z', isPaid: true, isCanceled: false}, // понедельник
           {id: 35, courseId: 2, lessonStartDate: '2024-06-11T13:00:00Z', lessonEndDate: '2024-06-11T14:00:00Z', isPaid: true, isCanceled: false}, // вторник
           {id: 36, courseId: 2, lessonStartDate: '2024-06-11T14:00:00Z', lessonEndDate: '2024-06-11T15:00:00Z', isPaid: false, isCanceled: false}, // вторник
-          {id: 37, courseId: 2, lessonStartDate: '2024-06-12T13:00:00Z', lessonEndDate: '2024-06-12T14:00:00Z', isPaid: true, isCanceled: true}, // четверг (праздник)
+          {id: 37, courseId: 2, lessonStartDate: '2024-06-13T13:00:00Z', lessonEndDate: '2024-06-12T14:00:00Z', isPaid: true, isCanceled: true}, // четверг (праздник)
           {id: 38, courseId: 2, lessonStartDate: '2024-06-14T13:00:00Z', lessonEndDate: '2024-06-14T14:00:00Z', isPaid: true, isCanceled: false}, // пятница
           {id: 39, courseId: 2, lessonStartDate: '2024-06-14T14:00:00Z', lessonEndDate: '2024-06-14T15:00:00Z', isPaid: false, isCanceled: false}, // пятница
           {id: 40, courseId: 2, lessonStartDate: '2024-06-17T13:00:00Z', lessonEndDate: '2024-06-17T14:00:00Z', isPaid: true, isCanceled: false}, // понедельник

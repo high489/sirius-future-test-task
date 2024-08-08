@@ -29,14 +29,26 @@ const CalendarGrid: FC<CalendarGridProps> = ({
   const previousMonthYear = currentMonth === 0 ? currentYear - 1 : currentYear
   const nextMonth = currentMonth === 11 ? 0 : currentMonth + 1
   const nextMonthYear = currentMonth === 11 ? currentYear + 1 : currentYear
+  
   const lessons = subject?.coursesList.flatMap((course) => course.lessonsList) || []
 
-  const getLessonsForDay = (day: number, month: number, year: number) => {
-    return lessons?.filter(({ lessonStartDate }) =>
+  const getSubjectDataForDay = (day: number, month: number, year: number) => {
+    const calendarDayDate = new Date(year, month, day)
+    return {
+      subjectName: subject?.name || '',
+      isCurrentCourse: subject?.coursesList.some(({ courseStartDate, courseEndDate }) => {
+        let startDate = new Date(courseStartDate)
+        let endDate = new Date(courseEndDate)
+        const isWithinStartDate = startDate <= calendarDayDate && startDate <= today
+        const isWithinEndDate = endDate >= calendarDayDate && endDate >= today
+        return isWithinStartDate && isWithinEndDate
+      }) || false,
+      lessons: lessons?.filter(({ lessonStartDate }) =>
         new Date(lessonStartDate).getDate() === day &&
         new Date(lessonStartDate).getMonth() === month &&
         new Date(lessonStartDate).getFullYear() === year
-    )
+      ),
+    }
   }
 
   const handleIsToday = (day: number, month: number, year: number) => {
@@ -60,8 +72,7 @@ const CalendarGrid: FC<CalendarGridProps> = ({
             day={monthDay}
             isToday={handleIsToday(monthDay, previousMonth, previousMonthYear)}
             isCurrentMonth={false}
-            lessons={getLessonsForDay(monthDay, previousMonth, previousMonthYear)}
-            subjectName={subject?.name}
+            subjectDataForDay={getSubjectDataForDay(monthDay, previousMonth, previousMonthYear)}
           />
         ))}
         {currentMonthArray.map(monthDay => (
@@ -70,9 +81,8 @@ const CalendarGrid: FC<CalendarGridProps> = ({
             day={monthDay} 
             isToday={handleIsToday(monthDay, currentMonth, currentYear)}
             isCurrentMonth={true}
-            lessons={getLessonsForDay(monthDay, currentMonth, currentYear)}
-            subjectName={subject?.name}
             mainStyle={`${styles['grid-cell']}`} 
+            subjectDataForDay={getSubjectDataForDay(monthDay, currentMonth, currentYear)}
           />
         ))}
         {nextMonthArray.map(monthDay => (
@@ -81,8 +91,7 @@ const CalendarGrid: FC<CalendarGridProps> = ({
             day={monthDay}
             isToday={handleIsToday(monthDay, nextMonth, nextMonthYear)}
             isCurrentMonth={false}
-            lessons={getLessonsForDay(monthDay, nextMonth, nextMonthYear)}
-            subjectName={subject?.name}
+            subjectDataForDay={getSubjectDataForDay(monthDay, nextMonth, nextMonthYear)}
           />
         ))}
       </div>

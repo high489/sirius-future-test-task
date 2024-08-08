@@ -8,13 +8,16 @@ interface CalendarDayProps {
   day: number
   isToday: boolean
   isCurrentMonth: boolean
-  lessons?: ILesson[]
-  subjectName?: string
   mainStyle?: string
+  subjectDataForDay?: {
+    subjectName: string
+    isCurrentCourse: boolean
+    lessons: ILesson[]
+  }
 }
 
 const CalendarDay: FC<CalendarDayProps> = ({
-  day, isToday, isCurrentMonth, lessons, subjectName = '', mainStyle,
+  day, isToday, isCurrentMonth, subjectDataForDay, mainStyle,
 }) => {
   return (
     <>
@@ -34,12 +37,13 @@ const CalendarDay: FC<CalendarDayProps> = ({
           {day}
         </div>
         <div className={styles.lessons}>
-          {lessons?.map(({ id, courseId, lessonStartDate, lessonEndDate }) => (
+          {subjectDataForDay?.lessons.map(({ id, courseId, lessonStartDate, lessonEndDate }) => (
             <LessonCard
               key={`${courseId}-${id}`}
-              subjectName={subjectName}
+              subjectName={subjectDataForDay.subjectName}
               lessonStartDate={lessonStartDate}
               lessonEndDate={lessonEndDate}
+              isCurrentCourse={subjectDataForDay.isCurrentCourse}
             />
           ))}
         </div>

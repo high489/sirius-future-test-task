@@ -33,21 +33,18 @@ const CalendarGrid: FC<CalendarGridProps> = ({
   const lessons = subject?.coursesList.flatMap((course) => course.lessonsList) || []
 
   const getSubjectDataForDay = (day: number, month: number, year: number) => {
-    const calendarDayDate = new Date(year, month, day)
+    const calendarDayDate = new Date(year, month, day).setHours(0, 0, 0, 0);
     return {
       subjectName: subject?.name || '',
       isCurrentCourse: subject?.coursesList.some(({ courseStartDate, courseEndDate }) => {
-        let startDate = new Date(courseStartDate)
-        let endDate = new Date(courseEndDate)
-        const isWithinStartDate = startDate <= calendarDayDate && startDate <= today
-        const isWithinEndDate = endDate >= calendarDayDate && endDate >= today
-        return isWithinStartDate && isWithinEndDate
+        let startDate = new Date(courseStartDate).setHours(0, 0, 0, 0)
+        let endDate = new Date(courseEndDate).setHours(0, 0, 0, 0)
+        const isAfterStartDate = startDate < calendarDayDate && startDate < today.setHours(0, 0, 0, 0)
+        const isBeforeEndDate = endDate >= calendarDayDate && endDate >= today.setHours(0, 0, 0, 0)
+        return isAfterStartDate && isBeforeEndDate
       }) || false,
-      lessons: lessons?.filter(({ lessonStartDate }) =>
-        new Date(lessonStartDate).getDate() === day &&
-        new Date(lessonStartDate).getMonth() === month &&
-        new Date(lessonStartDate).getFullYear() === year
-      ),
+      lessons: lessons?.filter(({ lessonStartDate }) => 
+        new Date(lessonStartDate).setHours(0, 0, 0, 0) === calendarDayDate),
     }
   }
 

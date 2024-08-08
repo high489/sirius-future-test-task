@@ -40,9 +40,9 @@ const CalendarDay: FC<CalendarDayProps> = ({
           {subjectDataForDay?.lessons.map(({ id, courseId, lessonStartDate, lessonEndDate }) => (
             <LessonCard
               key={`${courseId}-${id}`}
-              subjectName={subjectDataForDay.subjectName}
               lessonStartDate={lessonStartDate}
               lessonEndDate={lessonEndDate}
+              subjectName={subjectDataForDay.subjectName}
               isCurrentCourse={subjectDataForDay.isCurrentCourse}
             />
           ))}

@@ -36,7 +36,7 @@ const HeaderUserControl: FC = () => {
         <ModalWindow
           showModal={showUserOptionsModal}
           setShowModal={setShowUserOptionsModal}
-          className={`${styles['user-options']}`}
+          mainStyle={`${styles['user-options']}`}
           callerElementRef={headerUserControlRef}
         >
           <h4 className={`${styles['user-options-title']}`}>Смена пользователя</h4>

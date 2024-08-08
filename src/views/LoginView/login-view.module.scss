@@ -1,5 +1,6 @@
 .login {
   min-height: 840px;
+  position: relative;
 }
 
 .login-content {
@@ -10,6 +11,7 @@
 }
 
 .login-logo {
+  cursor: pointer;
   width: 100%;
 }
 
@@ -47,4 +49,16 @@
   font-size: 16px;
   font-weight: normal;
   line-height: 135%;
+}
+
+.users-info {
+  position: absolute;
+  right: 5%;
+  top: -15%;
+  opacity: .5;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 135%;
+  margin: 0;
+  color: var(--dark);
 }

@@ -2,9 +2,9 @@ import styles from './lesson-card.module.scss'
 import { FC } from 'react'
 
 interface LessonCardProps {
-  subjectName: string
   lessonStartDate: string | Date
   lessonEndDate: string | Date
+  subjectName: string
   isCurrentCourse: boolean
 }
 

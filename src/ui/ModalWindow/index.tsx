@@ -6,13 +6,13 @@ import CloseIcon from './assets/close-icon.svg?react'
 interface ModalWindowProps {
   showModal: boolean
   setShowModal: (newValue: boolean) => void
-  className?: string
+  mainStyle?: string
   children?: any
   callerElementRef?: React.RefObject<HTMLDivElement>
 }
 
 const ModalWindow: FC<ModalWindowProps> = ({
-  className, showModal, setShowModal, children, callerElementRef,
+  mainStyle, showModal, setShowModal, children, callerElementRef,
 }) => {
   const modalWindowRef = useRef<HTMLDivElement>(null)
 
@@ -33,7 +33,7 @@ const ModalWindow: FC<ModalWindowProps> = ({
       {showModal && (
         <>
           <div 
-            className={`${styles['modal-window']} ${className}`}
+            className={`${styles['modal-window']} ${mainStyle}`}
             onClick={(e) => e.stopPropagation()}
             ref={modalWindowRef}
           >

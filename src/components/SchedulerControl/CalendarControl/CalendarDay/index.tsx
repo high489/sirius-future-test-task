@@ -12,6 +12,7 @@ interface CalendarDayProps {
   subjectDataForDay?: {
     subjectName: string
     isCurrentCourse: boolean
+    isPurchasedCourse: boolean
     lessons: ILesson[]
   }
 }
@@ -37,13 +38,18 @@ const CalendarDay: FC<CalendarDayProps> = ({
           {day}
         </div>
         <div className={styles.lessons}>
-          {subjectDataForDay?.lessons.map(({ id, courseId, lessonStartDate, lessonEndDate }) => (
+          {subjectDataForDay?.lessons.map(({ 
+            id, courseId, lessonStartDate, lessonEndDate, isPaid, isCanceled,
+          }) => (
             <LessonCard
               key={`${courseId}-${id}`}
               lessonStartDate={lessonStartDate}
               lessonEndDate={lessonEndDate}
               subjectName={subjectDataForDay.subjectName}
               isCurrentCourse={subjectDataForDay.isCurrentCourse}
+              isPurchasedCourse={subjectDataForDay.isPurchasedCourse}
+              isPaid={isPaid}
+              isCanceled={isCanceled}
             />
           ))}
         </div>

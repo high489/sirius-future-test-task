@@ -1,6 +1,7 @@
 import styles from './calendar-grid.module.scss'
 import { ISubject } from '@/app/models'
 import { FC } from 'react'
+import { useAuth } from '@/app/hooks'
 
 import { CalendarDay } from '../'
 
@@ -30,6 +31,7 @@ const CalendarGrid: FC<CalendarGridProps> = ({
   const nextMonth = currentMonth === 11 ? 0 : currentMonth + 1
   const nextMonthYear = currentMonth === 11 ? currentYear + 1 : currentYear
   
+  const { user } = useAuth()
   const lessons = subject?.coursesList.flatMap((course) => course.lessonsList) || []
 
   const getSubjectDataForDay = (day: number, month: number, year: number) => {
@@ -43,6 +45,16 @@ const CalendarGrid: FC<CalendarGridProps> = ({
         const isBeforeEndDate = endDate >= calendarDayDate && endDate >= today.setHours(0, 0, 0, 0)
         return isAfterStartDate && isBeforeEndDate
       }) || false,
+      isPurchasedCourse: subject?.coursesList.filter(({
+        courseStartDate, courseEndDate, registeredUsers
+      }) => {
+        let startDate = new Date(courseStartDate).setHours(0, 0, 0, 0)
+        let endDate = new Date(courseEndDate).setHours(0, 0, 0, 0)
+        const isAfterStartDate = startDate < calendarDayDate
+        const isBeforeEndDate = endDate >= calendarDayDate
+        const isCurrentUserRegistered = registeredUsers?.some(({ email }) => email === user?.email)
+        return isAfterStartDate && isBeforeEndDate && isCurrentUserRegistered
+      }).length !== 0 || false,
       lessons: lessons?.filter(({ lessonStartDate }) => 
         new Date(lessonStartDate).setHours(0, 0, 0, 0) === calendarDayDate),
     }

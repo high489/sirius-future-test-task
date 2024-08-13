@@ -1,4 +1,5 @@
-import { ILesson } from "./ILesson";
+import { ILesson } from './ILesson';
+import { IRegisteredUser } from './IRegisteredUser';
 
 export interface ICourse {
   id: number
@@ -8,5 +9,5 @@ export interface ICourse {
   courseEndDate: string | Date
   totalLessons?: number
   lessonsList: ILesson[]
-  //registeredUsers: { userId: string, userName: string }[]
+  registeredUsers?: IRegisteredUser[]
 }

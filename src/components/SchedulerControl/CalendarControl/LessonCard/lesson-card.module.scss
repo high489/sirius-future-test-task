@@ -1,9 +1,27 @@
 .lesson-card {
   border-radius: 2px;
+  padding: 2px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   
   // temporary
   border: 1px solid var(--dark-violet);
   height: 34px;
+
+  &.current-course {
+    background-color: var(--light-green);
+    border-color: var(--border-green);
+  }
+
+  &.paid {
+    border-color: var(--alert-light);
+  }
+
+  &.not-purchased {
+    display: none;
+  }
 }
 
 .lesson-time {
@@ -20,6 +38,11 @@
   color: var(--dark);
 }
 
-.current-course {
-  background-color: var(--light-green);
+.paid-icon {
+  position: absolute;
+  right: 0px;
+  top: 0.5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

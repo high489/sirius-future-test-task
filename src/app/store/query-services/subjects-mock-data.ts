@@ -130,6 +130,9 @@ export const subjectsMockData: SubjectsMockData = {
           {id: 50, courseId: 2, lessonStartDate: '2024-06-28T13:00:00Z', lessonEndDate: '2024-06-28T14:00:00Z', isPaid: true, isCanceled: false}, // пятница
           {id: 51, courseId: 2, lessonStartDate: '2024-06-28T14:00:00Z', lessonEndDate: '2024-06-28T15:00:00Z', isPaid: false, isCanceled: false} // пятница
         ],
+        registeredUsers: [
+          {id: 1, name: 'Михаил', email: 'mike123@mail.com'},
+        ],
       },
       {
         id: 3,
@@ -192,6 +195,9 @@ export const subjectsMockData: SubjectsMockData = {
           {id: 52, courseId: 3, lessonStartDate: '2024-08-29T13:00:00Z', lessonEndDate: '2024-08-29T14:00:00Z', isPaid: true, isCanceled: false}, // четверг
           {id: 53, courseId: 3, lessonStartDate: '2024-08-30T13:00:00Z', lessonEndDate: '2024-08-30T14:00:00Z', isPaid: true, isCanceled: false}, // пятница
           {id: 54, courseId: 3, lessonStartDate: '2024-08-30T14:00:00Z', lessonEndDate: '2024-08-30T15:00:00Z', isPaid: false, isCanceled: false} // пятница
+        ],
+        registeredUsers: [
+          {id: 1, name: 'Михаил', email: 'mike123@mail.com'},
         ],
       },
     ],
@@ -288,6 +294,9 @@ export const subjectsMockData: SubjectsMockData = {
           {id: 79, courseId: 1, lessonStartDate: '2024-05-31T16:00:00Z', lessonEndDate: '2024-05-31T16:45:00Z', isPaid: true, isCanceled: false},
           {id: 80, courseId: 1, lessonStartDate: '2024-05-31T16:45:00Z', lessonEndDate: '2024-05-31T17:30:00Z', isPaid: true, isCanceled: false},
         ],
+        registeredUsers: [
+          {id: 1, name: 'Михаил', email: 'mike123@mail.com'},
+        ],
       },
       {
         id: 2,
@@ -375,6 +384,10 @@ export const subjectsMockData: SubjectsMockData = {
           {id: 77, courseId: 2, lessonStartDate: '2024-08-30T16:00:00Z', lessonEndDate: '2024-08-30T16:45:00Z', isPaid: true, isCanceled: false},
           {id: 78, courseId: 2, lessonStartDate: '2024-08-30T16:45:00Z', lessonEndDate: '2024-08-30T17:30:00Z', isPaid: true, isCanceled: false},
         ],
+        registeredUsers: [
+          {id: 1, name: 'Михаил', email: 'mike123@mail.com'},
+          {id: 2, name: 'Анна', email: 'anna321@mail.com'},
+        ],
       },
     ],
   },
@@ -460,6 +473,9 @@ export const subjectsMockData: SubjectsMockData = {
           {id: 15, courseId: 3, lessonStartDate: '2024-05-26T15:00:00Z', lessonEndDate: '2024-05-26T15:30:00Z', isPaid: true, isCanceled: false},
           {id: 16, courseId: 3, lessonStartDate: '2024-05-26T15:30:00Z', lessonEndDate: '2024-05-26T16:00:00Z', isPaid: false, isCanceled: false},
         ],
+        registeredUsers: [
+          {id: 1, name: 'Михаил', email: 'mike123@mail.com'},
+        ],
       },
       {
         id: 4,
@@ -489,6 +505,9 @@ export const subjectsMockData: SubjectsMockData = {
           {id: 19, courseId: 4, lessonStartDate: '2024-06-30T15:00:00Z', lessonEndDate: '2024-06-30T15:30:00Z', isPaid: true, isCanceled: false},
           {id: 20, courseId: 4, lessonStartDate: '2024-06-30T15:30:00Z', lessonEndDate: '2024-06-30T16:00:00Z', isPaid: false, isCanceled: false},
         ],
+        registeredUsers: [
+          {id: 1, name: 'Михаил', email: 'mike123@mail.com'},
+        ],
       },
       {
         id: 5,
@@ -513,6 +532,9 @@ export const subjectsMockData: SubjectsMockData = {
           {id: 14, courseId: 5, lessonStartDate: '2024-07-27T15:30:00Z', lessonEndDate: '2024-07-27T16:00:00Z', isPaid: false, isCanceled: false},
           {id: 15, courseId: 5, lessonStartDate: '2024-07-28T15:00:00Z', lessonEndDate: '2024-07-28T15:30:00Z', isPaid: true, isCanceled: false},
           {id: 16, courseId: 5, lessonStartDate: '2024-07-28T15:30:00Z', lessonEndDate: '2024-07-28T16:00:00Z', isPaid: false, isCanceled: false},
+        ],
+        registeredUsers: [
+          {id: 2, name: 'Анна', email: 'anna321@mail.com'},
         ],
       },
       {
@@ -540,6 +562,9 @@ export const subjectsMockData: SubjectsMockData = {
           {id: 16, courseId: 6, lessonStartDate: '2024-08-25T15:30:00Z', lessonEndDate: '2024-08-25T16:00:00Z', isPaid: false, isCanceled: false},
           {id: 17, courseId: 6, lessonStartDate: '2024-08-31T15:00:00Z', lessonEndDate: '2024-08-31T15:30:00Z', isPaid: true, isCanceled: false},
           {id: 18, courseId: 6, lessonStartDate: '2024-08-31T15:30:00Z', lessonEndDate: '2024-08-31T16:00:00Z', isPaid: false, isCanceled: false},
+        ],
+        registeredUsers: [
+          {id: 2, name: 'Анна', email: 'anna321@mail.com'},
         ],
       },
     ],

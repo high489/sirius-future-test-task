@@ -50,6 +50,7 @@ const CalendarDay: FC<CalendarDayProps> = ({
               isPurchasedCourse={subjectDataForDay.isPurchasedCourse}
               isPaid={isPaid}
               isCanceled={isCanceled}
+              isFirstLesson={id === 1}
             />
           ))}
         </div>

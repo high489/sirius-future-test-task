@@ -1,26 +1,90 @@
+.lesson-card-wrapper {
+  position: relative;
+  height: 34px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .lesson-card {
+  // temporary
+  width: 100%;
+  height: 100%;
+
+  cursor: pointer;
   border-radius: 2px;
-  padding: 2px;
+  padding: 3px;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  
-  // temporary
-  border: 1px solid var(--dark-violet);
-  height: 34px;
+  border: 0.5px solid #22782B;
 
+  &::before {
+    content: '';
+    position: absolute;
+    pointer-events: none;
+  }
+
+  &::before {
+    top: -2.5px;
+    left: -2.5px;
+    right: -2.5px;
+    bottom: -2.5px;
+    border: 1px solid var(--dark-violet);
+    border-radius: 2px;
+    opacity: 0;
+  }
+
+  @mixin double-border(){
+    height: 30px;
+    margin: 0 1.5px;
+    border-radius: 1px;
+    padding: 1px 1.5px;
+    &::before {
+      opacity: 1;
+    }
+    .paid-icon {
+      right: -1px;
+      top: -0.5px;
+    }
+  }
+
+  &:hover {
+    @include double-border();
+  }
+  
   &.current-course {
     background-color: var(--light-green);
     border-color: var(--border-green);
   }
 
-  &.paid {
+  &.not-purchased {
+    display: none;
+  }
+
+  &.paid-border {
     border-color: var(--alert-light);
   }
 
-  &.not-purchased {
-    display: none;
+  &.canceled {
+    background-color: #F5F5F5;
+    border-color: var(--semi-dark-gray);
+    .subject-name,
+    .lesson-time {
+      text-decoration: line-through;
+    }
+    &.paid-border {
+      border-color: var(--semi-dark-gray);
+    }
+  }
+
+  &.first-lesson {
+    background-color: var(--violet-light);
+    border-color: var(--violet);
+    &.paid-border {
+      border-color: var(--violet);
+    }
   }
 }
 
@@ -40,8 +104,8 @@
 
 .paid-icon {
   position: absolute;
-  right: 0px;
-  top: 0.5px;
+  right: 0.5px;
+  top: 1.5px;
   display: flex;
   justify-content: center;
   align-items: center;

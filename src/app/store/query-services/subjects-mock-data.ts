@@ -70,6 +70,7 @@ export const subjectsMockData: SubjectsMockData = {
           {id: 52, courseId: 1, lessonStartDate: '2024-04-30T13:00:00Z', lessonEndDate: '2024-04-30T14:00:00Z', isPaid: true, isCanceled: false}, // вторник
           {id: 53, courseId: 1, lessonStartDate: '2024-04-30T14:00:00Z', lessonEndDate: '2024-04-30T15:00:00Z', isPaid: false, isCanceled: false} // вторник
         ],
+        registeredUsers: [],
       },
       {
         id: 2,
@@ -423,6 +424,7 @@ export const subjectsMockData: SubjectsMockData = {
           {id: 19, courseId: 1, lessonStartDate: '2024-03-31T15:00:00Z', lessonEndDate: '2024-03-31T15:30:00Z', isPaid: true, isCanceled: false},
           {id: 20, courseId: 1, lessonStartDate: '2024-03-31T15:30:00Z', lessonEndDate: '2024-03-31T16:00:00Z', isPaid: false, isCanceled: false},
         ],
+        registeredUsers: [],
       },
       {
         id: 2,
@@ -448,6 +450,7 @@ export const subjectsMockData: SubjectsMockData = {
           {id: 15, courseId: 2, lessonStartDate: '2024-04-28T15:00:00Z', lessonEndDate: '2024-04-28T15:30:00Z', isPaid: true, isCanceled: false},
           {id: 16, courseId: 2, lessonStartDate: '2024-04-28T15:30:00Z', lessonEndDate: '2024-04-28T16:00:00Z', isPaid: false, isCanceled: false},
         ],
+        registeredUsers: [],
       },
       {
         id: 3,
@@ -568,5 +571,83 @@ export const subjectsMockData: SubjectsMockData = {
         ],
       },
     ],
-  }
+  },
+  test_subject: {
+    id: 4,
+    name: 'Тестовый предмет',
+    coursesList: [
+      {
+        id: 1,
+        subjectId: 4,
+        instructor: 'Иван Иванов',
+        courseStartDate: '2024-08-05T00:00:00Z',
+        courseEndDate: '2024-08-11T23:59:00Z',
+        lessonsList: [
+          {id: 1, courseId: 1, lessonStartDate: '2024-08-05T12:00:00Z', lessonEndDate: '2024-08-05T13:30:00Z', isPaid: true, isCanceled: false},
+          {id: 2, courseId: 1, lessonStartDate: '2024-08-05T14:00:00Z', lessonEndDate: '2024-08-05T15:30:00Z', isPaid: true, isCanceled: true},
+          {id: 3, courseId: 1, lessonStartDate: '2024-08-06T12:00:00Z', lessonEndDate: '2024-08-06T13:30:00Z', isPaid: false, isCanceled: false},
+          {id: 4, courseId: 1, lessonStartDate: '2024-08-06T14:00:00Z', lessonEndDate: '2024-08-06T15:30:00Z', isPaid: false, isCanceled: true},
+          {id: 5, courseId: 1, lessonStartDate: '2024-08-07T12:00:00Z', lessonEndDate: '2024-08-07T13:30:00Z', isPaid: true, isCanceled: false},
+          {id: 6, courseId: 1, lessonStartDate: '2024-08-07T14:00:00Z', lessonEndDate: '2024-08-07T15:30:00Z', isPaid: true, isCanceled: false},
+          {id: 7, courseId: 1, lessonStartDate: '2024-08-08T12:00:00Z', lessonEndDate: '2024-08-08T13:30:00Z', isPaid: false, isCanceled: false},
+          {id: 8, courseId: 1, lessonStartDate: '2024-08-08T14:00:00Z', lessonEndDate: '2024-08-08T15:30:00Z', isPaid: false, isCanceled: false},
+          {id: 9, courseId: 1, lessonStartDate: '2024-08-09T12:00:00Z', lessonEndDate: '2024-08-09T13:30:00Z', isPaid: true, isCanceled: false},
+          {id: 10, courseId: 1, lessonStartDate: '2024-08-09T14:00:00Z', lessonEndDate: '2024-08-09T15:30:00Z', isPaid: true, isCanceled: false},
+          {id: 11, courseId: 1, lessonStartDate: '2024-08-10T10:00:00Z', lessonEndDate: '2024-08-10T13:00:00Z', isPaid: false, isCanceled: false},
+          {id: 12, courseId: 1, lessonStartDate: '2024-08-11T10:00:00Z', lessonEndDate: '2024-08-11T13:00:00Z', isPaid: true, isCanceled: false},
+        ],
+        registeredUsers: [
+          {id: 1, name: 'Михаил', email: 'mike123@mail.com'},
+        ],
+      },
+      {
+        id: 2,
+        subjectId: 4,
+        instructor: 'Иван Иванов',
+        courseStartDate: '2024-08-12T00:00:00Z',
+        courseEndDate: '2024-08-18T23:59:00Z',
+        lessonsList: [
+          {id: 1, courseId: 2, lessonStartDate: '2024-08-12T12:00:00Z', lessonEndDate: '2024-08-12T13:30:00Z', isPaid: true, isCanceled: false},
+          {id: 2, courseId: 2, lessonStartDate: '2024-08-12T14:00:00Z', lessonEndDate: '2024-08-12T15:30:00Z', isPaid: true, isCanceled: true},
+          {id: 3, courseId: 2, lessonStartDate: '2024-08-13T12:00:00Z', lessonEndDate: '2024-08-13T13:30:00Z', isPaid: false, isCanceled: false},
+          {id: 4, courseId: 2, lessonStartDate: '2024-08-13T14:00:00Z', lessonEndDate: '2024-08-13T15:30:00Z', isPaid: false, isCanceled: true},
+          {id: 5, courseId: 2, lessonStartDate: '2024-08-14T12:00:00Z', lessonEndDate: '2024-08-14T13:30:00Z', isPaid: true, isCanceled: false},
+          {id: 6, courseId: 2, lessonStartDate: '2024-08-14T14:00:00Z', lessonEndDate: '2024-08-14T15:30:00Z', isPaid: true, isCanceled: false},
+          {id: 7, courseId: 2, lessonStartDate: '2024-08-15T12:00:00Z', lessonEndDate: '2024-08-15T13:30:00Z', isPaid: false, isCanceled: false},
+          {id: 8, courseId: 2, lessonStartDate: '2024-08-15T14:00:00Z', lessonEndDate: '2024-08-15T15:30:00Z', isPaid: false, isCanceled: false},
+          {id: 9, courseId: 2, lessonStartDate: '2024-08-16T12:00:00Z', lessonEndDate: '2024-08-16T13:30:00Z', isPaid: true, isCanceled: false},
+          {id: 10, courseId: 2, lessonStartDate: '2024-08-16T14:00:00Z', lessonEndDate: '2024-08-16T15:30:00Z', isPaid: true, isCanceled: false},
+          {id: 11, courseId: 2, lessonStartDate: '2024-08-17T10:00:00Z', lessonEndDate: '2024-08-17T13:00:00Z', isPaid: false, isCanceled: false},
+          {id: 12, courseId: 2, lessonStartDate: '2024-08-18T10:00:00Z', lessonEndDate: '2024-08-18T13:00:00Z', isPaid: true, isCanceled: false},
+        ],
+        registeredUsers: [
+          {id: 1, name: 'Михаил', email: 'mike123@mail.com'},
+        ],
+      },
+      {
+        id: 3,
+        subjectId: 4,
+        instructor: 'Иван Иванов',
+        courseStartDate: '2024-08-19T00:00:00Z',
+        courseEndDate: '2024-08-25T23:59:00Z',
+        lessonsList: [
+          {id: 1, courseId: 3, lessonStartDate: '2024-08-19T12:00:00Z', lessonEndDate: '2024-08-19T13:30:00Z', isPaid: true, isCanceled: false},
+          {id: 2, courseId: 3, lessonStartDate: '2024-08-19T14:00:00Z', lessonEndDate: '2024-08-19T15:30:00Z', isPaid: true, isCanceled: false},
+          {id: 3, courseId: 3, lessonStartDate: '2024-08-20T12:00:00Z', lessonEndDate: '2024-08-20T13:30:00Z', isPaid: false, isCanceled: false},
+          {id: 4, courseId: 3, lessonStartDate: '2024-08-20T14:00:00Z', lessonEndDate: '2024-08-20T15:30:00Z', isPaid: false, isCanceled: false},
+          {id: 5, courseId: 3, lessonStartDate: '2024-08-21T12:00:00Z', lessonEndDate: '2024-08-21T13:30:00Z', isPaid: true, isCanceled: false},
+          {id: 6, courseId: 3, lessonStartDate: '2024-08-21T14:00:00Z', lessonEndDate: '2024-08-21T15:30:00Z', isPaid: true, isCanceled: false},
+          {id: 7, courseId: 3, lessonStartDate: '2024-08-22T12:00:00Z', lessonEndDate: '2024-08-22T13:30:00Z', isPaid: false, isCanceled: false},
+          {id: 8, courseId: 3, lessonStartDate: '2024-08-22T14:00:00Z', lessonEndDate: '2024-08-22T15:30:00Z', isPaid: false, isCanceled: false},
+          {id: 9, courseId: 3, lessonStartDate: '2024-08-23T12:00:00Z', lessonEndDate: '2024-08-23T13:30:00Z', isPaid: true, isCanceled: false},
+          {id: 10, courseId: 3, lessonStartDate: '2024-08-23T14:00:00Z', lessonEndDate: '2024-08-23T15:30:00Z', isPaid: true, isCanceled: false},
+          {id: 11, courseId: 3, lessonStartDate: '2024-08-24T10:00:00Z', lessonEndDate: '2024-08-24T13:00:00Z', isPaid: false, isCanceled: false},
+          {id: 12, courseId: 3, lessonStartDate: '2024-08-25T10:00:00Z', lessonEndDate: '2024-08-25T13:00:00Z', isPaid: true, isCanceled: false},
+        ],
+        registeredUsers: [
+          {id: 2, name: 'Анна', email: 'anna321@mail.com'},
+        ],
+      },
+    ],
+  },
 }

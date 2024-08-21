@@ -11,31 +11,41 @@ interface LessonCardProps {
   isPurchasedCourse: boolean
   isPaid: boolean
   isCanceled: boolean
+  isFirstLesson: boolean
 }
 
 const LessonCard: FC<LessonCardProps> = ({
-  subjectName, lessonStartDate, lessonEndDate, isCurrentCourse, isPurchasedCourse, isPaid, isCanceled,
+  subjectName,
+  lessonStartDate,
+  lessonEndDate,
+  isCurrentCourse,
+  isPurchasedCourse,
+  isPaid,
+  isCanceled,
+  isFirstLesson,
 }) => {
   const startTime = new Date(lessonStartDate).toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit', timeZone: 'UTC' })
   const endTime = new Date(lessonEndDate).toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit', timeZone: 'UTC' })
 
   const classNames = [
-    styles['lesson-card'],
     isCurrentCourse && styles['current-course'],
-    isPaid && !isCurrentCourse && styles['paid'],
-    isCanceled && styles['canceled'],
+    isFirstLesson && styles['first-lesson'],
+    isPaid && !isCurrentCourse && styles['paid-border'],
     isPaid && !isPurchasedCourse && styles['not-purchased'],
+    isCanceled && styles['canceled'],
   ].filter(Boolean).join(' ')
 
   return (
-    <div className={classNames}>
-      <div className={`${styles['lesson-time']}`}>{`${startTime}-${endTime}`}</div>
-      <div className={`${styles['subject-name']}`}>{subjectName}</div>
-      {isPaid && (
-        <div className={`${styles['paid-icon']}`}>
-          <PaidIcon />
-        </div>
-      )}
+    <div className={`${styles['lesson-card-wrapper']}`}>
+      <div className={`${styles['lesson-card']} ${classNames}`}>
+        <div className={`${styles['lesson-time']}`}>{`${startTime}-${endTime}`}</div>
+        <div className={`${styles['subject-name']}`}>{subjectName}</div>
+        {isPaid && (
+          <div className={`${styles['paid-icon']}`}>
+            <PaidIcon />
+          </div>
+        )}
+      </div>
     </div>
   )
 }

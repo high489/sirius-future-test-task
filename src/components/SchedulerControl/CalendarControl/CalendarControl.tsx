@@ -10,8 +10,12 @@ interface CalendarControlProps {
 }
 
 const CalendarControl: FC<CalendarControlProps> = ({ startOfWeek, subject }) => {
-  const [currentMonth, setCurrentMonth] = useState<number>(new Date().getMonth())
-  const [currentYear, setCurrentYear] = useState<number>(new Date().getFullYear())
+  // const [currentMonth, setCurrentMonth] = useState<number>(new Date().getMonth())
+  // const [currentYear, setCurrentYear] = useState<number>(new Date().getFullYear())
+  // const today = new Date()
+  const [currentMonth, setCurrentMonth] = useState<number>(7)
+  const [currentYear, setCurrentYear] = useState<number>(2024)
+  const today = new Date('2024-08-15T00:00:00Z')
 
   const daysInMonth = (month: number, year: number) => new Date(year, month + 1, 0).getDate()
   const firstDayOfMonth = (month: number, year: number) => {
@@ -25,7 +29,6 @@ const CalendarControl: FC<CalendarControlProps> = ({ startOfWeek, subject }) => 
   const currentMonthTotalDays = daysInMonth(currentMonth, currentYear)
   const currentMonthStartDay = firstDayOfMonth(currentMonth, currentYear)
   const currentMonthArray = Array.from({ length: currentMonthTotalDays }, (_, i) => i + 1)
-  const today = new Date()
 
   const totalDaysInPreviousMonth = daysInMonth(
     currentMonth === 0 ? 11 : currentMonth - 1,

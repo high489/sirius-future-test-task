@@ -1,22 +1,32 @@
 import styles from './calendar-control.module.scss'
-import { ISubject } from '@/app/models'
-import { FC, useState } from 'react'
+import { FC } from 'react'
+import { ILesson, ISubject, IUser } from '@/app/models'
 
 import { CalendarOptions, CalendarGrid } from './'
 
 interface CalendarControlProps {
   startOfWeek: 'sunday' | 'monday'
+  currentYear: number
+  setCurrentYear: (newValue: number) => void
+  currentMonth: number
+  setCurrentMonth: (newValue: number) => void
+  currentDate: Date
+  user?: IUser
   subject?: ISubject
+  nearestPaidLesson?: ILesson
 }
 
-const CalendarControl: FC<CalendarControlProps> = ({ startOfWeek, subject }) => {
-  // const [currentMonth, setCurrentMonth] = useState<number>(new Date().getMonth())
-  // const [currentYear, setCurrentYear] = useState<number>(new Date().getFullYear())
-  // const today = new Date()
-  const [currentMonth, setCurrentMonth] = useState<number>(7)
-  const [currentYear, setCurrentYear] = useState<number>(2024)
-  const today = new Date('2024-08-15T00:00:00Z')
-
+const CalendarControl: FC<CalendarControlProps> = ({
+  startOfWeek,
+  currentYear,
+  setCurrentYear,
+  currentMonth,
+  setCurrentMonth,
+  currentDate,
+  user,
+  subject,
+  nearestPaidLesson,
+}) => {
   const daysInMonth = (month: number, year: number) => new Date(year, month + 1, 0).getDate()
   const firstDayOfMonth = (month: number, year: number) => {
     const day = new Date(year, month, 1).getDay()
@@ -56,12 +66,14 @@ const CalendarControl: FC<CalendarControlProps> = ({ startOfWeek, subject }) => 
         <CalendarGrid
           currentMonth={currentMonth}
           currentYear={currentYear}
+          currentDate={currentDate}
           daysOfWeek={daysOfWeek}
           currentMonthArray={currentMonthArray}
           previousMonthArray={previousMonthArray}
           nextMonthArray={nextMonthArray}
-          today={today}
+          user={user}
           subject={subject}
+          nearestPaidLesson={nearestPaidLesson}
         />
       </div>
     </>

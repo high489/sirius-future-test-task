@@ -14,6 +14,7 @@ interface CalendarDayProps {
     isCurrentCourse: boolean
     isPurchasedCourse: boolean
     lessons: ILesson[]
+    nearestPaidLessonStartDate: string | Date
   }
 }
 
@@ -40,19 +41,24 @@ const CalendarDay: FC<CalendarDayProps> = ({
         <div className={styles.lessons}>
           {subjectDataForDay?.lessons.map(({ 
             id, courseId, lessonStartDate, lessonEndDate, isPaid, isCanceled,
-          }) => (
-            <LessonCard
-              key={`${courseId}-${id}`}
-              lessonStartDate={lessonStartDate}
-              lessonEndDate={lessonEndDate}
-              subjectName={subjectDataForDay.subjectName}
-              isCurrentCourse={subjectDataForDay.isCurrentCourse}
-              isPurchasedCourse={subjectDataForDay.isPurchasedCourse}
-              isPaid={isPaid}
-              isCanceled={isCanceled}
-              isFirstLesson={id === 1}
-            />
-          ))}
+          }) => {
+            let isNearestLesson = subjectDataForDay.nearestPaidLessonStartDate instanceof Date &&
+              new Date(lessonStartDate).getTime() === subjectDataForDay.nearestPaidLessonStartDate.getTime()
+            return (
+              <LessonCard
+                key={`${courseId}-${id}`}
+                lessonStartDate={lessonStartDate}
+                lessonEndDate={lessonEndDate}
+                subjectName={subjectDataForDay.subjectName}
+                isCurrentCourse={subjectDataForDay.isCurrentCourse}
+                isPurchasedCourse={subjectDataForDay.isPurchasedCourse}
+                isPaid={isPaid}
+                isCanceled={isCanceled}
+                isFirstLesson={id === 1}
+                isNearestLesson={isNearestLesson}
+              />
+            )
+          })}
         </div>
       </div>
     </>

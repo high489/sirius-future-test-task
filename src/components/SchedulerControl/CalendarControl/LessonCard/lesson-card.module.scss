@@ -53,6 +53,10 @@
   &:hover {
     @include double-border();
   }
+
+  &.nearest {
+    @include double-border();
+  }
   
   &.current-course {
     background-color: var(--light-green);

@@ -1,5 +1,5 @@
 import { createApi, fakeBaseQuery } from '@reduxjs/toolkit/query/react'
-import { ISubject, Option } from '@/app/models'
+import { ILesson, ISubject, IUser, Option } from '@/app/models'
 import { subjectsMockData } from './subjects-mock-data'
 
 const initialState: { [key: string]: ISubject } = subjectsMockData
@@ -40,10 +40,38 @@ export const subjectsApi = createApi({
       },
       providesTags: (_, __, key) => [{ type: 'Subjects', id: key }],
     }),
+    getNearestPaidLesson: build.query<ILesson | null, { user: IUser | null; fromDate: Date; subjectKey?: string }>({
+      queryFn: ({ subjectKey, user, fromDate }) => {
+        const subjects = subjectKey ? { [subjectKey]: initialState[subjectKey] } : initialState
+
+        const paidLessons: ILesson[] = []
+        for (const subject of Object.values(subjects)) {
+          for (const course of subject.coursesList) {
+            const isUserRegistered = course.registeredUsers?.some((registeredUser) =>
+              registeredUser.email === user?.email)
+
+            if (isUserRegistered) {
+              const lessons = course.lessonsList.filter((lesson) =>
+                lesson.isPaid && new Date(lesson.lessonStartDate).getTime() > fromDate.getTime())
+              paidLessons.push(...lessons)
+            }
+          }
+        }
+
+        paidLessons.sort((a, b) => 
+          new Date(a.lessonStartDate).getTime() - new Date(b.lessonStartDate).getTime())
+        const nearestLesson = paidLessons.length > 0 ? paidLessons[0] : null
+
+        return { data: nearestLesson }
+      },
+      providesTags: (_, __, { subjectKey }) => [{ type: 'Subjects', id: subjectKey || 'ALL' }],
+    }),
   }),
 })
 
 export const { 
   useGetSubjectsQuery, 
   useGetSubjectsKeysQuery, 
-  useGetSubjectByKeyQuery } = subjectsApi
+  useGetSubjectByKeyQuery,
+  useGetNearestPaidLessonQuery,
+} = subjectsApi

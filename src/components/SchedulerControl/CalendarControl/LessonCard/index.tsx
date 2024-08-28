@@ -12,6 +12,7 @@ interface LessonCardProps {
   isPaid: boolean
   isCanceled: boolean
   isFirstLesson: boolean
+  isNearestLesson: any
 }
 
 const LessonCard: FC<LessonCardProps> = ({
@@ -23,11 +24,13 @@ const LessonCard: FC<LessonCardProps> = ({
   isPaid,
   isCanceled,
   isFirstLesson,
+  isNearestLesson,
 }) => {
   const startTime = new Date(lessonStartDate).toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit', timeZone: 'UTC' })
   const endTime = new Date(lessonEndDate).toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit', timeZone: 'UTC' })
 
   const classNames = [
+    isNearestLesson && styles['nearest'],
     isCurrentCourse && styles['current-course'],
     isFirstLesson && styles['first-lesson'],
     isPaid && !isCurrentCourse && styles['paid-border'],

@@ -30,8 +30,8 @@ const LessonCard: FC<LessonCardProps> = ({
   const endTime = new Date(lessonEndDate).toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit', timeZone: 'UTC' })
 
   const classNames = [
-    isNearestLesson && styles['nearest'],
     isCurrentCourse && styles['current-course'],
+    isNearestLesson && styles['nearest'],
     isFirstLesson && styles['first-lesson'],
     isPaid && !isCurrentCourse && styles['paid-border'],
     isPaid && !isPurchasedCourse && styles['not-purchased'],

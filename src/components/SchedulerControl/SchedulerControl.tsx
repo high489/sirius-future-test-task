@@ -1,8 +1,12 @@
 import styles from './scheduler-control.module.scss'
 import { useEffect, useState } from 'react'
 
-import { useAuth } from '@/app/hooks'
-import { useGetSubjectsKeysQuery, useGetSubjectByKeyQuery, useGetNearestPaidLessonQuery } from '@/app/store'
+import { useAppDispatch, useAppSelector, useAuth } from '@/app/hooks'
+import { 
+  useGetSubjectsKeysQuery, 
+  useGetSubjectByKeyQuery, 
+  useGetNearestPaidLessonQuery, 
+  setSelectedSubjectKey } from '@/app/store'
 import { SubjectsOptions, CalendarControl } from './'
 
 const SchedulerControl = () => {
@@ -12,8 +16,10 @@ const SchedulerControl = () => {
   const [currentMonth, setCurrentMonth] = useState<number>(7)
   const [currentYear, setCurrentYear] = useState<number>(2024)
   const currentDate = new Date('2024-08-14T13:00:00Z')
+
+  const dispatch = useAppDispatch()
   const { user } = useAuth()
-  const [ selectedSubjectKey, setSelectedSubject ] = useState<string>('')
+  const selectedSubjectKey = useAppSelector((state) => state.selectedSubject.subjectKey)
   const { data: subjectsOptions = [] } = useGetSubjectsKeysQuery()
   const { data: selectedSubject } = useGetSubjectByKeyQuery(selectedSubjectKey)
   const { data: nearestPaidLesson } = useGetNearestPaidLessonQuery({
@@ -23,11 +29,13 @@ const SchedulerControl = () => {
   })
 
   useEffect(() => {
-    setSelectedSubject('test_subject')
-  }, [])
+    if (!selectedSubjectKey) {
+      dispatch(setSelectedSubjectKey('test_subject'))
+    }
+  }, [selectedSubjectKey, dispatch])
 
   const handleSubjectChange = (value: string | string[]) => {
-    if (typeof value === 'string') setSelectedSubject(value)
+    if (typeof value === 'string') dispatch(setSelectedSubjectKey(value))
   }
 
   return (

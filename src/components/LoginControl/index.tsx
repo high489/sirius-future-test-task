@@ -1,7 +1,7 @@
 import styles from './login-control.module.scss'
 import { FC, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useGetUsersQuery, rememberUser } from '@app/store'
+import { useGetUsersQuery, addPersistentUser } from '@app/store'
 import { useAppDispatch, useAuth } from '@app/hooks'
 
 import { FormInput, FormInputPassword, FormInputCheckbox, FormSubmitButton, CustomLink } from '@/ui'
@@ -23,7 +23,7 @@ const LoginControl: FC = () => {
 
     if (user) {
       if (isUserRemembered) {
-        dispatch(rememberUser(user))
+        dispatch(addPersistentUser({user}))
       }
       login(user)
       navigate('/', { replace: true })

@@ -4,14 +4,14 @@ import { usersApi } from './query-services/users.api'
 import { subjectsApi } from './query-services/subjects.api'
 import authReducer from './slices/authSlice'
 import persistentUsersReducer from './slices/persistentUsersSlice'
-import selectedSubjectReducer from './slices/selectedSubjectSlice'
+import schedulerReducer from './slices/schedulerSlice'
 
 const rootReducer = combineReducers({
   [usersApi.reducerPath]: usersApi.reducer,
   [subjectsApi.reducerPath]: subjectsApi.reducer,
   auth: authReducer,
   persistentUsers: persistentUsersReducer,
-  selectedSubject: selectedSubjectReducer,
+  scheduler: schedulerReducer,
 })
 
 export const store = configureStore({

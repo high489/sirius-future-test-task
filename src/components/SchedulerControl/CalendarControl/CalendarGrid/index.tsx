@@ -5,11 +5,11 @@ import { FC } from 'react'
 import { CalendarDay } from '../'
 
 interface CalendarGridProps {
-  currentYear: number
-  currentMonth: number
+  selectedYear: number
+  selectedMonth: number
   currentDate: Date
   daysOfWeek: string[]
-  currentMonthArray: number[]
+  selectedMonthArray: number[]
   previousMonthArray: number[]
   nextMonthArray: number[]
   user?: IUser | null
@@ -18,21 +18,21 @@ interface CalendarGridProps {
 }
 
 const CalendarGrid: FC<CalendarGridProps> = ({
-  currentYear,
-  currentMonth,
+  selectedYear,
+  selectedMonth,
   currentDate,
   daysOfWeek,
-  currentMonthArray,
+  selectedMonthArray,
   previousMonthArray,
   nextMonthArray,
   user,
   subject,
   nearestPaidLesson,
 }) => {
-  const previousMonth = currentMonth === 0 ? 11 : currentMonth - 1
-  const previousMonthYear = currentMonth === 0 ? currentYear - 1 : currentYear
-  const nextMonth = currentMonth === 11 ? 0 : currentMonth + 1
-  const nextMonthYear = currentMonth === 11 ? currentYear + 1 : currentYear
+  const previousMonth = selectedMonth === 0 ? 11 : selectedMonth - 1
+  const previousMonthYear = selectedMonth === 0 ? selectedYear - 1 : selectedYear
+  const nextMonth = selectedMonth === 11 ? 0 : selectedMonth + 1
+  const nextMonthYear = selectedMonth === 11 ? selectedYear + 1 : selectedYear
   
   const lessons = subject?.coursesList.flatMap((course) => course.lessonsList) || []
 
@@ -89,14 +89,14 @@ const CalendarGrid: FC<CalendarGridProps> = ({
             subjectDataForDay={getSubjectDataForDay(monthDay, previousMonth, previousMonthYear)}
           />
         ))}
-        {currentMonthArray.map(monthDay => (
+        {selectedMonthArray.map(monthDay => (
           <CalendarDay 
             key={monthDay} 
             day={monthDay} 
-            isToday={handleIsToday(monthDay, currentMonth, currentYear)}
+            isToday={handleIsToday(monthDay, selectedMonth, selectedYear)}
             isCurrentMonth={true}
             mainStyle={`${styles['grid-cell']}`} 
-            subjectDataForDay={getSubjectDataForDay(monthDay, currentMonth, currentYear)}
+            subjectDataForDay={getSubjectDataForDay(monthDay, selectedMonth, selectedYear)}
           />
         ))}
         {nextMonthArray.map(monthDay => (

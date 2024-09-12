@@ -3,6 +3,8 @@ import { IUser } from '@app/models'
 
 import MikeAva from '@app/assets/images/mike.jpg'
 import AnnaAva from '@app/assets/images/anna.jpg'
+import WarlockAva from '@app/assets/images/warlock.png'
+import HunterAva from '@app/assets/images/hunter.png'
 
 const initialState: IUser[] = [
   {
@@ -20,6 +22,22 @@ const initialState: IUser[] = [
     username: 'anna',
     password: 'anna321',
     avatar: AnnaAva,
+  },
+  {
+    id: 3,
+    name: 'Warlok',
+    email: 'w',
+    username: 'w',
+    password: 'w',
+    avatar: WarlockAva,
+  },
+  {
+    id: 4,
+    name: 'Hunter',
+    email: 'h',
+    username: 'h',
+    password: 'h',
+    avatar: HunterAva,
   },
 ]
 

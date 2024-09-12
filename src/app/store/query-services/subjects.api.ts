@@ -40,8 +40,9 @@ export const subjectsApi = createApi({
       },
       providesTags: (_, __, key) => [{ type: 'Subjects', id: key }],
     }),
-    getNearestPaidLesson: build.query<ILesson | null, { user: IUser | null; fromDate: Date; subjectKey?: string }>({
+    getNearestPaidLesson: build.query<ILesson | null, { user: IUser | null; fromDate: string; subjectKey?: string }>({
       queryFn: ({ subjectKey, user, fromDate }) => {
+        const parsedFromDate = new Date(fromDate)
         const subjects = subjectKey ? { [subjectKey]: initialState[subjectKey] } : initialState
 
         const paidLessons: ILesson[] = []
@@ -52,7 +53,7 @@ export const subjectsApi = createApi({
 
             if (isUserRegistered) {
               const lessons = course.lessonsList.filter((lesson) =>
-                lesson.isPaid && new Date(lesson.lessonStartDate).getTime() > fromDate.getTime())
+                lesson.isPaid && new Date(lesson.lessonStartDate).getTime() > parsedFromDate.getTime())
               paidLessons.push(...lessons)
             }
           }

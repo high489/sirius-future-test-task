@@ -5,40 +5,41 @@ import ArrowIcon from './assets/arrow-icon.svg?react'
 import QuestionsIcon from './assets/questions-icon.svg?react'
 
 interface CalendaroptionsProps {
-  currentMonth: number
-  setCurrentMonth: (newValue: number) => void
-  currentYear: number
-  setCurrentYear: (newValue: number) => void
+  selectedYear: number
+  setYear: (newValue: number) => void
+  selectedMonth: number
+  setMonth: (newValue: number) => void
+  currentDate: Date
 }
 
 const CalendarOptions: FC<CalendaroptionsProps> = ({
-  currentMonth,
-  setCurrentMonth,
-  currentYear,
-  setCurrentYear
+  selectedYear,
+  setYear,
+  selectedMonth,
+  setMonth,
+  currentDate,
 }) => {
   const handlePreviousMonth = () => {
-    if (currentMonth === 0) {
-      setCurrentMonth(11)
-      setCurrentYear(currentYear - 1)
+    if (selectedMonth === 0) {
+      setMonth(11)
+      setYear(selectedYear - 1)
     } else {
-      setCurrentMonth(currentMonth - 1)
+      setMonth(selectedMonth - 1)
     }
   }
 
   const handleNextMonth = () => {
-    if (currentMonth === 11) {
-      setCurrentMonth(0)
-      setCurrentYear(currentYear + 1)
+    if (selectedMonth === 11) {
+      setMonth(0)
+      setYear(selectedYear + 1)
     } else {
-      setCurrentMonth(currentMonth + 1)
+      setMonth(selectedMonth + 1)
     }
   }
 
   const handleToday = () => {
-    const today = new Date()
-    setCurrentMonth(today.getMonth())
-    setCurrentYear(today.getFullYear())
+    setMonth(currentDate.getMonth())
+    setYear(currentDate.getFullYear())
   }
 
   return (
@@ -54,12 +55,12 @@ const CalendarOptions: FC<CalendaroptionsProps> = ({
         <span
           className={styles['month-year']}
         >{`
-          ${new Date(currentYear, currentMonth)
+          ${new Date(selectedYear, selectedMonth)
             .toLocaleString('ru-RU', { month: 'long' })
             .split('')
             .map((l, i) => i === 0 ? l.toUpperCase() : l )
             .join('')}
-          ${currentYear}
+          ${selectedYear}
         `}</span>
         <div 
           className={`${styles.arrow} ${styles.next}`}

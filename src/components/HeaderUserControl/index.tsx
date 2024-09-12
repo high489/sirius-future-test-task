@@ -10,7 +10,7 @@ import LogoutIcon from '@app/assets/icons/logout-icon.svg?react'
 
 const HeaderUserControl: FC = () => {
   const { user: currentUser, logout, changeCurrentUser } = useAuth()
-  const persistentUsers = useAppSelector((state) => state.persistentUsers.users)
+  const persistentUsers = useAppSelector((state) => state.persistentUsers.persistentUsers)
   const [ showUserOptionsModal, setShowUserOptionsModal ] = useState<boolean>(false)
   const headerUserControlRef = useRef<HTMLDivElement>(null)
 

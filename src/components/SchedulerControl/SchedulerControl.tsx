@@ -1,41 +1,53 @@
 import styles from './scheduler-control.module.scss'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 
 import { useAppDispatch, useAppSelector, useAuth } from '@/app/hooks'
-import { 
+import {
+  setSchedulerMetaData,
   useGetSubjectsKeysQuery, 
   useGetSubjectByKeyQuery, 
-  useGetNearestPaidLessonQuery, 
-  setSelectedSubjectKey } from '@/app/store'
+  useGetNearestPaidLessonQuery,
+} from '@/app/store'
 import { SubjectsOptions, CalendarControl } from './'
 
 const SchedulerControl = () => {
-  // const [currentMonth, setCurrentMonth] = useState<number>(new Date().getMonth())
-  // const [currentYear, setCurrentYear] = useState<number>(new Date().getFullYear())
-  // const currentDate = new Date()
-  const [currentMonth, setCurrentMonth] = useState<number>(7)
-  const [currentYear, setCurrentYear] = useState<number>(2024)
-  const currentDate = new Date('2024-08-14T13:00:00Z')
-
   const dispatch = useAppDispatch()
   const { user } = useAuth()
-  const selectedSubjectKey = useAppSelector((state) => state.selectedSubject.subjectKey)
+  // const currentDate = new Date()
+  const currentDate = new Date('2024-08-14T13:00:00Z') // for demonstration
+  const { 
+    selectedYear, 
+    selectedMonth, 
+    selectedSubjectKey,
+  } = useAppSelector((state) => state.scheduler.schedulerMetaData)
+
   const { data: subjectsOptions = [] } = useGetSubjectsKeysQuery()
   const { data: selectedSubject } = useGetSubjectByKeyQuery(selectedSubjectKey)
   const { data: nearestPaidLesson } = useGetNearestPaidLessonQuery({
     subjectKey: selectedSubjectKey,
     user: user,
-    fromDate: currentDate,
+    fromDate: currentDate.toISOString(),
   })
 
   useEffect(() => {
-    if (!selectedSubjectKey) {
-      dispatch(setSelectedSubjectKey('test_subject'))
-    }
-  }, [selectedSubjectKey, dispatch])
+    dispatch(setSchedulerMetaData({
+      selectedYear: selectedYear ?? currentDate.getFullYear(),
+      selectedMonth: selectedMonth ?? currentDate.getMonth(),
+      selectedSubjectKey: selectedSubjectKey || 'test_subject',
+    }))
+  }, [dispatch, selectedYear, selectedMonth, selectedSubjectKey, currentDate])
 
-  const handleSubjectChange = (value: string | string[]) => {
-    if (typeof value === 'string') dispatch(setSelectedSubjectKey(value))
+  const handleYearChange = (newYear: number) => {
+    dispatch(setSchedulerMetaData({ selectedYear: newYear }))
+  }
+
+  const handleMonthChange = (newMonth: number) => {
+    dispatch(setSchedulerMetaData({ selectedMonth: newMonth }))
+  }
+
+  const handleSubjectChange = (newSubjectKey: string | string[]) => {
+    if (typeof newSubjectKey === 'string')
+      dispatch(setSchedulerMetaData({ selectedSubjectKey: newSubjectKey }))
   }
 
   return (
@@ -48,10 +60,10 @@ const SchedulerControl = () => {
         />
         <CalendarControl 
           startOfWeek='monday'
-          currentYear={currentYear}
-          setCurrentYear={setCurrentYear}
-          currentMonth={currentMonth}
-          setCurrentMonth={setCurrentMonth}
+          selectedYear={selectedYear ?? currentDate.getFullYear()}
+          setYear={handleYearChange}
+          selectedMonth={selectedMonth ?? currentDate.getMonth()}
+          setMonth={handleMonthChange}
           currentDate={currentDate}
           user={user || undefined}
           subject={selectedSubject}

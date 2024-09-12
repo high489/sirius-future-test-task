@@ -6,10 +6,10 @@ import { CalendarOptions, CalendarGrid } from './'
 
 interface CalendarControlProps {
   startOfWeek: 'sunday' | 'monday'
-  currentYear: number
-  setCurrentYear: (newValue: number) => void
-  currentMonth: number
-  setCurrentMonth: (newValue: number) => void
+  selectedYear: number
+  setYear: (newValue: number) => void
+  selectedMonth: number
+  setMonth: (newValue: number) => void
   currentDate: Date
   user?: IUser
   subject?: ISubject
@@ -18,10 +18,10 @@ interface CalendarControlProps {
 
 const CalendarControl: FC<CalendarControlProps> = ({
   startOfWeek,
-  currentYear,
-  setCurrentYear,
-  currentMonth,
-  setCurrentMonth,
+  selectedYear,
+  setYear,
+  selectedMonth,
+  setMonth,
   currentDate,
   user,
   subject,
@@ -36,21 +36,21 @@ const CalendarControl: FC<CalendarControlProps> = ({
   const daysOfWeek = startOfWeek === 'sunday' 
       ? ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] 
       : ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс']
-  const currentMonthTotalDays = daysInMonth(currentMonth, currentYear)
-  const currentMonthStartDay = firstDayOfMonth(currentMonth, currentYear)
-  const currentMonthArray = Array.from({ length: currentMonthTotalDays }, (_, i) => i + 1)
+  const selectedMonthTotalDays = daysInMonth(selectedMonth, selectedYear)
+  const selectedMonthStartDay = firstDayOfMonth(selectedMonth, selectedYear)
+  const selectedMonthArray = Array.from({ length: selectedMonthTotalDays }, (_, i) => i + 1)
 
   const totalDaysInPreviousMonth = daysInMonth(
-    currentMonth === 0 ? 11 : currentMonth - 1,
-    currentMonth === 0 ? currentYear - 1 : currentYear
+    selectedMonth === 0 ? 11 : selectedMonth - 1,
+    selectedMonth === 0 ? selectedYear - 1 : selectedYear
   )
 
   const previousMonthArray = Array.from(
-    { length: currentMonthStartDay },
-    (_, i) => totalDaysInPreviousMonth - currentMonthStartDay + i + 1
+    { length: selectedMonthStartDay },
+    (_, i) => totalDaysInPreviousMonth - selectedMonthStartDay + i + 1
   )
   const nextMonthArray = Array.from(
-    { length: (7 - ((currentMonthStartDay + currentMonthTotalDays) % 7)) % 7 },
+    { length: (7 - ((selectedMonthStartDay + selectedMonthTotalDays) % 7)) % 7 },
     (_, i) => i + 1
   )
   
@@ -58,17 +58,18 @@ const CalendarControl: FC<CalendarControlProps> = ({
     <>
       <div className={`${styles['calendar-control']}`}>
         <CalendarOptions
-          currentMonth={currentMonth}
-          setCurrentMonth={setCurrentMonth}
-          currentYear={currentYear}
-          setCurrentYear={setCurrentYear}
+          selectedYear={selectedYear}
+          setYear={setYear}
+          selectedMonth={selectedMonth}
+          setMonth={setMonth}
+          currentDate={currentDate}
         />
         <CalendarGrid
-          currentMonth={currentMonth}
-          currentYear={currentYear}
+          selectedYear={selectedYear}
+          selectedMonth={selectedMonth}
           currentDate={currentDate}
           daysOfWeek={daysOfWeek}
-          currentMonthArray={currentMonthArray}
+          selectedMonthArray={selectedMonthArray}
           previousMonthArray={previousMonthArray}
           nextMonthArray={nextMonthArray}
           user={user}

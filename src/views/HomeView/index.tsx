@@ -2,22 +2,23 @@
 import { useAppSelector, useAuth } from '@app/hooks'
 
 const HomeView = () => {
-  const { user: currentUser } = useAuth()
-  const users = useAppSelector((state) => state.persistentUsers.users)
+  const { user: currentUser, isPersistent } = useAuth()
+  const persistentUsers = useAppSelector((state) => state.persistentUsers.persistentUsers)
 
   return (
     <>
       <h1>Home</h1>
-
+      <p>{isPersistent ? `${currentUser?.name} is persistent` : `${currentUser?.name} isn't persistent`}</p>
       <ul>
-        {users && users.filter((user: any) => user.id !== currentUser?.id).map(({id, name, email, avatar}: any) => (
-          <li key={id}>
-            <img src={avatar} alt={name} />
-            {name}: {email}
-          </li>
-        ))}
+        {persistentUsers && persistentUsers
+          .filter((persistentUser) => persistentUser.user.id !== currentUser?.id)
+          .map(({ user: { id, name, email, avatar } }) => (
+            <li key={id}>
+              <img src={avatar} alt={name} />
+              {name}: {email}
+            </li>
+          ))}
       </ul>
-      
     </>
   )
 }

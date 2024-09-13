@@ -48,12 +48,12 @@ export const persistentUsersSlice = createSlice({
       state,
       action: PayloadAction<{
         userId: number
-        metaInfo: {
+        metaData: {
           schedulerMetaData?: SchedulerMetaData
         }
       }>
     ) => {
-      const { userId, metaInfo } = action.payload
+      const { userId, metaData } = action.payload
 
       const userIndex = state.persistentUsers.findIndex(
         (entry) => entry.user.id === userId
@@ -62,7 +62,7 @@ export const persistentUsersSlice = createSlice({
       if (userIndex !== -1) {
         state.persistentUsers[userIndex].metaData = {
           ...state.persistentUsers[userIndex].metaData,
-          ...metaInfo,
+          ...metaData,
         }
     
         localStorage.setItem('persistentUsers', JSON.stringify(state.persistentUsers))

@@ -1,5 +1,5 @@
 import styles from './scheduler-control.module.scss'
-import { useCallback, useEffect } from 'react'
+import { useEffect } from 'react'
 
 import { useAppDispatch, useAppSelector, useAuth } from '@/app/hooks'
 import {
@@ -7,13 +7,12 @@ import {
   useGetSubjectsKeysQuery, 
   useGetSubjectByKeyQuery, 
   useGetNearestPaidLessonQuery,
-  updatePersistentUserMetaDataById,
 } from '@/app/store'
 import { SubjectsOptions, CalendarControl } from './'
 
 const SchedulerControl = () => {
   const dispatch = useAppDispatch()
-  const { user, persistentUser } = useAuth()
+  const { user } = useAuth()
   // const currentDate = new Date()
   const currentDate = new Date('2024-08-14T13:00:00Z') // for demonstration
   const { 
@@ -30,56 +29,13 @@ const SchedulerControl = () => {
     fromDate: currentDate.toISOString(),
   })
 
-  const loadSchedulerMetaData = useCallback(() => {
-    if (persistentUser) {
-      const year = persistentUser.metaData.schedulerMetaData.selectedYear
-      const month = persistentUser.metaData.schedulerMetaData.selectedMonth
-      const selectedSubject = persistentUser.metaData.schedulerMetaData.selectedSubjectKey
-      dispatch(setSchedulerMetaData({
-        selectedYear: year ?? currentDate.getFullYear(),
-        selectedMonth: month ?? currentDate.getMonth(),
-        selectedSubjectKey: selectedSubject || 'test_subject',
-      }))
-    } else {
-      dispatch(setSchedulerMetaData({
-        selectedYear: selectedYear ?? currentDate.getFullYear(),
-        selectedMonth: selectedMonth ?? currentDate.getMonth(),
-        selectedSubjectKey: selectedSubjectKey || 'test_subject',
-      }))
-    }
-  }, [persistentUser, selectedYear, selectedMonth, selectedSubjectKey, currentDate, dispatch])
-
-  const saveSchedulerMetaDataOfPersistentUser = useCallback(() => {
-    if (persistentUser && user) {
-      dispatch(updatePersistentUserMetaDataById({
-        userId: user.id,
-        metaData: {
-          schedulerMetaData: {
-            selectedYear,
-            selectedMonth,
-            selectedSubjectKey,
-          },
-        },
-      }))
-    }
-  }, [persistentUser, user, selectedYear, selectedMonth, selectedSubjectKey, dispatch])
-
   useEffect(() => {
-    loadSchedulerMetaData()
-  }, [])
-
-  useEffect(() => {
-    loadSchedulerMetaData()
-    return () => {
-      saveSchedulerMetaDataOfPersistentUser()
-    }
-  }, [user])
-
-  useEffect(() => {
-    return () => {
-      saveSchedulerMetaDataOfPersistentUser()
-    }
-  }, [])
+    dispatch(setSchedulerMetaData({
+      selectedYear: selectedYear ?? currentDate.getFullYear(),
+      selectedMonth: selectedMonth ?? currentDate.getMonth(),
+      selectedSubjectKey: selectedSubjectKey || 'test_subject',
+    }))
+  }, [dispatch, selectedYear, selectedMonth, selectedSubjectKey, currentDate])
 
   const handleYearChange = (newYear: number) => {
     dispatch(setSchedulerMetaData({ selectedYear: newYear }))

@@ -23,32 +23,16 @@
   font-weight: normal;
   margin-bottom: 16px;
   user-select: none;
+  white-space: nowrap;
+  display: flex;
+  justify-content: center;
 }
 
-.login-language-selector {
-  max-width: 64px;
-  width: 100%;
-  min-height: 22px;
+.login-language-selector-wrapper {
   margin: 99px auto 31px;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 8px;
-  user-select: none;
-}
-
-.login-lang-ru {
-  color: var(--dark-violet);
-  font-size: 24px;
-  font-weight: normal;
-  line-height: 21px;
-}
-
-.login-lang-en {
-  color: var(--dark-gray);
-  font-size: 16px;
-  font-weight: normal;
-  line-height: 135%;
 }
 
 .users-info {

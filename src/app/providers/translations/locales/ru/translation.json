@@ -1,0 +1,19 @@
+{
+  "header": {},
+  "sidebar": {},
+  "content": {
+    "login-view": {
+      "title": "Вход в Sirius Future",
+      "e-mail": "E-mail",
+      "password": "Пароль",
+      "remember-me": "Запомнить меня",
+      "sign-in-btn-text": "Войти",
+      "forget-pass-btn-text": "Я забыл пароль",
+      "sign-in-instructor-btn-text": "Войти как тренер",
+      "no-account-label": "Нет аккаунта?",
+      "sign-up-btn-text": "Зарегистрироваться",
+      "faild-login-alert": "Неверное имя пользоваетля или пароль"
+    }
+  },
+  "footer": {}
+}

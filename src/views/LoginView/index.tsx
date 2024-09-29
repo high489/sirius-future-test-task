@@ -1,11 +1,13 @@
 import styles from './login-view.module.scss'
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import SiriusLogo from '@app/assets/images/Logomark_1_.svg?react'
-import { LoginControl } from '@/components'
+import { LoginControl, LanguageSelector } from '@/components'
 import { ModalWindow } from '@/ui'
 
 const LoginView = () => {
+  const { t } = useTranslation()
   const [showUsersInfo, setShowUsersInfo] = useState(true)
   return (
     <>
@@ -24,13 +26,12 @@ const LoginView = () => {
             className={`${styles['login-logo']}`}
             onClick={() => setShowUsersInfo(!showUsersInfo)}
           />
-          <h1 className={`${styles['login-title']}`}>Вход в Sirius Future</h1>
+          <h1 className={`${styles['login-title']}`}>{ t('content.login-view.title') }</h1>
           <LoginControl />
         </div>
 
-        <div className={`${styles['login-language-selector']}`}>
-          <div className={`${styles['login-lang-ru']}`}>RU</div>
-          <div className={`${styles['login-lang-en']}`}>EN</div>
+        <div className={`${styles['login-language-selector-wrapper']}`}>
+          <LanguageSelector />
         </div>
       </div>
     </>

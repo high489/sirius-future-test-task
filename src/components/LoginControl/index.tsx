@@ -1,5 +1,6 @@
 import styles from './login-control.module.scss'
 import { FC, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import { useGetUsersQuery, addPersistentUser } from '@app/store'
 import { useAppDispatch, useAuth } from '@app/hooks'
@@ -11,6 +12,7 @@ const LoginControl: FC = () => {
   const dispatch = useAppDispatch()
 
   const navigate = useNavigate()
+  const { t } = useTranslation()
   const [ email, setEmail ] = useState('')
   const [ password, setPassword ] = useState('')
   const [ isUserRemembered, setIsUserRemembered ] = useState(false)
@@ -28,7 +30,7 @@ const LoginControl: FC = () => {
       login(user)
       navigate('/', { replace: true })
     } else {
-      alert('Invalid username or password')
+      alert(t('content.login-view.faild-login-alert'))
     }
   }
 
@@ -44,7 +46,7 @@ const LoginControl: FC = () => {
               <FormInput 
                 type='text'
                 name='email'
-                placeholder='E-mail'
+                placeholder={ t('content.login-view.e-mail') }
                 value={email}
                 setValue={setEmail}
                 id='email'
@@ -54,7 +56,7 @@ const LoginControl: FC = () => {
             <div className={`${styles['login-form-data-item']}`}>
               <FormInputPassword
                 name='password'
-                placeholder='Пароль'
+                placeholder={ t('content.login-view.password') }
                 value={password}
                 setValue={setPassword}
                 id='password'
@@ -64,23 +66,25 @@ const LoginControl: FC = () => {
           </div>
           <FormInputCheckbox 
             id='remember-me' 
-            value='Запомнить меня' 
+            value={ t('content.login-view.remember-me') } 
             checked={isUserRemembered}
             onChange={(event: React.ChangeEvent<HTMLInputElement>) => 
               setIsUserRemembered(event.target.checked)}
           />
-          <FormSubmitButton value='Войти' />  
+          <FormSubmitButton value={ t('content.login-view.sign-in-btn-text') } />  
         </form>
 
         <div className={`${styles['login-additional-options']}`}>
           <div className={`${styles['login-signin-options']}`}>
-            <CustomLink to='/login'>Я забыл пароль</CustomLink>
-            <CustomLink to='/login'>Войти как тренер</CustomLink>
+            <CustomLink to='/login'>{ t('content.login-view.forget-pass-btn-text') }</CustomLink>
+            <CustomLink to='/login'>{ t('content.login-view.sign-in-instructor-btn-text') }</CustomLink>
           </div>
 
           <div className={`${styles['login-signup-options']}`}>
-            <label className={`${styles['login-signup-label']}`}>Нет аккаунта?</label>
-            <CustomLink to='/login'>Зарегистрироваться</CustomLink>
+            <label className={`${styles['login-signup-label']}`}>
+              { t('content.login-view.no-account-label') }
+            </label>
+            <CustomLink to='/login'>{ t('content.login-view.sign-up-btn-text') }</CustomLink>
           </div>
         </div>
       </div>

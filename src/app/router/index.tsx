@@ -3,7 +3,7 @@ import {
   createBrowserRouter, 
   createRoutesFromElements, 
 } from 'react-router-dom'
-import { Layout } from '@/components'
+import { MainLayout } from '@app/router/MainLayout'
 import { LoginView, HomeView, NotFoundView, ScheduleView } from '@/views'
 import { RequiredAuth } from '@app/hoc'
 
@@ -12,7 +12,7 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route path='login' element={<LoginView />} />
     <Route path='/' element={
       <RequiredAuth>
-        <Layout />
+        <MainLayout />
       </RequiredAuth>
     }>
       <Route index element={<HomeView />} />

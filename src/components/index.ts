@@ -1,4 +1,3 @@
-export { Layout } from './Layout'
 export { Header } from './Header'
 export { HeaderControls } from './HeaderControls'
 export { HeaderChatControl } from './HeaderChatControl'

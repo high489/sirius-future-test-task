@@ -29,6 +29,58 @@ const SchedulerControl = () => {
     fromDate: currentDate.toISOString(),
   })
 
+  // need to refactor
+  // const loadSchedulerMetaData = useCallback(() => {
+  //   if (persistentUser) {
+  //     const year = persistentUser.metaData.schedulerMetaData.selectedYear
+  //     const month = persistentUser.metaData.schedulerMetaData.selectedMonth
+  //     const selectedSubject = persistentUser.metaData.schedulerMetaData.selectedSubjectKey
+  //     dispatch(setSchedulerMetaData({
+  //       selectedYear: year ?? currentDate.getFullYear(),
+  //       selectedMonth: month ?? currentDate.getMonth(),
+  //       selectedSubjectKey: selectedSubject || 'test_subject',
+  //     }))
+  //   } else {
+  //     dispatch(setSchedulerMetaData({
+  //       selectedYear: selectedYear ?? currentDate.getFullYear(),
+  //       selectedMonth: selectedMonth ?? currentDate.getMonth(),
+  //       selectedSubjectKey: selectedSubjectKey || 'test_subject',
+  //     }))
+  //   }
+  // }, [persistentUser, selectedYear, selectedMonth, selectedSubjectKey, currentDate, dispatch])
+
+  // const saveSchedulerMetaDataOfPersistentUser = useCallback(() => {
+  //   if (persistentUser && user) {
+  //     dispatch(updatePersistentUserMetaDataById({
+  //       userId: user.id,
+  //       metaData: {
+  //         schedulerMetaData: {
+  //           selectedYear,
+  //           selectedMonth,
+  //           selectedSubjectKey,
+  //         },
+  //       },
+  //     }))
+  //   }
+  // }, [persistentUser, user, selectedYear, selectedMonth, selectedSubjectKey, dispatch])
+
+  // useEffect(() => {
+  //   loadSchedulerMetaData()
+  // }, [])
+
+  // useEffect(() => {
+  //   loadSchedulerMetaData()
+  //   return () => {
+  //     saveSchedulerMetaDataOfPersistentUser()
+  //   }
+  // }, [user])
+
+  // useEffect(() => {
+  //   return () => {
+  //     saveSchedulerMetaDataOfPersistentUser()
+  //   }
+  // }, [])
+
   useEffect(() => {
     dispatch(setSchedulerMetaData({
       selectedYear: selectedYear ?? currentDate.getFullYear(),

@@ -1,15 +1,12 @@
-.layout {
+.main-layout {
   display: flex;
   flex-direction: column;
 }
 
-.content {
+.content-area {
   display: flex;
-
-  // temporary
-  // min-height: 728px;
-  // height: 100%;
 }
+
 .aside {
   width: 286px;
   padding-top: 24px;
@@ -18,29 +15,23 @@
   justify-content: flex-end;
   align-items: flex-end;
 }
-.main-container {
+
+.header-main-section {
   display: flex;
   flex-direction: column;
 }
+
 .header {
   width: 1154px;
   position: relative;
-  
-  //temporary
-  //height: 68px;
 }
+
 .main {
   height: 100%;
   margin: 20px 50px 0px 32px;
-
-  // temporary
-  // border: 1px solid var(--btn-violet);
 }
+
 .footer {
   width: 100%;
   min-height: 112px;
-  
-  // temporary
-  // background-color: var(--blue);
-  // border: 1px solid var(--btn-violet);
 }

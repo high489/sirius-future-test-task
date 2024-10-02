@@ -1,7 +1,7 @@
 import styles from './navbar.module.scss'
 import { FC } from 'react'
 
-import { CustomNavLink } from '@/ui'
+import { CustomLink } from '@/ui'
 import HomeIcon from '@app/assets/icons/navbar-icons/home-icon.svg?react'
 import ScheduleIcon from '@app/assets/icons/navbar-icons/schedule-icon.svg?react'
 import PaymentIcon from '@app/assets/icons/navbar-icons/payment-icon.svg?react'
@@ -17,50 +17,113 @@ const Navbar: FC = () => {
   return (
     <>
       <nav className={styles.navbar}>
-        <CustomNavLink
+      <CustomLink
           to="/"
           icon={<HomeIcon />}
-          text='Главная'
+          text="Главная"
+          isNavLink={true}
+          customStyles={{
+            link: styles['nav-link'],
+            activeLink: styles['active-nav-link'],
+            linkIcon: styles['nav-link-icon'],
+            linkText: styles['nav-link-text']
+          }}
         />
-        <CustomNavLink
+        <CustomLink
           to="/schedule"
           icon={<ScheduleIcon />}
-          text='Расписание'
+          text="Расписание"
+          isNavLink={true}
+          customStyles={{
+            link: styles['nav-link'],
+            activeLink: styles['active-nav-link'],
+            linkIcon: styles['nav-link-icon'],
+            linkText: styles['nav-link-text']
+          }}
         />
-        <CustomNavLink
+        <CustomLink
           to="/payment"
           icon={<PaymentIcon />}
           text='Оплата'
+          isNavLink={true}
+          customStyles={{
+            link: styles['nav-link'],
+            activeLink: styles['active-nav-link'],
+            linkIcon: styles['nav-link-icon'],
+            linkText: styles['nav-link-text']
+          }}
         />
-        <CustomNavLink
+        <CustomLink
           to="/achievements"
           icon={<AchievementsIcon />}
           text='Достижения'
+          isNavLink={true}
+          customStyles={{
+            link: styles['nav-link'],
+            activeLink: styles['active-nav-link'],
+            linkIcon: styles['nav-link-icon'],
+            linkText: styles['nav-link-text']
+          }}
         />
-        <CustomNavLink
+        <CustomLink
           to="/exercisers"
           icon={<ExercisersIcon />}
           text='Тренажеры'
+          isNavLink={true}
+          customStyles={{
+            link: styles['nav-link'],
+            activeLink: styles['active-nav-link'],
+            linkIcon: styles['nav-link-icon'],
+            linkText: styles['nav-link-text']
+          }}
         />
-        <CustomNavLink
+        <CustomLink
           to="/library"
           icon={<LibraryIcon />}
           text='Библиотека'
+          isNavLink={true}
+          customStyles={{
+            link: styles['nav-link'],
+            activeLink: styles['active-nav-link'],
+            linkIcon: styles['nav-link-icon'],
+            linkText: styles['nav-link-text']
+          }}
         />
-        <CustomNavLink
+        <CustomLink
           to="/commcheck"
           icon={<CommcheckIcon />}
           text='Проверка связи'
+          isNavLink={true}
+          customStyles={{
+            link: styles['nav-link'],
+            activeLink: styles['active-nav-link'],
+            linkIcon: styles['nav-link-icon'],
+            linkText: styles['nav-link-text']
+          }}
         />
-        <CustomNavLink
+        <CustomLink
           to="/settings"
           icon={<SettingsIcon />}
           text='Настройки'
+          isNavLink={true}
+          customStyles={{
+            link: styles['nav-link'],
+            activeLink: styles['active-nav-link'],
+            linkIcon: styles['nav-link-icon'],
+            linkText: styles['nav-link-text']
+          }}
         />
-        <CustomNavLink
+        <CustomLink
           to="/questions"
           icon={<QuestionsIcon />}
           text='Вопросы'
+          isNavLink={true}
+          customStyles={{
+            link: styles['nav-link'],
+            activeLink: styles['active-nav-link'],
+            linkIcon: styles['nav-link-icon'],
+            linkText: styles['nav-link-text']
+          }}
         />
       </nav>
     </>

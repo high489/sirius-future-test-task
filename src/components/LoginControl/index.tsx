@@ -76,15 +76,33 @@ const LoginControl: FC = () => {
 
         <div className={`${styles['login-additional-options']}`}>
           <div className={`${styles['login-signin-options']}`}>
-            <CustomLink to='/login'>{ t('content.login-view.forget-pass-btn-text') }</CustomLink>
-            <CustomLink to='/login'>{ t('content.login-view.sign-in-instructor-btn-text') }</CustomLink>
+            <CustomLink 
+              to='/login'
+              text={t('content.login-view.forget-pass-btn-text')}
+              customStyles={{
+                link: styles['custom-link']
+              }}
+            />
+            <CustomLink 
+              to='/login'
+              text={t('content.login-view.sign-in-instructor-btn-text')}
+              customStyles={{
+                link: styles['custom-link']
+              }}
+            />
           </div>
 
           <div className={`${styles['login-signup-options']}`}>
             <label className={`${styles['login-signup-label']}`}>
               { t('content.login-view.no-account-label') }
             </label>
-            <CustomLink to='/login'>{ t('content.login-view.sign-up-btn-text') }</CustomLink>
+            <CustomLink 
+              to='/login'
+              text={t('content.login-view.sign-up-btn-text')}
+              customStyles={{
+                link: styles['custom-link']
+              }}
+            />
           </div>
         </div>
       </div>

@@ -5,3 +5,51 @@
   display: flex;
   flex-direction: column;
 }
+
+.nav-link {
+  width: 216px;
+  height: 40px;
+  padding-left: 44px;
+  text-decoration: none;
+  font-weight: normal;
+  color: var(--dark);
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  transition: background-color .3s;
+}
+
+.nav-link-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-link-text {
+  margin-top: 2px;
+  font-size: 16px;
+  line-height: 21px;
+}
+
+.active-nav-link {
+  background-color: var(--btn-violet);
+  font-weight: bold;
+  color: var(--white);
+  cursor: default;
+}
+
+.active-nav-link .nav-link-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.active-nav-link .nav-link-icon svg [fill] {
+  fill: var(--white)
+}
+
+.active-nav-link .nav-link-icon svg [stroke] {
+  stroke: var(--white)
+}

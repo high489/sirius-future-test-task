@@ -1,5 +1,3 @@
-import { ReactNode } from 'react'
-
 import {
   HomeView,
   ScheduleView,
@@ -16,13 +14,7 @@ import CommcheckIcon from '@app/assets/icons/navbar-icons/commcheck-icon.svg?rea
 import SettingsIcon from '@app/assets/icons/navbar-icons/settings-icon.svg?react'
 import QuestionsIcon from '@app/assets/icons/navbar-icons/questions-icon.svg?react'
 
-export type RouteItem = {
-  index: boolean
-  path: string
-  element?: ReactNode
-  icon?: ReactNode
-  text?: string
-}
+import { RouteItem } from '@/app/models'
 
 const routes: RouteItem[] = [
   {

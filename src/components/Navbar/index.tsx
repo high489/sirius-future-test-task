@@ -1,17 +1,18 @@
 import styles from './navbar.module.scss'
 import { FC } from 'react'
 
-import { routes } from '@app/router'
 import { CustomLink } from '@/ui'
+import { RouteItem } from '@app/models'
 
-const Navbar: FC = () => {
-  const navRoutes = routes
-    .filter(route => route.icon && route.text)
-    .map(({ path, icon, text }) => ({ path, icon, text })) 
+interface NavbarProps {
+  routes: RouteItem[]
+}
+
+const Navbar: FC<NavbarProps> = ({ routes }) => {
   return (
     <>
       <nav className={styles.navbar}>
-        {navRoutes
+        {routes
           .map(({ path, icon, text}, i) => (
             <CustomLink
               key={i}

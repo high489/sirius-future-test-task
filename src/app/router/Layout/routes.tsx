@@ -16,7 +16,7 @@ import CommcheckIcon from '@app/assets/icons/navbar-icons/commcheck-icon.svg?rea
 import SettingsIcon from '@app/assets/icons/navbar-icons/settings-icon.svg?react'
 import QuestionsIcon from '@app/assets/icons/navbar-icons/questions-icon.svg?react'
 
-type RouteItem = {
+export type RouteItem = {
   index: boolean
   path: string
   element?: ReactNode

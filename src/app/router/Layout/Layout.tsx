@@ -3,7 +3,7 @@ import styles from './main-layout.module.scss'
 import { Header, Sidebar } from '@/components'
 import { Outlet } from 'react-router-dom'
 
-const MainLayout = () => {
+const Layout = () => {
   return (
     <>
       <div className={`container ${styles['main-layout']}`}>
@@ -26,4 +26,4 @@ const MainLayout = () => {
   )
 }
 
-export { MainLayout }
+export { Layout }

@@ -1,25 +1,27 @@
-import {
-  Route, 
-  createBrowserRouter, 
-  createRoutesFromElements, 
-} from 'react-router-dom'
-import { MainLayout } from '@app/router/MainLayout'
-import { LoginView, HomeView, NotFoundView, ScheduleView } from '@/views'
+import { Route, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
+
 import { RequiredAuth } from '@app/hoc'
+import { LoginView } from '@/views'
+import { Layout, routes } from '@app/router/Layout'
 
 const router = createBrowserRouter(createRoutesFromElements(
   <>
     <Route path='login' element={<LoginView />} />
     <Route path='/' element={
       <RequiredAuth>
-        <MainLayout />
+        <Layout />
       </RequiredAuth>
     }>
-      <Route index element={<HomeView />} />
-      <Route path='schedule' element={<ScheduleView />} />
-      <Route path='*' element={<NotFoundView />} />
+      {routes
+        .filter(({element}) => element)
+        .map(({index, path, element}, i) => {
+          return index
+          ? <Route key={i} index={index} element={element} />
+          : <Route key={i} path={path} element={element} />
+        })
+      }
     </Route>
   </>
-), {basename: "/sirius-future-test-task"})
+), {basename: '/sirius-future-test-task'})
 
-export { router }
+export { router, routes }

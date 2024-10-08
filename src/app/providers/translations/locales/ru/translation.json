@@ -1,6 +1,12 @@
 {
   "header": {},
-  "sidebar": {},
+  "sidebar": {
+    "referral": {
+      "title": "Учитесь бесплатно",
+      "text": "Приводите друзей с детьми заниматься в Sirius Future\nи получайте подарки!",
+      "btn-text": "Узнать"
+    }
+  },
   "content": {
     "login-view": {
       "title": "Вход в Sirius Future",

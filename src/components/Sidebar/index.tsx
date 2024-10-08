@@ -2,7 +2,7 @@ import styles from './sidebar.module.scss'
 import { FC } from 'react'
 
 import Logo from '@app/assets/images/logo.svg?react'
-import { Navbar, SidebarReferral } from '@/components'
+import { Navbar, Referral } from '@/components'
 import { routes } from '@app/router'
 import { useTranslation } from 'react-i18next'
 
@@ -20,7 +20,7 @@ const Sidebar: FC = () => {
       <div className={styles.sidebar}>
         <Logo className={styles.logo} />
         <Navbar routes={navRoutes} />
-        <SidebarReferral />
+        <Referral />
       </div>
     </>
   )

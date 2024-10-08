@@ -1,6 +1,12 @@
 {
   "header": {},
-  "sidebar": {},
+  "sidebar": {
+    "referral": {
+      "title": "Try classes for free",
+      "text": "Bring your friends with their children to Sirius Future\nand get gifts!",
+      "btn-text": "Find Out"
+    }
+  },
   "content": {
     "login-view": {
       "title": "Login to Sirius Future",

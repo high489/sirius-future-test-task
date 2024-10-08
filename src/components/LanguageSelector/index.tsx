@@ -1,14 +1,16 @@
 import styles from './language-selector.module.scss'
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
-interface LanguageSelectorProps {
-
-}
+interface LanguageSelectorProps {}
 
 const LanguageSelector: FC<LanguageSelectorProps> = () => {
   const [activeLanguage, setActiveLanguage] = useState('en')
   const { i18n } = useTranslation()
+
+  useEffect(() => {
+    setActiveLanguage(i18n.language)
+  }, [])
 
   const handleLanguageChange = (language: string) => {
     setActiveLanguage(language)

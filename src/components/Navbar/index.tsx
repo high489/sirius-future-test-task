@@ -1,11 +1,16 @@
 import styles from './navbar.module.scss'
-import { FC } from 'react'
+import { FC, ReactNode } from 'react'
 
 import { CustomLink } from '@/ui'
-import { RouteItem } from '@app/models'
+
+type NavRouteItem = {
+  path: string
+  icon: ReactNode
+  text: string
+}
 
 interface NavbarProps {
-  routes: RouteItem[]
+  routes: NavRouteItem[]
 }
 
 const Navbar: FC<NavbarProps> = ({ routes }) => {

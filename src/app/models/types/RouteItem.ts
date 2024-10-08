@@ -5,7 +5,8 @@ type RouteItem = {
   path: string
   element?: ReactNode
   icon?: ReactNode
-  text?: string
+  // text?: string
+  text?: { [key: string]: string }
 }
 
 export type { RouteItem }

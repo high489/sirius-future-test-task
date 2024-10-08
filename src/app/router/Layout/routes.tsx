@@ -10,7 +10,7 @@ import PaymentIcon from '@app/assets/icons/navbar-icons/payment-icon.svg?react'
 import AchievementsIcon from '@app/assets/icons/navbar-icons/achievements-icon.svg?react'
 import ExercisersIcon from '@app/assets/icons/navbar-icons/exercisers-icon.svg?react'
 import LibraryIcon from '@app/assets/icons/navbar-icons/library-icon.svg?react'
-import CommcheckIcon from '@app/assets/icons/navbar-icons/commcheck-icon.svg?react'
+import CallSettingsIcon from '@app/assets/icons/navbar-icons/call-settings-icon.svg?react'
 import SettingsIcon from '@app/assets/icons/navbar-icons/settings-icon.svg?react'
 import QuestionsIcon from '@app/assets/icons/navbar-icons/questions-icon.svg?react'
 
@@ -22,56 +22,83 @@ const routes: RouteItem[] = [
     path: '/',
     element: <HomeView />,
     icon: <HomeIcon />,
-    text: 'Главная',
+    text: {
+      en: 'Home',
+      ru: 'Главная',
+    },
   },
   {
     index: false,
     path: '/schedule',
     element: <ScheduleView />,
     icon: <ScheduleIcon />,
-    text: 'Расписание',
+    text: {
+      en: 'Schedule',
+      ru: 'Расписание',
+    },
   },
   {
     index: false,
     path: '/payment',
     icon: <PaymentIcon />,
-    text: 'Оплата',
+    text: {
+      en: 'Payment',
+      ru: 'Оплата',
+    },
   },
   {
     index: false,
     path: '/achievements',
     icon: <AchievementsIcon />,
-    text: 'Достижения',
+    text: {
+      en: 'Achievements',
+      ru: 'Достижения',
+    },
   },
   {
     index: false,
     path: '/exercisers',
     icon: <ExercisersIcon />,
-    text: 'Тренажеры',
+    text: {
+      en: 'Exercisers',
+      ru: 'Тренажеры',
+    },
   },
   {
     index: false,
     path: '/library',
     icon: <LibraryIcon />,
-    text: 'Библиотека',
+    text: {
+      en: 'Library',
+      ru: 'Библиотека',
+    },
   },
   {
     index: false,
-    path: '/commcheck',
-    icon: <CommcheckIcon />,
-    text: 'Проверка связи',
+    path: '/call_settings',
+    icon: <CallSettingsIcon />,
+    text: {
+      en: 'Call Settings',
+      ru: 'Проверка связи',
+    },
   },
   {
     index: false,
     path: '/settings',
     icon: <SettingsIcon />,
-    text: 'Настройки',
+    text: {
+      en: 'Settings',
+      ru: 'Настройки',
+    },
   },
   {
     index: false,
     path: '/questions',
     icon: <QuestionsIcon />,
-    text: 'Вопросы',
+    text: {
+      en: 'Questions',
+      ru: 'Вопросы',
+    },
   },
   {
     index: false,

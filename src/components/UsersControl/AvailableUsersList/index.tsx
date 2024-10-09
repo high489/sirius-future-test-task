@@ -1,19 +1,19 @@
-import styles from './change-current-user-control.module.scss'
+import styles from './available-users-list.module.scss'
 import { FC } from 'react'
 import { IUser } from '@/app/models'
 
-interface AvailableUsersControl {
+interface AvailableUsersListProps {
   currentUser: IUser | null
   persistentUsers?: { user: IUser }[] | null
   changeUser?: (newUser: IUser) => void
 }
 
-const AvailableUsersControl: FC<AvailableUsersControl> = ({
+const AvailableUsersList: FC<AvailableUsersListProps> = ({
   currentUser, persistentUsers, changeUser
 }) => {
   return (
     <>
-      <div className={`${styles['available-users']}`}>
+      <div className={`${styles['available-users-list']}`}>
         <div className={`${styles['user-item']} ${styles['current-user']}`}>
           <div className={`${styles['user-icon']}`}>
             <img className={`${styles['user-icon-img']}`} src={currentUser?.avatar} alt={currentUser?.name} />
@@ -45,4 +45,4 @@ const AvailableUsersControl: FC<AvailableUsersControl> = ({
   )
 }
 
-export { AvailableUsersControl }
+export { AvailableUsersList }

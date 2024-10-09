@@ -1,16 +1,16 @@
-import styles from './header-chat-control.module.scss'
+import styles from './chat-control.module.scss'
 import { FC } from 'react'
 
 import ChatIcon from '@app/assets/icons/chat-icon.svg?react'
 
-interface HeaderChatControlProps {
+interface ChatControlProps {
   number: number
 }
 
-const HeaderChatControl: FC<HeaderChatControlProps> = ({ number }) => {
+const ChatControl: FC<ChatControlProps> = ({ number }) => {
   return (
     <>
-      <div className={`${styles['header-chat-control']}`}>
+      <div className={`${styles['chat-control']}`}>
         <ChatIcon className={`${styles['chat-icon']}`}/>
         <div 
           className={`${styles['notifications']}`}
@@ -23,4 +23,4 @@ const HeaderChatControl: FC<HeaderChatControlProps> = ({ number }) => {
   )
 }
 
-export { HeaderChatControl }
+export { ChatControl }

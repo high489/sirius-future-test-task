@@ -2,7 +2,7 @@ import styles from './header.module.scss'
 import { useLocation } from 'react-router-dom'
 import { useAuth } from '@app/hooks'
 
-import { HeaderControls } from '@/components'
+import { HeaderControls } from './HeaderControls'
 
 const Header = () => {
   const location = useLocation()

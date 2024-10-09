@@ -1,14 +1,14 @@
-import styles from './header-user-control.module.scss'
+import styles from './users-control.module.scss'
 import { FC, useRef, useState } from 'react'
 import { useAppSelector, useAuth } from '@app/hooks'
 
 import ArrowDown from '@app/assets/images/arrow-down.svg?react'
 import ModalWindowTriangle from '@app/assets/icons/modal-window-triangle.svg?react'
 import { ModalWindow } from '@/ui'
-import { AvailableUsersControl } from '@/components'
+import { AvailableUsersList } from './AvailableUsersList'
 import LogoutIcon from '@app/assets/icons/logout-icon.svg?react'
 
-const HeaderUserControl: FC = () => {
+const UsersControl: FC = () => {
   const { user: currentUser, logout, changeCurrentUser } = useAuth()
   const persistentUsers = useAppSelector((state) => state.persistentUsers.persistentUsers)
   const [ showUserOptionsModal, setShowUserOptionsModal ] = useState<boolean>(false)
@@ -17,7 +17,7 @@ const HeaderUserControl: FC = () => {
   return (
     <>
       <div
-        className={`${styles['header-user-control']}`}
+        className={`${styles['users-control']}`}
         onClick={() => setShowUserOptionsModal(!showUserOptionsModal)}
         ref={headerUserControlRef}
       >
@@ -40,7 +40,7 @@ const HeaderUserControl: FC = () => {
           callerElementRef={headerUserControlRef}
         >
           <h4 className={`${styles['user-options-title']}`}>Смена пользователя</h4>
-          <AvailableUsersControl 
+          <AvailableUsersList
             currentUser={currentUser}
             persistentUsers={persistentUsers}
             changeUser={changeCurrentUser}
@@ -59,4 +59,4 @@ const HeaderUserControl: FC = () => {
   )
 }
 
-export { HeaderUserControl }
+export { UsersControl }

@@ -39,6 +39,11 @@
   align-self: center;
 }
 
+.current-user-name {
+  @extend .user-name;
+  align-self: flex-start;
+}
+
 .current-user {
   cursor: default;
   background-color: var(--violet-light);

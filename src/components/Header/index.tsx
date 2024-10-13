@@ -1,18 +1,21 @@
 import styles from './header.module.scss'
 import { useLocation } from 'react-router-dom'
-import { useAuth } from '@app/hooks'
+import { useTranslation } from 'react-i18next'
+import { useAuth, useTransliterationRuEn } from '@app/hooks'
 
 import { HeaderControls } from './HeaderControls'
 
 const Header = () => {
   const location = useLocation()
+  const { t } = useTranslation()
   const { user } = useAuth()
+  const username = useTransliterationRuEn(user?.name || '')
 
   return (
     <>
       <div className={`${styles['header-content']}`}>
         <h1 className={`${styles['header-greeting']}`}>
-          {location.pathname === '/' && (<>Добро пожаловать, <span>{user?.name}</span>!</>)}
+          {location.pathname === '/' && (<>{ t('header.greeting') }, <span>{username}</span>!</>)}
         </h1>
         <HeaderControls />
       </div>

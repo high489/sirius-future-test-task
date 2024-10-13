@@ -1,5 +1,7 @@
 {
-  "header": {},
+  "header": {
+    "greeting": "Добро пожаловать"
+  },
   "sidebar": {
     "referral": {
       "title": "Учитесь бесплатно",
@@ -19,6 +21,13 @@
       "no-account-label": "Нет аккаунта?",
       "sign-up-btn-text": "Зарегистрироваться",
       "faild-login-alert": "Неверное имя пользоваетля или пароль"
+    }
+  },
+  "components": {
+    "users-control": {
+      "title": "Смена пользователя",
+      "current-user": "Это вы",
+      "sign-out-btn-text": "Выход"
     }
   },
   "footer": {}

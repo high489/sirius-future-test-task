@@ -1,5 +1,7 @@
 {
-  "header": {},
+  "header": {
+    "greeting": "Welcome"
+  },
   "sidebar": {
     "referral": {
       "title": "Try classes for free",
@@ -19,6 +21,13 @@
       "no-account-label": "No account?",
       "sign-up-btn-text": "Sign Up",
       "faild-login-alert": "Invalid username or password"
+    }
+  },
+  "components": {
+    "users-control": {
+      "title": "Switch User",
+      "current-user": "This is you",
+      "sign-out-btn-text": "Sign Out"
     }
   },
   "footer": {}

@@ -13,6 +13,7 @@ const LoginControl: FC = () => {
 
   const navigate = useNavigate()
   const { t } = useTranslation()
+  const tPath = 'components.login-control'
   const [ email, setEmail ] = useState('')
   const [ password, setPassword ] = useState('')
   const [ isUserRemembered, setIsUserRemembered ] = useState(false)
@@ -30,7 +31,7 @@ const LoginControl: FC = () => {
       login(user)
       navigate('/', { replace: true })
     } else {
-      alert(t('content.login-view.faild-login-alert'))
+      alert(t(`${tPath}.failed-login-alert`))
     }
   }
 
@@ -46,7 +47,7 @@ const LoginControl: FC = () => {
               <FormInput 
                 type='text'
                 name='email'
-                placeholder={ t('content.login-view.e-mail') }
+                placeholder={ t(`${tPath}.e-mail`) }
                 value={email}
                 setValue={setEmail}
                 id='email'
@@ -56,7 +57,7 @@ const LoginControl: FC = () => {
             <div className={`${styles['login-form-data-item']}`}>
               <FormInputPassword
                 name='password'
-                placeholder={ t('content.login-view.password') }
+                placeholder={ t(`${tPath}.password`) }
                 value={password}
                 setValue={setPassword}
                 id='password'
@@ -66,26 +67,26 @@ const LoginControl: FC = () => {
           </div>
           <FormInputCheckbox 
             id='remember-me' 
-            value={ t('content.login-view.remember-me') } 
+            value={ t(`${tPath}.remember-me`) } 
             checked={isUserRemembered}
             onChange={(event: React.ChangeEvent<HTMLInputElement>) => 
               setIsUserRemembered(event.target.checked)}
           />
-          <FormSubmitButton value={ t('content.login-view.sign-in-btn-text') } />  
+          <FormSubmitButton value={ t(`${tPath}.sign-in-btn-text`) } />  
         </form>
 
         <div className={`${styles['login-additional-options']}`}>
           <div className={`${styles['login-signin-options']}`}>
             <CustomLink 
               to='/login'
-              text={t('content.login-view.forget-pass-btn-text')}
+              text={ t(`${tPath}.forget-pass-btn-text`) }
               customStyles={{
                 link: styles['custom-link']
               }}
             />
             <CustomLink 
               to='/login'
-              text={t('content.login-view.sign-in-instructor-btn-text')}
+              text={ t(`${tPath}.sign-in-instructor-btn-text`) }
               customStyles={{
                 link: styles['custom-link']
               }}
@@ -94,11 +95,11 @@ const LoginControl: FC = () => {
 
           <div className={`${styles['login-signup-options']}`}>
             <label className={`${styles['login-signup-label']}`}>
-              { t('content.login-view.no-account-label') }
+              { t(`${tPath}.no-account`) }
             </label>
             <CustomLink 
               to='/login'
-              text={t('content.login-view.sign-up-btn-text')}
+              text={ t(`${tPath}.sign-up-btn-text`) }
               customStyles={{
                 link: styles['custom-link']
               }}

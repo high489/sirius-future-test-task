@@ -1,34 +1,36 @@
 {
-  "header": {
-    "greeting": "Добро пожаловать"
+  "views": {
+    "login-view": {
+      "title": "Вход в Sirius Future"
+    }
   },
-  "sidebar": {
+  "components": {
+    "login-control": {
+      "e-mail": "E-mail",
+      "password": "Password",
+      "remember-me": "Запомнить меня",
+      "sign-in-btn-text": "Войти",
+      "forget-pass-btn-text": "Я забыл пароль",
+      "sign-in-instructor-btn-text": "Войти как тренер",
+      "no-account": "Нет аккаунта?",
+      "sign-up-btn-text": "Зарегистрироваться",
+      "failed-login-alert": "Неверное имя пользователя или пароль"
+    },
+    "header": {
+      "greeting": "Добро пожаловать"
+    },
+    "users-control": {
+      "title": "Смена пользователя",
+      "sign-out-btn-text": "Выход",
+      "available-users-list": {
+        "current-user": "Это вы"
+      }
+    },
     "referral": {
       "title": "Учитесь бесплатно",
       "text": "Приводите друзей с детьми заниматься в Sirius Future\nи получайте подарки!",
       "btn-text": "Узнать"
     }
   },
-  "content": {
-    "login-view": {
-      "title": "Вход в Sirius Future",
-      "e-mail": "E-mail",
-      "password": "Пароль",
-      "remember-me": "Запомнить меня",
-      "sign-in-btn-text": "Войти",
-      "forget-pass-btn-text": "Я забыл пароль",
-      "sign-in-instructor-btn-text": "Войти как тренер",
-      "no-account-label": "Нет аккаунта?",
-      "sign-up-btn-text": "Зарегистрироваться",
-      "faild-login-alert": "Неверное имя пользоваетля или пароль"
-    }
-  },
-  "components": {
-    "users-control": {
-      "title": "Смена пользователя",
-      "current-user": "Это вы",
-      "sign-out-btn-text": "Выход"
-    }
-  },
-  "footer": {}
+  "ui": {}
 }

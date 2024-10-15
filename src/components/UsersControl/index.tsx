@@ -11,6 +11,7 @@ import LogoutIcon from '@app/assets/icons/logout-icon.svg?react'
 
 const UsersControl: FC = () => {
   const { t } = useTranslation()
+  const tPath = 'components.users-control'
   const { user: currentUser, logout, changeCurrentUser } = useAuth()
   const persistentUsers = useAppSelector((state) => state.persistentUsers.persistentUsers)
   const [ showUserOptionsModal, setShowUserOptionsModal ] = useState<boolean>(false)
@@ -41,7 +42,7 @@ const UsersControl: FC = () => {
           mainStyle={`${styles['user-options']}`}
           callerElementRef={headerUserControlRef}
         >
-          <h4 className={`${styles['user-options-title']}`}>{ t('components.users-control.title') }</h4>
+          <h4 className={`${styles['user-options-title']}`}>{ t(`${tPath}.title`) }</h4>
           <AvailableUsersList
             currentUser={currentUser}
             persistentUsers={persistentUsers}
@@ -52,7 +53,7 @@ const UsersControl: FC = () => {
             className={`${styles['logout-button']}`}
             onClick={() => logout()}
           >
-            <span>{ t('components.users-control.sign-out-btn-text') }</span>
+            <span>{ t( `${tPath}.sign-out-btn-text`) }</span>
             <LogoutIcon />
           </button>
         </ModalWindow>

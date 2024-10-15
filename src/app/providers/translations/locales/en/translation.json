@@ -1,34 +1,36 @@
 {
-  "header": {
-    "greeting": "Welcome"
+  "views": {
+    "login-view": {
+      "title": "Sign in Sirius Future"
+    }
   },
-  "sidebar": {
+  "components": {
+    "login-control": {
+      "e-mail": "E-mail",
+      "password": "Password",
+      "remember-me": "Remember me",
+      "sign-in-btn-text": "Sign In",
+      "forget-pass-btn-text": "Forgot password?",
+      "sign-in-instructor-btn-text": "Sign in as instructor",
+      "no-account": "Don't have an account?",
+      "sign-up-btn-text": "Sign Up",
+      "failed-login-alert": "Invalid username or password"
+    },
+    "header": {
+      "greeting": "Welcome"
+    },
+    "users-control": {
+      "title": "Switch User",
+      "sign-out-btn-text": "Sign Out",
+      "available-users-list": {
+        "current-user": "This is you"
+      }
+    },
     "referral": {
       "title": "Try classes for free",
       "text": "Bring your friends with their children to Sirius Future\nand get gifts!",
       "btn-text": "Find Out"
     }
   },
-  "content": {
-    "login-view": {
-      "title": "Login to Sirius Future",
-      "e-mail": "E-mail",
-      "password": "Password",
-      "remember-me": "Remember me",
-      "sign-in-btn-text": "Sign In",
-      "forget-pass-btn-text": "I forgot the password",
-      "sign-in-instructor-btn-text": "Sign-in like Instructor",
-      "no-account-label": "No account?",
-      "sign-up-btn-text": "Sign Up",
-      "faild-login-alert": "Invalid username or password"
-    }
-  },
-  "components": {
-    "users-control": {
-      "title": "Switch User",
-      "current-user": "This is you",
-      "sign-out-btn-text": "Sign Out"
-    }
-  },
-  "footer": {}
+  "ui": {}
 }

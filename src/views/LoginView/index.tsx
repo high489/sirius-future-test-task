@@ -8,6 +8,7 @@ import { ModalWindow } from '@/ui'
 
 const LoginView = () => {
   const { t } = useTranslation()
+  const tPath = 'views.login-view'
   const [showUsersInfo, setShowUsersInfo] = useState(true)
   return (
     <>
@@ -26,7 +27,7 @@ const LoginView = () => {
             className={`${styles['login-logo']}`}
             onClick={() => setShowUsersInfo(!showUsersInfo)}
           />
-          <h1 className={`${styles['login-title']}`}>{ t('content.login-view.title') }</h1>
+          <h1 className={`${styles['login-title']}`}>{ t(`${tPath}.title`) }</h1>
           <LoginControl />
         </div>
 

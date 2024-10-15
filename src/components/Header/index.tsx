@@ -8,6 +8,7 @@ import { HeaderControls } from './HeaderControls'
 const Header = () => {
   const location = useLocation()
   const { t } = useTranslation()
+  const tPath = 'components.header'
   const { user } = useAuth()
   const username = useTransliterationRuEn(user?.name || '')
 
@@ -15,7 +16,7 @@ const Header = () => {
     <>
       <div className={`${styles['header-content']}`}>
         <h1 className={`${styles['header-greeting']}`}>
-          {location.pathname === '/' && (<>{ t('header.greeting') }, <span>{username}</span>!</>)}
+          {location.pathname === '/' && (<>{ t(`${tPath}.greeting`) }, <span>{username}</span>!</>)}
         </h1>
         <HeaderControls />
       </div>

@@ -14,6 +14,7 @@ const AvailableUsersList: FC<AvailableUsersListProps> = ({
   currentUser, persistentUsers, changeUser
 }) => {
   const { t } = useTranslation()
+  const tPath = 'components.users-control.available-users-list'
   const currentUserName = useTransliterationRuEn(currentUser?.name || '')
   return (
     <>
@@ -24,7 +25,7 @@ const AvailableUsersList: FC<AvailableUsersListProps> = ({
           </div>
           <div className={`${styles['current-user-info']}`}>
             <div className={`${styles['current-user-name']}`}>{currentUserName}</div>
-            <label>{ t('components.users-control.current-user') }</label>
+            <label>{ t(`${tPath}.current-user`) }</label>
           </div>
         </div>
         {

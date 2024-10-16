@@ -1,11 +1,15 @@
 import styles from './custom-select.module.scss'
 import { ChangeEvent, FC, useEffect, useRef, useState } from 'react'
-import { Option } from '@/app/models'
 
 import ArrowIcon from './assets/arrow-icon.svg?react'
 
+type CustomSelectOption = {
+  key: string
+  name: string
+}
+
 interface CustomSelectProps {
-  options: Option[]
+  options: CustomSelectOption[]
   onChange: (value: string | string[]) => void
   placeholder?: string
   disabled?: boolean
@@ -32,7 +36,7 @@ const CustomSelect: FC<CustomSelectProps> = ({
   style,
 }) => {
   const [isOpen, setIsOpen] = useState(false)
-  const [selectedOptions, setSelectedOptions] = useState<Option[]>([])
+  const [selectedOptions, setSelectedOptions] = useState<CustomSelectOption[]>([])
   const customSelectRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -57,7 +61,7 @@ const CustomSelect: FC<CustomSelectProps> = ({
     }
   }, [value, options])
 
-  const handleOptionClick = (option: Option) => {
+  const handleOptionClick = (option: CustomSelectOption) => {
     if (multiple) {
       const isSelected = selectedOptions.some(selectedOption => selectedOption.key === option.key)
       const newSelectedOptions = isSelected

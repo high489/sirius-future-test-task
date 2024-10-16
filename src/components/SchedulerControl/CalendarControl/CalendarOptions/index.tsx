@@ -1,5 +1,6 @@
 import styles from './calendar-options.module.scss'
 import { FC } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import ArrowIcon from './assets/arrow-icon.svg?react'
 import QuestionsIcon from './assets/questions-icon.svg?react'
@@ -19,6 +20,17 @@ const CalendarOptions: FC<CalendaroptionsProps> = ({
   setMonth,
   currentDate,
 }) => {
+  const { i18n, t } = useTranslation()
+  const currentLanguage = i18n.language
+  const tPath = 'components.calendar-options'
+
+  const locales: { [key: string]: string } = {
+    en: 'en-US',
+    ru: 'ru-RU',
+  }
+
+  const getLocale = (language: string): string => locales[language] || 'en-US'
+
   const handlePreviousMonth = () => {
     if (selectedMonth === 0) {
       setMonth(11)
@@ -56,7 +68,7 @@ const CalendarOptions: FC<CalendaroptionsProps> = ({
           className={styles['month-year']}
         >{`
           ${new Date(selectedYear, selectedMonth)
-            .toLocaleString('ru-RU', { month: 'long' })
+            .toLocaleString(getLocale(currentLanguage), { month: 'long' })
             .split('')
             .map((l, i) => i === 0 ? l.toUpperCase() : l )
             .join('')}
@@ -75,7 +87,7 @@ const CalendarOptions: FC<CalendaroptionsProps> = ({
           className={`${styles['today-button']}`}
           onClick={handleToday}
         >
-          Сегодня
+          { t(`${tPath}.today-btn-text`) }
         </button>
         <div className={`${styles.questions}`}>
           <QuestionsIcon />

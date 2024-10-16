@@ -30,6 +30,12 @@
       "title": "Учитесь бесплатно",
       "text": "Приводите друзей с детьми заниматься в Sirius Future\nи получайте подарки!",
       "btn-text": "Узнать"
+    },
+    "subject-options": {
+      "change-schedule-btn-text": "Изменить расписание"
+    },
+    "calendar-options": {
+      "today-btn-text": "Сегодня"
     }
   },
   "ui": {}

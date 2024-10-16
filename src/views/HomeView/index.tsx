@@ -1,24 +1,16 @@
-//import styles from './home-view.module.scss'
-import { useAppSelector, useAuth } from '@app/hooks'
+import styles from './home-view.module.scss'
 
 const HomeView = () => {
-  const { user: currentUser, isPersistent } = useAuth()
-  const persistentUsers = useAppSelector((state) => state.persistentUsers.persistentUsers)
-
   return (
     <>
-      <h1>Home</h1>
-      <p>{isPersistent ? `${currentUser?.name} is persistent` : `${currentUser?.name} isn't persistent`}</p>
-      <ul>
-        {persistentUsers && persistentUsers
-          .filter((persistentUser) => persistentUser.user.id !== currentUser?.id)
-          .map(({ user: { id, name, email, avatar } }) => (
-            <li key={id}>
-              <img src={avatar} alt={name} />
-              {name}: {email}
-            </li>
-          ))}
-      </ul>
+      <div className={styles['container']}>
+        <div className={`${styles['item']} ${styles['item1']}`}>1</div>
+        <div className={`${styles['item']} ${styles['item2']}`}>2</div>
+        <div className={`${styles['item']} ${styles['item3']}`}>3</div>
+        <div className={`${styles['item']} ${styles['item4']}`}>4</div>
+        <div className={`${styles['item']} ${styles['item5']}`}>5</div>
+        <div className={`${styles['item']} ${styles['item6']}`}>6</div>
+      </div>
     </>
   )
 }

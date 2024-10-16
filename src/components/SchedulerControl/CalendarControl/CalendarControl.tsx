@@ -1,5 +1,6 @@
 import styles from './calendar-control.module.scss'
 import { FC } from 'react'
+import { useTranslation } from 'react-i18next'
 import { ILesson, ISubject, IUser } from '@/app/models'
 
 import { CalendarOptions, CalendarGrid } from './'
@@ -27,15 +28,32 @@ const CalendarControl: FC<CalendarControlProps> = ({
   subject,
   nearestPaidLesson,
 }) => {
+  const { i18n } = useTranslation()
+  const currentLanguage = i18n.language
+
+  const daysOfWeekLocales: { [key: string]: { [key: string]: string[] } } = {
+    en: {
+      sunday: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+      monday: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+    },
+    ru: {
+      sunday: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
+      monday: ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'],
+    },
+  };
+  
+  const getDaysOfWeek = (startOfWeek: 'sunday' | 'monday', language: string): string[] => {
+    const daysForLanguage = daysOfWeekLocales[language] || daysOfWeekLocales['en']
+    return daysForLanguage[startOfWeek] || daysForLanguage['monday']
+  }
+
+  const daysOfWeek = getDaysOfWeek('monday', currentLanguage)
   const daysInMonth = (month: number, year: number) => new Date(year, month + 1, 0).getDate()
   const firstDayOfMonth = (month: number, year: number) => {
     const day = new Date(year, month, 1).getDay()
     return startOfWeek === 'sunday' ? day : (day === 0 ? 6 : day - 1)
   }
   
-  const daysOfWeek = startOfWeek === 'sunday' 
-      ? ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] 
-      : ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс']
   const selectedMonthTotalDays = daysInMonth(selectedMonth, selectedYear)
   const selectedMonthStartDay = firstDayOfMonth(selectedMonth, selectedYear)
   const selectedMonthArray = Array.from({ length: selectedMonthTotalDays }, (_, i) => i + 1)

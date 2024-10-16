@@ -7,7 +7,10 @@ export type SubjectsMockData = {
 export const subjectsMockData: SubjectsMockData = {
   mental_arithmetic: {
     id: 1,
-    name: 'Ментальная арифметика',
+    name: {
+      en: 'Mental arithmetic',
+      ru: 'Ментальная арифметика'
+    },
     coursesList: [
       {
         id: 1,
@@ -205,7 +208,10 @@ export const subjectsMockData: SubjectsMockData = {
   },
   programming: {
     id: 2,
-    name: 'Программирование',
+    name: {
+      en: 'Programming',
+      ru: 'Программирование'
+    },
     coursesList: [
       {
         id: 1,
@@ -394,7 +400,10 @@ export const subjectsMockData: SubjectsMockData = {
   },
   speed_reading: {
     id: 3,
-    name: 'Скорочтение',
+    name: {
+      en: 'Speed reading',
+      ru: 'Скорочтение'
+    },
     coursesList: [
       {
         id: 1,
@@ -574,7 +583,10 @@ export const subjectsMockData: SubjectsMockData = {
   },
   test_subject: {
     id: 4,
-    name: 'Тестовый предмет',
+    name: {
+      en: 'Test subject',
+      ru: 'Тестовый предмет'
+    },
     coursesList: [
       {
         id: 1,

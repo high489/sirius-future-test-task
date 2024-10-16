@@ -3,6 +3,7 @@ import { ILesson, ISubject, IUser } from '@/app/models'
 import { FC } from 'react'
 
 import { CalendarDay } from '../'
+import { useTranslation } from 'react-i18next'
 
 interface CalendarGridProps {
   selectedYear: number
@@ -29,6 +30,8 @@ const CalendarGrid: FC<CalendarGridProps> = ({
   subject,
   nearestPaidLesson,
 }) => {
+  const { i18n } = useTranslation()
+  const currentLanguage = i18n.language
   const previousMonth = selectedMonth === 0 ? 11 : selectedMonth - 1
   const previousMonthYear = selectedMonth === 0 ? selectedYear - 1 : selectedYear
   const nextMonth = selectedMonth === 11 ? 0 : selectedMonth + 1
@@ -39,7 +42,7 @@ const CalendarGrid: FC<CalendarGridProps> = ({
   const getSubjectDataForDay = (day: number, month: number, year: number) => {
     const calendarDayDate = new Date(year, month, day).setHours(0, 0, 0, 0);
     return {
-      subjectName: subject?.name || '',
+      subjectName: subject?.name[currentLanguage] || '',
       isCurrentCourse: subject?.coursesList.some(({ courseStartDate, courseEndDate }) => {
         let startDate = new Date(courseStartDate).setHours(0, 0, 0, 0)
         let endDate = new Date(courseEndDate).setHours(0, 0, 0, 0)

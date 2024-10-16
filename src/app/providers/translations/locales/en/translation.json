@@ -30,6 +30,12 @@
       "title": "Try classes for free",
       "text": "Bring your friends with their children to Sirius Future\nand get gifts!",
       "btn-text": "Find Out"
+    },
+    "subject-options": {
+      "change-schedule-btn-text": "Edit schedule"
+    },
+    "calendar-options": {
+      "today-btn-text": "Today"
     }
   },
   "ui": {}

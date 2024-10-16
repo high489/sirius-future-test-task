@@ -1,6 +1,6 @@
 type Option = {
   key: string
-  name: string
+  name: { [key: string]: string }
 }
 
 export type { Option }

@@ -1,15 +1,24 @@
 import styles from './home-view.module.scss'
 
+import { 
+  AdBanner,
+  UpcomingLesson,
+  Homework,
+  InstructorReports,
+  LessonsBalance,
+  NearestLessons,
+} from '@/components' 
+
 const HomeView = () => {
   return (
     <>
-      <div className={styles['container']}>
-        <div className={`${styles['item']} ${styles['item1']}`}>1</div>
-        <div className={`${styles['item']} ${styles['item2']}`}>2</div>
-        <div className={`${styles['item']} ${styles['item3']}`}>3</div>
-        <div className={`${styles['item']} ${styles['item4']}`}>4</div>
-        <div className={`${styles['item']} ${styles['item5']}`}>5</div>
-        <div className={`${styles['item']} ${styles['item6']}`}>6</div>
+      <div className={styles['home-view']}>
+        <div className={`${styles['block']} ${styles['block1']}`}>{<AdBanner />}</div>
+        <div className={`${styles['block']} ${styles['block2']}`}>{<UpcomingLesson />}</div>
+        <div className={`${styles['block']} ${styles['block3']}`}>{<Homework />}</div>
+        <div className={`${styles['block']} ${styles['block4']}`}>{<InstructorReports />}</div>
+        <div className={`${styles['block']} ${styles['block5']}`}>{<LessonsBalance />}</div>
+        <div className={`${styles['block']} ${styles['block6']}`}>{<NearestLessons />}</div>
       </div>
     </>
   )

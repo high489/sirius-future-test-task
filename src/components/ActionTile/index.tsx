@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next'
 import Homework from './assets/homework.svg?react'
 import Reports from './assets/reports.svg?react'
 
-interface IconData {
+interface ActionTileTypeByIcon {
   icon: ReactNode
   title: string
   route: string
@@ -27,7 +27,7 @@ const ActionTile: FC<ActionTileProps> = ({
   const { t } = useTranslation()
   const tPath = 'components.action-tile'
 
-  const iconDataMap: { [key: string]: IconData } = {
+  const iconDataMap: { [key: string]: ActionTileTypeByIcon } = {
     homework: {
       icon: <Homework />,
       title: t(`${tPath}.homework-title`),
@@ -42,7 +42,7 @@ const ActionTile: FC<ActionTileProps> = ({
     },
   }
 
-  const getIconData = (iconKey: string): IconData => {
+  const getIconData = (iconKey: string): ActionTileTypeByIcon => {
     return iconDataMap[iconKey] || {
       icon: <span>❓</span>,
       title: 'Unknown',
@@ -52,11 +52,11 @@ const ActionTile: FC<ActionTileProps> = ({
   }
 
   const {
-    icon: defaultIcon,
-    title: defaultTitle,
-    route: defaultRoute,
-    backgroundColor: defaultBgColor,
-  } = typeof icon === 'string' ? getIconData(icon) : {}
+    icon: defaultIcon = <span>❓</span>,
+    title: defaultTitle = 'Unknown',
+    route: defaultRoute = '/unknown',
+    backgroundColor: defaultBgColor = '#e0e0e0',
+  }: Partial<ActionTileTypeByIcon> = typeof icon === 'string' ? getIconData(icon) : {}
   
   return (
     <>

@@ -12,9 +12,11 @@ const AdBanner: FC<AdBannerProps> = () => {
   return (
     <>
       <div className={styles['ad-banner']}>
-        <h5 className={styles['ad-banner-title']}>{ t(`${tPath}.title`) }</h5>
-        <div className={styles['ad-banner-text']}>{ t(`${tPath}.text`) }</div>
-        <img className={styles['ad-banner-img']} src={SfMascot} alt="sf-mascot" />
+        <div className={styles['ad-banner-info']}>
+          <h5 className={styles['ad-banner-title']}>{ t(`${tPath}.title`) }</h5>
+          <div className={styles['ad-banner-text']}>{ t(`${tPath}.text`) }</div>
+          <img className={styles['ad-banner-img']} src={SfMascot} alt="sf-mascot" />
+        </div>
       </div>
     </>
   )

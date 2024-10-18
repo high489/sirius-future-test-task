@@ -1,13 +1,16 @@
 .ad-banner {
   cursor: pointer;
-  position: relative;
   overflow: hidden;
   width: 100%;
   height: 100%;
   padding: 56px 40px;
   background-color: var(--dark-violet);
   border-radius: 30px;
+}
 
+.ad-banner-info {
+  position: relative;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -20,6 +23,7 @@
   line-height: 32px;
   color: var(--white);
   white-space: pre-line;
+  z-index: 1;
 }
 
 .ad-banner-text {
@@ -29,12 +33,13 @@
   line-height: 20px;
   color: var(--white);
   white-space: pre-line;
+  z-index: 1;
 }
 
 .ad-banner-img {
   user-select: none;
   position: absolute;
-  right: 0;
-  bottom: 0;
-  height: 100%;
+  left: 66%;
+  bottom: -113%;
+  height: 304%;
 }

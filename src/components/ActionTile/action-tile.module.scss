@@ -1,0 +1,28 @@
+.action-tile {
+  height: 100%;
+  padding: 16px 12px 12px 16px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.action-tile-title {
+  font-size: 20px;
+  font-weight: normal;
+  line-height: 20px;
+  color: var(--dark);
+  white-space: pre-line;
+}
+
+.action-tile-icon {
+  cursor: pointer;
+  align-self: flex-end;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  background-color: var(--white);
+}

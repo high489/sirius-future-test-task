@@ -35,6 +35,10 @@
       "title": "Until December 31\nany course is 20% off",
       "text": "Until the end of the year\nyou have a unique opportunity to take\nNew Year's 20% discount on any course!"
     },
+    "action-tile": {
+      "homework-title": "Homework",
+      "instructors-reports-title": "Instructors reports"
+    },
     "subject-options": {
       "change-schedule-btn-text": "Edit schedule"
     },

@@ -6,7 +6,7 @@ interface LessonsBalanceProps {}
 const LessonsBalance: FC<LessonsBalanceProps> = () => {
   return (
     <>
-      <div className={styles['lessons-balance']}>LessonsBalance</div>
+      <div className={styles['lessons-balance']}>Lessons Balance</div>
     </>
   )
 }

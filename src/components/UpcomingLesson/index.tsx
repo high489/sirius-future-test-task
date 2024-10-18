@@ -6,7 +6,7 @@ interface UpcomingLessonProps {}
 const UpcomingLesson: FC<UpcomingLessonProps> = () => {
   return (
     <>
-      <div className={styles['upcoming-lesson']}>UpcomingLesson</div>
+      <div className={styles['upcoming-lesson']}>Upcoming Lesson</div>
     </>
   )
 }

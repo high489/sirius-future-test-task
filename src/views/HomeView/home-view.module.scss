@@ -2,12 +2,13 @@
   display: grid;
   grid-gap: 20px;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat(2, 114px) repeat(3, 110.6px);
+  grid-template-rows: repeat(2, 114px) 1fr;
+  height: 100%;
 }
 
-.block {
-  border: 1px solid var(--dark-violet);
-}
+// .block {
+//   // border: 1px solid var(--dark-violet);
+// }
 
 .block1 {
   // grid-area: 1 / 1 / span 2 / span 6;

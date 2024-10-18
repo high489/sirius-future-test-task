@@ -4,7 +4,7 @@ import {
   AdBanner,
   UpcomingLesson,
   Homework,
-  InstructorReports,
+  InstructorsReports,
   LessonsBalance,
   NearestLessons,
 } from '@/components' 
@@ -16,7 +16,7 @@ const HomeView = () => {
         <div className={`${styles['block']} ${styles['block1']}`}>{<AdBanner />}</div>
         <div className={`${styles['block']} ${styles['block2']}`}>{<UpcomingLesson />}</div>
         <div className={`${styles['block']} ${styles['block3']}`}>{<Homework />}</div>
-        <div className={`${styles['block']} ${styles['block4']}`}>{<InstructorReports />}</div>
+        <div className={`${styles['block']} ${styles['block4']}`}>{<InstructorsReports />}</div>
         <div className={`${styles['block']} ${styles['block5']}`}>{<LessonsBalance />}</div>
         <div className={`${styles['block']} ${styles['block6']}`}>{<NearestLessons />}</div>
       </div>

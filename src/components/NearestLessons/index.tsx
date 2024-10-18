@@ -6,7 +6,7 @@ interface NearestLessonsProps {}
 const NearestLessons: FC<NearestLessonsProps> = () => {
   return (
     <>
-      <div className={styles['nearest-lessons']}>NearestLessons</div>
+      <div className={styles['nearest-lessons']}>Nearest Lessons</div>
     </>
   )
 }

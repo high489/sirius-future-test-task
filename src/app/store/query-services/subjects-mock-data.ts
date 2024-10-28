@@ -393,7 +393,6 @@ export const subjectsMockData: SubjectsMockData = {
         ],
         registeredUsers: [
           {id: 1, name: 'Михаил', email: 'mike123@mail.com'},
-          {id: 2, name: 'Анна', email: 'anna321@mail.com'},
         ],
       },
     ],

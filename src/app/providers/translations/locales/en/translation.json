@@ -39,6 +39,10 @@
       "homework-title": "Homework",
       "instructors-reports-title": "Instructors reports"
     },
+    "upcoming-lesson": {
+      "title": "The next class\nstarts in:",
+      "btn-text": "Schedule"
+    },
     "subject-options": {
       "change-schedule-btn-text": "Edit schedule"
     },

@@ -1,7 +1,57 @@
 .upcoming-lesson {
   width: 100%;
   height: 100%;
-  padding: 20px;
-  border: 1px solid var(--dark-violet);
+  padding: 32px 0;
+  background-color: var(--beige);
   border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
+
+.upcoming-lesson-title {
+  margin: 0;
+  width: 180px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: normal;
+  line-height: 20px;
+  color: var(--dark);
+  white-space: pre-line;
+}
+
+// CountdownTimer styles props
+.countdown-timer {
+  display: flex;
+  gap: 12px;
+  color: var(--dark);
+}
+
+.timer-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 4px;
+  height: 32px; 
+}
+
+.number {
+  font-size: 36px;
+  // font-weight: normal;
+  line-height: 32px;
+}
+
+.text {
+  font-size: 15px;
+  // font-weight: normal;
+  line-height: 135%;
+}
+
+// .minutes {
+//   // width: 70px;
+// }
+
+// .seconds {
+//   // width: 70px;
+// }

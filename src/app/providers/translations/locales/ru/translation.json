@@ -39,6 +39,10 @@
       "homework-title": "Домашние задания",
       "instructors-reports-title": "Отчеты\nот учителей"
     },
+    "upcoming-lesson": {
+      "title": "Следующее занятие\nначнется через:",
+      "btn-text": "Расписание"
+    },
     "subject-options": {
       "change-schedule-btn-text": "Изменить расписание"
     },

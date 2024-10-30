@@ -50,10 +50,10 @@ const UpcomingLesson: FC<UpcomingLessonProps> = () => {
           minutes: styles['minutes'],
           seconds: styles['seconds'],
           number: styles['number'],
+          digit: styles['digit'],
           text: styles['text'],
         }}
-        timerElementsSizes={{
-          numberWidth: 21,
+        timerWordsLength={{
           daysWordLength: 1,
           hoursWordLength: 1,
           minutesWordLength: 3,

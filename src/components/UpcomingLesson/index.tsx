@@ -52,7 +52,8 @@ const UpcomingLesson: FC<UpcomingLessonProps> = () => {
           number: styles['number'],
           text: styles['text'],
         }}
-        timerWordsLength={{
+        timerElementsSizes={{
+          numberWidth: 21,
           daysWordLength: 1,
           hoursWordLength: 1,
           minutesWordLength: 3,

@@ -15,7 +15,8 @@ interface CountdownTimerProps {
     number?: string
     text?: string
   }
-  timerWordsLength: {
+  timerElementsSizes: {
+    numberWidth?: number
     daysWordLength?: number
     hoursWordLength?: number
     minutesWordLength?: number
@@ -24,7 +25,7 @@ interface CountdownTimerProps {
 }
 
 const CountdownTimer: FC<CountdownTimerProps> = ({ 
-  startDate, endDate, styles, timerWordsLength,
+  startDate, endDate, styles, timerElementsSizes,
 }) => {
   const { i18n } = useTranslation()
   const currentLanguage = i18n.language
@@ -87,30 +88,55 @@ const CountdownTimer: FC<CountdownTimerProps> = ({
     return () => clearInterval(intervalId)
   }, [])
 
+  const calculateNumberWidth = (number: number): React.CSSProperties => {
+    const numDigits = number.toString().length
+    const baseWidth = timerElementsSizes.numberWidth
+    const width = (baseWidth ?? 20) * numDigits
+
+    return {
+      width: width ? `${width}px` : '',
+    }
+  }
+
   const renderTimeBlocks = () => {
     const { days, hours, minutes, seconds } = displayTime
-    const { daysWordLength, hoursWordLength, minutesWordLength, secondsWordLength } = timerWordsLength
+    const { daysWordLength, hoursWordLength, minutesWordLength, secondsWordLength } = timerElementsSizes
 
     if ('days' in displayTime) {
       return (
         <>
           <div className={`${styles['timerBlock']} ${styles['days']}`}>
-            <div className={styles['number']}>{days}</div>
-            <div className={styles['text']}>
-              {getLocalizedUnit('days', days ?? 0, currentLanguage, daysWordLength)}
+            <div
+              className={styles['number']}
+              style={calculateNumberWidth(days ?? 0)}
+            >
+              {days}
             </div>
+            <span className={styles['text']}>
+              {getLocalizedUnit('days', days ?? 0, currentLanguage, daysWordLength)}
+            </span>
           </div>
           <div className={`${styles['timerBlock']} ${styles['hours']}`}>
-            <div className={styles['number']}>{hours}</div>
-            <div className={styles['text']}>
-              {getLocalizedUnit('hours', hours, currentLanguage, hoursWordLength)}
+            <div
+              className={styles['number']}
+              style={calculateNumberWidth(hours)}
+            >
+              {hours}
             </div>
+            <span className={styles['text']}>
+              {getLocalizedUnit('hours', hours, currentLanguage, hoursWordLength)}
+            </span>
           </div>
           <div className={`${styles['timerBlock']} ${styles['minutes']}`}>
-            <div className={styles['number']}>{minutes}</div>
-            <div className={styles['text']}>
-              {getLocalizedUnit('minutes', minutes, currentLanguage, minutesWordLength)}
+            <div
+              className={styles['number']}
+              style={calculateNumberWidth(minutes)}
+            >
+              {minutes}
             </div>
+            <span className={styles['text']}>
+              {getLocalizedUnit('minutes', minutes, currentLanguage, minutesWordLength)}
+            </span>
           </div>
         </>
       )
@@ -118,22 +144,37 @@ const CountdownTimer: FC<CountdownTimerProps> = ({
       return (
         <>
           <div className={`${styles['timerBlock']} ${styles['hours']}`}>
-            <div className={styles['number']}>{hours}</div>
-            <div className={styles['text']}>
-              {getLocalizedUnit('hours', hours, currentLanguage, hoursWordLength)}
+            <div
+              className={styles['number']}
+              style={calculateNumberWidth(hours)}
+            >
+              {hours}
             </div>
+            <span className={styles['text']}>
+              {getLocalizedUnit('hours', hours, currentLanguage, hoursWordLength)}
+            </span>
           </div>
           <div className={`${styles['timerBlock']} ${styles['minutes']}`}>
-            <div className={styles['number']}>{minutes}</div>
-            <div className={styles['text']}>
-              {getLocalizedUnit('minutes', minutes, currentLanguage, minutesWordLength)}
+            <div
+              className={styles['number']}
+              style={calculateNumberWidth(minutes)}
+            >
+              {minutes}
             </div>
+            <span className={styles['text']}>
+              {getLocalizedUnit('minutes', minutes, currentLanguage, minutesWordLength)}
+            </span>
           </div>
           <div className={`${styles['timerBlock']} ${styles['seconds']}`}>
-            <div className={styles['number']}>{seconds}</div>
-            <div className={styles['text']}>
-              {getLocalizedUnit('seconds', seconds ?? 0, currentLanguage, secondsWordLength)}
+            <div
+              className={styles['number']}
+              style={calculateNumberWidth(seconds ?? 0)}
+            >
+              {seconds}
             </div>
+            <span className={styles['text']}>
+              {getLocalizedUnit('seconds', seconds ?? 0, currentLanguage, secondsWordLength)}
+            </span>
           </div>
         </>
       )
@@ -144,24 +185,6 @@ const CountdownTimer: FC<CountdownTimerProps> = ({
     <>
       <div className={styles['countdownTimer']}>
         {renderTimeBlocks()}
-        {/* <div className={`${styles['timerBlock']} ${styles['days']}`}>
-            <div className={styles['number']}>6</div>
-            <div className={styles['text']}>
-              д
-            </div>
-          </div>
-          <div className={`${styles['timerBlock']} ${styles['hours']}`}>
-            <div className={styles['number']}>12</div>
-            <div className={styles['text']}>
-              ч
-            </div>
-          </div>
-          <div className={`${styles['timerBlock']} ${styles['minutes']}`}>
-            <div className={styles['number']}>24</div>
-            <div className={styles['text']}>
-              мин
-            </div>
-          </div> */}
       </div>
     </>
   )

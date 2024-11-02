@@ -41,7 +41,13 @@
     },
     "upcoming-lesson": {
       "title": "The next class\nstarts in:",
-      "btn-text": "Schedule"
+      "btn-text": "To The Class"
+    },
+    "lessons-balance": {
+      "title": "Balance of lessons",
+      "list": {
+        "btn-text": "Schedule"
+      }
     },
     "subject-options": {
       "change-schedule-btn-text": "Edit schedule"

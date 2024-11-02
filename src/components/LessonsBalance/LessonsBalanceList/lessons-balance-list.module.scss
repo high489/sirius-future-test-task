@@ -1,0 +1,90 @@
+.lessons-balance-list {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  height: 100%;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-height: 274px;
+    gap: 36px;
+  }
+
+  .list {
+    overflow: hidden;
+    height: 100%;
+    max-height: 198px;
+
+    .list-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+  
+      .text {
+        font-size: 16px;
+        font-weight: normal;
+        line-height: 20px;
+        color: var(--dark);
+      }
+  
+      .counter {
+        margin-top: 0.5px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: var(--violet-light);
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        .counter-text {
+          margin-top: 4px;
+          margin-right: 0.5px;
+          font-size: 20px;
+          font-weight: normal;
+          color: var(--dark);
+        }
+      }
+    }
+    
+    .separator {
+      width: 100%;
+      height: 1px;
+      background-color: var(--violet-light);
+      margin: 3.5px 0 3px;
+    }
+  }
+
+  .button {
+    cursor: pointer;
+    width: 100%;
+    height: 40px;
+    padding: 10px 40px;
+    background-color: var(--violet);
+    border: none;
+    border-radius: 30px;
+  
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 135%;
+    color: var(--dark);
+  }
+
+  .scroll {
+    width: 4.5px;
+    border-radius: 4px;
+    position: relative;
+
+    .scroll-thumb {
+      width: 100%;
+      background: var(--violet-light);
+      border-radius: 4px;
+      position: absolute;
+      top: 0;
+    }
+  }
+}

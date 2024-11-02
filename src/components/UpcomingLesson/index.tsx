@@ -2,7 +2,7 @@ import styles from './upcoming-lesson.module.scss'
 import { FC, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
-import { useAuth } from '@/app/hooks'
+import { useAuth, useDate } from '@/app/hooks'
 import { useGetNearestPaidLessonQuery } from '@/app/store'
 
 import { CountdownTimer } from '@/components'
@@ -16,7 +16,7 @@ const UpcomingLesson: FC<UpcomingLessonProps> = () => {
   const navigate = useNavigate()
   const handleNavigate = () => navigate('/schedule')
 
-  const startDate = new Date('2024-08-14T12:55:00Z')
+  const startDate = useDate()
   const { user } = useAuth()
   const [ endDate, setEndDate ] = useState<Date | null>(null)
   const { data: nearestPaidLesson, refetch } = useGetNearestPaidLessonQuery({

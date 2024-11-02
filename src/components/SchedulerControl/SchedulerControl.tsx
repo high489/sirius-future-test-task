@@ -1,7 +1,7 @@
 import styles from './scheduler-control.module.scss'
 import { useEffect } from 'react'
 
-import { useAppDispatch, useAppSelector, useAuth } from '@/app/hooks'
+import { useAppDispatch, useAppSelector, useAuth, useDate } from '@/app/hooks'
 import {
   setSchedulerMetaData,
   useGetSubjectsKeysQuery, 
@@ -13,8 +13,7 @@ import { SubjectsOptions, CalendarControl } from './'
 const SchedulerControl = () => {
   const dispatch = useAppDispatch()
   const { user } = useAuth()
-  // const currentDate = new Date()
-  const currentDate = new Date('2024-08-14T12:55:00Z') // for demonstration
+  const currentDate = useDate()
   const { 
     selectedYear, 
     selectedMonth, 

@@ -16,6 +16,7 @@ export const subjectsApi = createApi({
           ? [...result.map(({ id }) => ({ type: 'Subjects' as const, id })), { type: 'Subjects', id: 'LIST' }]
           : [{ type: 'Subjects', id: 'LIST' }],
     }),
+
     getSubjectsKeys: build.query<Option[], void>({
       queryFn: () => {
         const keys = Object.keys(initialState).map(key => ({
@@ -29,6 +30,7 @@ export const subjectsApi = createApi({
           ? [...result.map(({ key }) => ({ type: 'Subjects' as const, id: key })), { type: 'Subjects', id: 'LIST' }]
           : [{ type: 'Subjects', id: 'LIST' }],
     }),
+
     getSubjectByKey: build.query<ISubject, string>({
       queryFn: (key) => {
         const subject = initialState[key]
@@ -40,6 +42,7 @@ export const subjectsApi = createApi({
       },
       providesTags: (_, __, key) => [{ type: 'Subjects', id: key }],
     }),
+
     getNearestPaidLesson: build.query<ILesson | null, { user: IUser | null; fromDate: string; subjectKey?: string }>({
       queryFn: ({ subjectKey, user, fromDate }) => {
         const parsedFromDate = new Date(fromDate)
@@ -67,6 +70,36 @@ export const subjectsApi = createApi({
       },
       providesTags: (_, __, { subjectKey }) => [{ type: 'Subjects', id: subjectKey || 'ALL' }],
     }),
+
+    getLessonsBalance: build.query<{ subjectName: string; paidLessonsCount: number }[], { user: IUser | null; fromDate: string; currentLanguage: string }>({
+      queryFn: ({ user, fromDate, currentLanguage }) => {
+        const parsedFromDate = new Date(fromDate)
+        const lessonsBalance = Object.values(initialState).map((subject) => {
+          // Получаем перевод на нужном языке или используем первый доступный
+          const subjectName = subject.name[currentLanguage] || Object.values(subject.name)[0]
+    
+          const paidLessonsCount = subject.coursesList.reduce((count, course) => {
+            const isUserRegistered = course.registeredUsers?.some(
+              (registeredUser) => registeredUser.email === user?.email
+            )
+    
+            if (isUserRegistered) {
+              const lessonsAfterDate = course.lessonsList.filter(
+                (lesson) =>
+                  lesson.isPaid && new Date(lesson.lessonStartDate).getTime() > parsedFromDate.getTime()
+              )
+              return count + lessonsAfterDate.length
+            }
+            return count
+          }, 0)
+    
+          return { subjectName, paidLessonsCount }
+        })
+    
+        return { data: lessonsBalance }
+      },
+      providesTags: (_, __) => [{ type: 'Subjects', id: 'BALANCE' }],
+    }),
   }),
 })
 
@@ -75,4 +108,5 @@ export const {
   useGetSubjectsKeysQuery, 
   useGetSubjectByKeyQuery,
   useGetNearestPaidLessonQuery,
+  useGetLessonsBalanceQuery,
 } = subjectsApi

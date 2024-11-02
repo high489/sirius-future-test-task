@@ -41,7 +41,13 @@
     },
     "upcoming-lesson": {
       "title": "Следующее занятие\nначнется через:",
-      "btn-text": "Расписание"
+      "btn-text": "Перейти к Занятию"
+    },
+    "lessons-balance": {
+      "title": "Баланс занятий",
+      "list": {
+        "btn-text": "Расписание"
+      }
     },
     "subject-options": {
       "change-schedule-btn-text": "Изменить расписание"

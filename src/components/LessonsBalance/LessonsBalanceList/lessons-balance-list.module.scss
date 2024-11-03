@@ -27,6 +27,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 10px 0;
+      user-select: none;
   
       .text {
         font-size: 16px;
@@ -91,6 +92,11 @@
       border-radius: 4px;
       position: absolute;
       top: 0;
+      cursor: grab;
+
+      &:active {
+        cursor: grabbing;
+      }
     }
   }
 }

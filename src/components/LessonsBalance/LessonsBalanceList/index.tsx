@@ -49,8 +49,8 @@ const LessonsBalanceList: FC<LessonsBalanceListProps> = ({ lessonsBalance }) => 
       const scrollHeight = listRef.current.scrollHeight - listRef.current.clientHeight
       const maxScrollTop = listRef.current.scrollHeight - listRef.current.clientHeight
       const scrollDelta = (deltaY / listRef.current.clientHeight) * scrollHeight
-      
-      listRef.current.scrollTop = Math.min(scrollTop + scrollDelta, maxScrollTop)
+
+      listRef.current.scrollTop = Math.max(0, Math.min(scrollTop - scrollDelta, maxScrollTop))
       updateScrollThumbPosition()
     }
   }

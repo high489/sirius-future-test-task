@@ -1,6 +1,6 @@
-import { useNavigate } from 'react-router-dom'
 import styles from './lessons-balance-list.module.scss'
 import { FC, useEffect, useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 
 interface LessonsBalanceItem {
@@ -36,14 +36,21 @@ const LessonsBalanceList: FC<LessonsBalanceListProps> = ({ lessonsBalance }) => 
     setScrollTop(listRef.current?.scrollTop || 0)
   }
 
+  const handleListMouseDown = (e: React.MouseEvent) => {
+    setIsDragging(true)
+    setStartY(e.clientY)
+    setScrollTop(listRef.current?.scrollTop || 0)
+    e.preventDefault()
+  }
+
   const handleMouseMove = (e: MouseEvent) => {
-    if (isDragging && listRef.current && scrollThumbRef.current) {
+    if (isDragging && listRef.current) {
       const deltaY = e.clientY - startY
       const scrollHeight = listRef.current.scrollHeight - listRef.current.clientHeight
-      const thumbHeight = scrollThumbRef.current.clientHeight
-      const maxThumbTop = listRef.current.clientHeight - thumbHeight
-      const scrollDelta = (deltaY / maxThumbTop) * scrollHeight
-      listRef.current.scrollTop = scrollTop + scrollDelta
+      const maxScrollTop = listRef.current.scrollHeight - listRef.current.clientHeight
+      const scrollDelta = (deltaY / listRef.current.clientHeight) * scrollHeight
+      
+      listRef.current.scrollTop = Math.min(scrollTop + scrollDelta, maxScrollTop)
       updateScrollThumbPosition()
     }
   }
@@ -56,11 +63,12 @@ const LessonsBalanceList: FC<LessonsBalanceListProps> = ({ lessonsBalance }) => 
     if (listRef.current && scrollThumbRef.current) {
       const scrollHeight = listRef.current.scrollHeight - listRef.current.clientHeight
       const thumbHeight = scrollThumbRef.current.clientHeight
-      const maxThumbTop = listRef.current.clientHeight - thumbHeight
-
+  
+      const maxThumbTop = scrollThumbRef.current.parentElement!.clientHeight - thumbHeight
+  
       let thumbTop = (listRef.current.scrollTop / scrollHeight) * maxThumbTop
       thumbTop = Math.max(0, Math.min(thumbTop, maxThumbTop))
-
+  
       scrollThumbRef.current.style.transform = `translateY(${thumbTop}px)`
     }
   }
@@ -96,7 +104,11 @@ const LessonsBalanceList: FC<LessonsBalanceListProps> = ({ lessonsBalance }) => 
   return (
     <div className={styles['lessons-balance-list']}>
       <div className={styles['content']}>
-        <div ref={listRef} className={styles['list']}>
+        <div
+          ref={listRef}
+          className={styles['list']}
+          onMouseDown={handleListMouseDown}
+        >
           {lessonsBalance.map(({ subjectName, paidLessonsCount }, index) => (
             <>
               <div

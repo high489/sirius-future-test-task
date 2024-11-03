@@ -45,7 +45,7 @@ const LessonsBalanceList: FC<LessonsBalanceListProps> = ({ lessonsBalance }) => 
 
   const handleMouseMove = (e: MouseEvent) => {
     if (isDragging && listRef.current) {
-      const deltaY = e.clientY - startY
+      const deltaY = startY - e.clientY
       const scrollHeight = listRef.current.scrollHeight - listRef.current.clientHeight
       const maxScrollTop = listRef.current.scrollHeight - listRef.current.clientHeight
       const scrollDelta = (deltaY / listRef.current.clientHeight) * scrollHeight

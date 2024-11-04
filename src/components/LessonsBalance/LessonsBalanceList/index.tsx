@@ -1,5 +1,5 @@
 import styles from './lessons-balance-list.module.scss'
-import { FC, useEffect, useRef, useState } from 'react'
+import { FC, Fragment, useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 
@@ -164,9 +164,8 @@ const LessonsBalanceList: FC<LessonsBalanceListProps> = ({ lessonsBalance }) => 
           onTouchStart={handleListTouchStart}
         >
           {lessonsBalance.map(({ subjectName, paidLessonsCount }, index) => (
-            <>
+            <Fragment key={index}>
               <div
-                key={index}
                 className={styles['list-item']}
               >
                 <span className={styles['text']}>
@@ -182,7 +181,7 @@ const LessonsBalanceList: FC<LessonsBalanceListProps> = ({ lessonsBalance }) => 
               {((lessonsBalance.length-1) !== index) && (
                 <div className={styles['separator']}></div>
               )}
-            </>
+            </Fragment>
           ))}
         </div>
         <button

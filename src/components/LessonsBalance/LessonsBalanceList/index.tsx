@@ -115,6 +115,7 @@ const LessonsBalanceList: FC<LessonsBalanceListProps> = ({ lessonsBalance }) => 
     if (listRef.current && scrollThumbRef.current) {
       const visibleRatio = listRef.current.clientHeight / listRef.current.scrollHeight
       const thumbHeight = Math.max(visibleRatio * listRef.current.clientHeight, 20)
+      scrollThumbRef.current.parentElement!.style.height = `${listRef.current.clientHeight}px`
       scrollThumbRef.current.style.height = `${thumbHeight}px`
       updateScrollThumbPosition()
     }

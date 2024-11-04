@@ -18,7 +18,8 @@ const LessonsBalanceList: FC<LessonsBalanceListProps> = ({ lessonsBalance }) => 
   const tPath = 'components.lessons-balance.list'
   const listRef = useRef<HTMLDivElement>(null)
   const scrollThumbRef = useRef<HTMLDivElement>(null)
-  const [isDragging, setIsDragging] = useState(false)
+  const [isDraggingList, setIsDraggingList] = useState(false)
+  const [isDraggingScroll, setIsDraggingScroll] = useState(false)
   const [startY, setStartY] = useState(0)
   const [scrollTop, setScrollTop] = useState(0)
 
@@ -30,45 +31,82 @@ const LessonsBalanceList: FC<LessonsBalanceListProps> = ({ lessonsBalance }) => 
     }
   }
 
-  const handleMouseDown = (e: React.MouseEvent) => {
-    setIsDragging(true)
-    setStartY(e.clientY)
-    setScrollTop(listRef.current?.scrollTop || 0)
-  }
-
   const handleListMouseDown = (e: React.MouseEvent) => {
-    setIsDragging(true)
+    setIsDraggingList(true)
     setStartY(e.clientY)
     setScrollTop(listRef.current?.scrollTop || 0)
     e.preventDefault()
   }
 
-  const handleMouseMove = (e: MouseEvent) => {
-    if (isDragging && listRef.current) {
-      const deltaY = startY - e.clientY
-      const scrollHeight = listRef.current.scrollHeight - listRef.current.clientHeight
-      const maxScrollTop = listRef.current.scrollHeight - listRef.current.clientHeight
-      const scrollDelta = (deltaY / listRef.current.clientHeight) * scrollHeight
+  const handleScrollMouseDown = (e: React.MouseEvent) => {
+    setIsDraggingScroll(true)
+    setStartY(e.clientY)
+    setScrollTop(listRef.current?.scrollTop || 0)
+    e.preventDefault()
+  }
 
-      listRef.current.scrollTop = Math.max(0, Math.min(scrollTop - scrollDelta, maxScrollTop))
+  const handleListTouchStart = (e: React.TouchEvent) => {
+    setIsDraggingList(true)
+    setStartY(e.touches[0].clientY)
+    setScrollTop(listRef.current?.scrollTop || 0)
+  }
+
+  const handleScrollTouchStart = (e: React.TouchEvent) => {
+    setIsDraggingScroll(true)
+    setStartY(e.touches[0].clientY)
+    setScrollTop(listRef.current?.scrollTop || 0)
+  }
+
+  const handleMouseMoveByList = (e: MouseEvent) => {
+    if (isDraggingList && listRef.current) {
+      const deltaY = startY - e.clientY
+      listRef.current.scrollTop = Math.max(0, scrollTop + deltaY)
+      updateScrollThumbPosition()
+    }
+  }
+
+  const handleMouseMoveByScroll = (e: MouseEvent) => {
+    if (isDraggingScroll && listRef.current) {
+      const deltaY = e.clientY - startY
+      const scrollHeight = listRef.current.scrollHeight - listRef.current.clientHeight
+      const scrollDelta = (deltaY / scrollThumbRef.current!.parentElement!.clientHeight) * scrollHeight
+      listRef.current.scrollTop = Math.max(0, scrollTop + scrollDelta)
+      updateScrollThumbPosition()
+    }
+  }
+
+  const handleTouchMoveByList = (e: TouchEvent) => {
+    if (isDraggingList && listRef.current) {
+      e.preventDefault()
+      const deltaY = startY - e.touches[0].clientY
+      listRef.current.scrollTop = Math.max(0, scrollTop + deltaY)
+      updateScrollThumbPosition()
+    }
+  }
+
+  const handleTouchMoveByScroll = (e: TouchEvent) => {
+    if (isDraggingScroll && listRef.current) {
+      e.preventDefault()
+      const deltaY = e.touches[0].clientY - startY
+      const scrollHeight = listRef.current.scrollHeight - listRef.current.clientHeight
+      const scrollDelta = (deltaY / scrollThumbRef.current!.parentElement!.clientHeight) * scrollHeight
+      listRef.current.scrollTop = Math.max(0, scrollTop + scrollDelta)
       updateScrollThumbPosition()
     }
   }
 
   const handleMouseUp = () => {
-    setIsDragging(false)
+    setIsDraggingList(false)
+    setIsDraggingScroll(false)
   }
 
   const updateScrollThumbPosition = () => {
     if (listRef.current && scrollThumbRef.current) {
       const scrollHeight = listRef.current.scrollHeight - listRef.current.clientHeight
       const thumbHeight = scrollThumbRef.current.clientHeight
-  
       const maxThumbTop = scrollThumbRef.current.parentElement!.clientHeight - thumbHeight
-  
       let thumbTop = (listRef.current.scrollTop / scrollHeight) * maxThumbTop
       thumbTop = Math.max(0, Math.min(thumbTop, maxThumbTop))
-  
       scrollThumbRef.current.style.transform = `translateY(${thumbTop}px)`
     }
   }
@@ -89,17 +127,31 @@ const LessonsBalanceList: FC<LessonsBalanceListProps> = ({ lessonsBalance }) => 
       listElem.addEventListener('wheel', handleWheel, { passive: false })
     }
 
-    document.addEventListener('mousemove', handleMouseMove)
+    if (isDraggingList) {
+      document.addEventListener('mousemove', handleMouseMoveByList)
+      document.addEventListener('touchmove', handleTouchMoveByList, { passive: false })
+    }
+
+    if (isDraggingScroll) {
+      document.addEventListener('mousemove', handleMouseMoveByScroll)
+      document.addEventListener('touchmove', handleTouchMoveByScroll, { passive: false })
+    }
+
     document.addEventListener('mouseup', handleMouseUp)
+    document.addEventListener('touchend', handleMouseUp)
 
     return () => {
       if (listElem) {
         listElem.removeEventListener('wheel', handleWheel)
       }
-      document.removeEventListener('mousemove', handleMouseMove)
+      document.removeEventListener('mousemove', handleMouseMoveByList)
+      document.removeEventListener('touchmove', handleTouchMoveByList)
+      document.removeEventListener('mousemove', handleMouseMoveByScroll)
+      document.removeEventListener('touchmove', handleTouchMoveByScroll)
       document.removeEventListener('mouseup', handleMouseUp)
+      document.removeEventListener('touchend', handleMouseUp)
     }
-  }, [isDragging, startY, scrollTop])
+  }, [isDraggingList, isDraggingScroll, startY, scrollTop])
 
   return (
     <div className={styles['lessons-balance-list']}>
@@ -108,6 +160,7 @@ const LessonsBalanceList: FC<LessonsBalanceListProps> = ({ lessonsBalance }) => 
           ref={listRef}
           className={styles['list']}
           onMouseDown={handleListMouseDown}
+          onTouchStart={handleListTouchStart}
         >
           {lessonsBalance.map(({ subjectName, paidLessonsCount }, index) => (
             <>
@@ -142,7 +195,8 @@ const LessonsBalanceList: FC<LessonsBalanceListProps> = ({ lessonsBalance }) => 
         <div
           ref={scrollThumbRef}
           className={styles['scroll-thumb']}
-          onMouseDown={handleMouseDown}
+          onMouseDown={handleScrollMouseDown}
+          onTouchStart={handleScrollTouchStart}
         ></div>
       </div>
     </div>

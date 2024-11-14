@@ -49,6 +49,14 @@
         "btn-text": "Расписание"
       }
     },
+    "nearest-lessons": {
+      "title": "Ближайшие уроки",
+      "list": {
+        "toggle-on-text": "Да",
+        "toggle-off-text": "Нет",
+        "btn-text": "Расписание"
+      }
+    },
     "subject-options": {
       "change-schedule-btn-text": "Изменить расписание"
     },

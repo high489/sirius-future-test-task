@@ -1,16 +1,18 @@
 import styles from './header.module.scss'
 import { useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { useAuth, useTransliterationRuEn } from '@app/hooks'
+import { useAuth } from '@app/hooks'
+import { transliterationRuEn } from '@app/utils'
 
 import { HeaderControls } from './HeaderControls'
 
 const Header = () => {
   const location = useLocation()
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const currentLanguage = i18n.language
   const tPath = 'components.header'
   const { user } = useAuth()
-  const username = useTransliterationRuEn(user?.name || '')
+  const username = transliterationRuEn(user?.name || '', currentLanguage)
 
   return (
     <>

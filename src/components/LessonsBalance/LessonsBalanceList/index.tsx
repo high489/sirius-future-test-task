@@ -3,6 +3,8 @@ import { FC, Fragment, useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 
+import { StandardButton } from '@/ui'
+
 interface LessonsBalanceItem {
   subjectName: string
   paidLessonsCount: number
@@ -184,12 +186,13 @@ const LessonsBalanceList: FC<LessonsBalanceListProps> = ({ lessonsBalance }) => 
             </Fragment>
           ))}
         </div>
-        <button
-          className={styles['button']}
+        <StandardButton
+          buttonText={ t(`${tPath}.btn-text`) }
           onClick={() => navigate('/schedule')}
-        >
-          { t(`${tPath}.btn-text`) }
-        </button>
+          width='100%'
+          height='40px'
+          padding='10px 40px'
+        />
       </div>
       <div className={styles['scroll']}>
         <div

@@ -6,7 +6,7 @@ import {
   setSchedulerMetaData,
   useGetSubjectsKeysQuery, 
   useGetSubjectByKeyQuery, 
-  useGetNearestPaidLessonQuery,
+  useGetNearestPaidLessonsQuery,
 } from '@/app/store'
 import { SubjectsOptions, CalendarControl } from './'
 
@@ -22,7 +22,7 @@ const SchedulerControl = () => {
 
   const { data: subjectsOptions = [] } = useGetSubjectsKeysQuery()
   const { data: selectedSubject } = useGetSubjectByKeyQuery(selectedSubjectKey)
-  const { data: nearestPaidLesson } = useGetNearestPaidLessonQuery({
+  const { data: nearestPaidLesson } = useGetNearestPaidLessonsQuery({
     subjectKey: selectedSubjectKey,
     user: user,
     fromDate: currentDate.toISOString(),
@@ -118,7 +118,7 @@ const SchedulerControl = () => {
           currentDate={currentDate}
           user={user || undefined}
           subject={selectedSubject}
-          nearestPaidLesson={nearestPaidLesson || undefined}
+          nearestPaidLesson={nearestPaidLesson && nearestPaidLesson[0] || undefined}
         />
       </div>
     </>

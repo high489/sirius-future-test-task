@@ -2,7 +2,7 @@ import styles from './available-users-list.module.scss'
 import { FC } from 'react'
 import { IUser } from '@/app/models'
 import { useTranslation } from 'react-i18next'
-import { useTransliterationRuEn } from '@/app/hooks'
+import { transliterationRuEn } from '@app/utils'
 
 interface AvailableUsersListProps {
   currentUser: IUser | null
@@ -13,9 +13,10 @@ interface AvailableUsersListProps {
 const AvailableUsersList: FC<AvailableUsersListProps> = ({
   currentUser, persistentUsers, changeUser
 }) => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const currentLanguage = i18n.language
   const tPath = 'components.users-control.available-users-list'
-  const currentUserName = useTransliterationRuEn(currentUser?.name || '')
+  const currentUserName = transliterationRuEn(currentUser?.name || '', currentLanguage)
   return (
     <>
       <div className={`${styles['available-users-list']}`}>
@@ -33,7 +34,7 @@ const AvailableUsersList: FC<AvailableUsersListProps> = ({
           persistentUsers
             .filter(({ user }) => user.id !== currentUser?.id)
             .map(({ user }) => {
-              let username = useTransliterationRuEn(user?.name || '')
+              let username = transliterationRuEn(user?.name || '', currentLanguage)
               return (
                 <div
                   key={user.id}

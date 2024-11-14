@@ -3,7 +3,7 @@ import { FC, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import { useAuth, useDate } from '@/app/hooks'
-import { useGetNearestPaidLessonQuery } from '@/app/store'
+import { useGetNearestPaidLessonsQuery } from '@/app/store'
 
 import { CountdownTimer } from '@/components'
 import { DashedBorderButton } from '@/ui'
@@ -19,7 +19,7 @@ const UpcomingLesson: FC<UpcomingLessonProps> = () => {
   const startDate = useDate()
   const { user } = useAuth()
   const [ endDate, setEndDate ] = useState<Date | null>(null)
-  const { data: nearestPaidLesson, refetch } = useGetNearestPaidLessonQuery({
+  const { data: nearestPaidLessons, refetch } = useGetNearestPaidLessonsQuery({
     subjectKey: 'test_subject', // for demonstration
     user: user,
     fromDate: startDate.toISOString(),
@@ -30,8 +30,10 @@ const UpcomingLesson: FC<UpcomingLessonProps> = () => {
   }, [user, refetch])
 
   useEffect(() => {
-    if (nearestPaidLesson) setEndDate(new Date(nearestPaidLesson.lessonStartDate))
-  }, [nearestPaidLesson])
+    if (nearestPaidLessons && nearestPaidLessons.length > 0) {
+      setEndDate(new Date(nearestPaidLessons[0].lessonStartDate))
+    }
+  }, [nearestPaidLessons])
 
   return (
     <div className={styles['upcoming-lesson']}>

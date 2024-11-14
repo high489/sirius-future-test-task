@@ -1,0 +1,12 @@
+.standard-button {
+  cursor: pointer;
+  background-color: var(--violet);
+  border: none;
+  border-radius: 30px;
+
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 135%;
+  color: var(--dark);
+  user-select: none;
+}

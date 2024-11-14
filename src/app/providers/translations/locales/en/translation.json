@@ -49,6 +49,14 @@
         "btn-text": "Schedule"
       }
     },
+    "nearest-lessons": {
+      "title": "Nearest lessons",
+      "list": {
+        "toggle-on-text": "On",
+        "toggle-off-text": "Off",
+        "btn-text": "Schedule"
+      }
+    },
     "subject-options": {
       "change-schedule-btn-text": "Edit schedule"
     },

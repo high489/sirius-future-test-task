@@ -1,0 +1,33 @@
+.custom-toggle {
+  display: flex;
+  gap: 4px;
+
+  .button {
+    width: 56px;
+    height: 32px;
+    padding: 10px;
+    cursor: pointer;
+    user-select: none;
+    background-color: var(--white);
+    border: 1px solid var(--btn-violet);
+    border-radius: 15px;
+
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 115%;
+    color: var(--dark);
+
+    &.active {
+      background-color: var(--btn-violet);
+      border-width: 0px;
+      color: var(--white);
+    }
+
+    &.disabled {
+      border-color: var(--violet-light);
+      cursor: not-allowed;
+    }
+
+    // &:not(.disabled):hover {}
+  }
+}

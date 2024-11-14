@@ -43,30 +43,36 @@ export const subjectsApi = createApi({
       providesTags: (_, __, key) => [{ type: 'Subjects', id: key }],
     }),
 
-    getNearestPaidLesson: build.query<ILesson | null, { user: IUser | null; fromDate: string; subjectKey?: string }>({
-      queryFn: ({ subjectKey, user, fromDate }) => {
+    getNearestPaidLessons: build.query<(ILesson & { subjectName: { [key: string]: string }; instructor: string; subjectKey: string })[] | null, { user: IUser | null; fromDate: string; subjectKey?: string; numberOfLessons?: number }>({
+      queryFn: ({ user, fromDate, subjectKey, numberOfLessons = 1 }) => {
         const parsedFromDate = new Date(fromDate)
         const subjects = subjectKey ? { [subjectKey]: initialState[subjectKey] } : initialState
 
-        const paidLessons: ILesson[] = []
-        for (const subject of Object.values(subjects)) {
-          for (const course of subject.coursesList) {
-            const isUserRegistered = course.registeredUsers?.some((registeredUser) =>
-              registeredUser.email === user?.email)
+        const paidLessons: (ILesson & { subjectName: { [key: string]: string }; instructor: string; subjectKey: string })[] = []
 
+        for (const key in subjects) {
+          const subject = subjects[key]
+
+          for (const course of subject.coursesList) {
+            const isUserRegistered = course.registeredUsers?.some(ru => ru.email === user?.email)
+          
             if (isUserRegistered) {
-              const lessons = course.lessonsList.filter((lesson) =>
-                lesson.isPaid && new Date(lesson.lessonStartDate).getTime() > parsedFromDate.getTime())
+              const lessons = course.lessonsList
+                .filter(l => l.isPaid && new Date(l.lessonStartDate).getTime() > parsedFromDate.getTime())
+                .map(l => ({
+                  ...l,
+                  subjectName: subject.name,
+                  instructor: course.instructor,
+                  subjectKey: key,
+                }))
               paidLessons.push(...lessons)
             }
           }
         }
+        paidLessons.sort((a, b) => new Date(a.lessonStartDate).getTime() - new Date(b.lessonStartDate).getTime())
+        const nearestLessons = paidLessons.slice(0, numberOfLessons)
 
-        paidLessons.sort((a, b) => 
-          new Date(a.lessonStartDate).getTime() - new Date(b.lessonStartDate).getTime())
-        const nearestLesson = paidLessons.length > 0 ? paidLessons[0] : null
-
-        return { data: nearestLesson }
+        return { data: nearestLessons.length > 0 ? nearestLessons : null }
       },
       providesTags: (_, __, { subjectKey }) => [{ type: 'Subjects', id: subjectKey || 'ALL' }],
     }),
@@ -75,7 +81,6 @@ export const subjectsApi = createApi({
       queryFn: ({ user, fromDate, currentLanguage }) => {
         const parsedFromDate = new Date(fromDate)
         const lessonsBalance = Object.values(initialState).map((subject) => {
-          // Получаем перевод на нужном языке или используем первый доступный
           const subjectName = subject.name[currentLanguage] || Object.values(subject.name)[0]
     
           const paidLessonsCount = subject.coursesList.reduce((count, course) => {
@@ -107,6 +112,6 @@ export const {
   useGetSubjectsQuery, 
   useGetSubjectsKeysQuery, 
   useGetSubjectByKeyQuery,
-  useGetNearestPaidLessonQuery,
+  useGetNearestPaidLessonsQuery,
   useGetLessonsBalanceQuery,
 } = subjectsApi

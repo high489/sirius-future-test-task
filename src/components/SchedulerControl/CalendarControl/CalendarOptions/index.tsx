@@ -1,5 +1,6 @@
 import styles from './calendar-options.module.scss'
 import { FC } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 
 import ArrowIcon from './assets/arrow-icon.svg?react'
@@ -20,9 +21,10 @@ const CalendarOptions: FC<CalendaroptionsProps> = ({
   setMonth,
   currentDate,
 }) => {
+  const navigate = useNavigate()
   const { i18n, t } = useTranslation()
   const currentLanguage = i18n.language
-  const tPath = 'components.calendar-options'
+  const tPath = 'components.scheduler-control.calendar-control.calendar-options'
 
   const locales: { [key: string]: string } = {
     en: 'en-US',
@@ -89,7 +91,10 @@ const CalendarOptions: FC<CalendaroptionsProps> = ({
         >
           { t(`${tPath}.today-btn-text`) }
         </button>
-        <div className={`${styles.questions}`}>
+        <div 
+          className={`${styles.questions}`}
+          onClick={() => navigate('/calendar-legend')}
+        >
           <QuestionsIcon />
         </div>
       </div>

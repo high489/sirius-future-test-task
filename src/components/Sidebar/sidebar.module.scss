@@ -1,6 +1,7 @@
 .sidebar {
   width: 236px;
-  min-height: 704px;
+  max-height: 704px;
+  //min-height: 704px;
   height: 100%;
   border-radius: 30px;
   background-color: var(--violet-light);

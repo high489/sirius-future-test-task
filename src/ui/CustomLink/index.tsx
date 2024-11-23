@@ -6,6 +6,7 @@ interface CustomLinkProps {
   text?: string
   icon?: React.ReactNode
   isNavLink?: boolean
+  target?: '_blank' | '_self' | '_parent' | '_top'
   customStyles: {
     link: string
     activeLink?: string
@@ -19,7 +20,8 @@ const CustomLink: FC<CustomLinkProps> = ({
   to, 
   text, 
   icon, 
-  isNavLink = false, 
+  isNavLink = false,
+  target,
   customStyles, 
   ...props 
 }) => {
@@ -33,6 +35,8 @@ const CustomLink: FC<CustomLinkProps> = ({
     <Link
       to={to}
       className={setActiveClass}
+      target={target}
+      rel={target === '_blank' ? 'noopener noreferrer' : undefined}
       {...props}
     >
       {icon && <div className={customStyles.linkIcon}>{icon}</div>}

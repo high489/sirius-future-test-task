@@ -67,7 +67,7 @@ const NearestLessonsList: FC<NearestLessonsListProps> = ({ nearestPaidLessons })
                   <div className={styles['date-subject-wrapper']}>
                     <div className={styles['date']}>
                       <div className={styles['day']}>{lessonStartDay.toLowerCase()}</div>
-                      <div className={styles['month']}>{lessonStartMonth}</div>
+                      <div className={styles['month']}>{lessonStartMonth.toLowerCase()}</div>
                     </div>
                     <div className={styles['subject']}>{lesson.subjectName[currentLanguage]}</div>
                   </div>

@@ -2,6 +2,44 @@
   "views": {
     "login-view": {
       "title": "Sign in Sirius Future"
+    },
+    "not-found-view": {
+      "block1": {
+        "go-back-btn-text": "Back",
+        "date-info-text": "For the demonstration, the following date have been chosen as the current one:"
+      },
+      "block2": {
+        "intro": {
+          "title": "Hello there!",
+          "intro-text": "This project implements a student dashboard and a calendar that displays the lesson schedule.",
+          "description-text": "The project was created to demonstrate the interaction between React web application and Redux state manager: \nwhen changing the current authorized user, the data in the student dashboard and the calendar are updated.",
+          "github-link-text": "Project source code on GitHub",
+          "portfolio-link-text": "My other projects"
+        },
+        "available-users": {
+          "title": "Available users"
+        },
+        "stack": {
+          "title": "Project stack",
+          "programming-language": "Programming language: JavaScript (TypeScript)",
+          "framework": "Framework: React v18",
+          "state-manager": "State manager: Redux (RTK Query)",
+          "stylization": "Stylization: CSS modules (SASS/SCSS)" 
+        }
+      },
+      "block3": {
+        "student-dashboard-description": {
+          "title": "Student dashboard",
+          "text": "There is a dashboard with widgets that display up-to-date lesson information for each registered student.",
+          "link-text": "Menu item 'Home'"
+        },
+        "schedule-description": {
+          "title": "Schedule of online school",
+          "text": "The calendar displays data about available school lessons for the student.",
+          "link-text": "Menu item 'Schedule'",
+          "legend-title": "Lessons legend:"
+        }
+      }
     }
   },
   "components": {
@@ -57,11 +95,24 @@
         "btn-text": "Schedule"
       }
     },
-    "subject-options": {
-      "change-schedule-btn-text": "Edit schedule"
-    },
-    "calendar-options": {
-      "today-btn-text": "Today"
+    "scheduler-control": {
+      "subject-options": {
+        "change-schedule-btn-text": "Edit schedule"
+      },
+      "lessons-legend": {
+        "subject-name": "Subject name",
+        "green-lesson": "a lesson in the current course",
+        "white-lesson": "a lesson in a course that has already been completed or not yet started",
+        "purple-lesson": "the first lesson in each course",
+        "gray-lesson": "a canceled lesson",
+        "red-lesson": "a paid lesson",
+        "border-lesson": "the next upcoming lesson"
+      },
+      "calendar-control": {
+        "calendar-options": {
+          "today-btn-text": "Today"
+        }
+      }
     }
   },
   "ui": {}

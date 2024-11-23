@@ -2,6 +2,44 @@
   "views": {
     "login-view": {
       "title": "Вход в Sirius Future"
+    },
+    "not-found-view": {
+      "block1": {
+        "go-back-btn-text": "Назад",
+        "date-info-text": "Для демонстрации в качестве текущей выбрана следующая дата:"
+      },
+      "block2": {
+        "intro": {
+          "title": "Привет!",
+          "intro-text": "В этом проекте реализованы личный кабинет ученика онлайн школы и календарь, в котором отображается расписание занятий.",
+          "description-text": "Проект создан для демонстрации взаимодействия веб-приложения на React с менеджером состояния Redux: \nпри смене текущего авторизованного пользователя обновляются данные в личном кабинете и календаре.",
+          "github-link-text": "Исходный код проекта на GitHub",
+          "portfolio-link-text": "Другие мои проекты"
+        },
+        "available-users": {
+          "title": "Доступные пользователи"
+        },
+        "stack": {
+          "title": "Стек проекта",
+          "programming-language": "Язык программирования: JavaScript (TypeScript)",
+          "framework": "Фреймворк: React v18",
+          "state-manager": "Менеджер состояния: Redux (RTK Query)",
+          "stylization": "Стилизация: CSS modules (SASS/SCSS)" 
+        }
+      },
+      "block3": {
+        "student-dashboard-description": {
+          "title": "Личный кабинет",
+          "text": "Здесь расположена информационная панель с виджетами, отображающими актуальную информацию о занятиях для каждого зарегистрированного ученика.",
+          "link-text": "Пункт меню 'Главная'"
+        },
+        "schedule-description": {
+          "title": "Расписание онлайн школы",
+          "text": "В сетке календаря отображаются данные о доступных занятиях школы для учеников.",
+          "link-text": "Пункт меню 'Расписание'",
+          "legend-title": "Условные обозначения занятий:"
+        }
+      }
     }
   },
   "components": {
@@ -57,11 +95,24 @@
         "btn-text": "Расписание"
       }
     },
-    "subject-options": {
-      "change-schedule-btn-text": "Изменить расписание"
-    },
-    "calendar-options": {
-      "today-btn-text": "Сегодня"
+    "scheduler-control": {
+      "subject-options": {
+        "change-schedule-btn-text": "Изменить расписание"
+      },
+      "lessons-legend": {
+        "subject-name": "Название предмета",
+        "green-lesson": "занятие на текущем курсе",
+        "white-lesson": "занятие на курсе, который уже завершён или ещё не начался",
+        "purple-lesson": "первое занятие каждого курса",
+        "gray-lesson": "отменённое занятие",
+        "red-lesson": "платное занятие",
+        "border-lesson": "ближайшее занятие"
+      },
+      "calendar-control": {
+        "calendar-options": {
+          "today-btn-text": "Сегодня"
+        }
+      }
     }
   },
   "ui": {}

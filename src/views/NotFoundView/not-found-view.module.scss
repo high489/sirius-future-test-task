@@ -1,0 +1,114 @@
+.not-found-view {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(10, 46px);
+  height: 100%;
+
+  .block1 {
+    grid-row: 1 / span 1;
+    grid-column: 1 / -1;
+  }
+  
+  .block2 {
+    grid-row: 2 / -1;
+    grid-column: 1 / 7;
+  }
+
+  .block3 {
+    grid-row: 2 / -1;
+    grid-column: 7 / -1;
+  }
+
+  @mixin title-text(){
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 20px;
+    color: var(--dark);
+  }
+
+  @mixin standard-text(){
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 135%;
+    color: var(--dark);
+  }
+
+  section {
+    margin: 0 0 18px;
+  }
+
+  h2 {
+    margin: 0 0 12px;
+    @include title-text();
+  }
+
+  p {
+    margin: 0 0 6px;
+    @include standard-text();
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 10px;
+    margin: 0;
+
+    li::before {
+      content: '- ';
+      padding-right: 5px;
+    }
+
+    li {
+      margin: 0 0 6px;
+      @include standard-text();
+    }
+  }
+
+  .link {
+    cursor: pointer;
+    user-select: none;
+    text-decoration: none;
+    margin: 0 0 6px;
+    @include standard-text();
+    color: var(--dark-blue);
+  } 
+
+  .back-button-date-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .project-date-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 1px;
+      
+      span:first-of-type {
+        @include standard-text();
+      }
+  
+      .date-time {
+        margin-right: 4px;
+        @include title-text();
+        color: var(--dark-violet);
+      }
+    }
+  }
+
+  .available-users {
+    li {
+      span {
+        user-select: all;
+      }
+    }
+  }
+
+  .useful-links {
+    .links {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}

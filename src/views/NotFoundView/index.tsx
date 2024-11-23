@@ -58,8 +58,8 @@ const NotFoundView = () => {
           <section>
             <h2>{ t(`${tPath}.block2.available-users.title`) }</h2>
             <ul className={styles['available-users']}>
-              <li><span>mike123@mail.com</span> / <span>mike123</span></li>
-              <li><span>anna321@mail.com</span> / <span>anna321</span></li>
+              <li><span>mike123@mail.com</span> / <span>mike123+</span></li>
+              <li><span>anna321@mail.com</span> / <span>anna321+</span></li>
             </ul>
           </section>
 

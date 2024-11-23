@@ -12,7 +12,7 @@ const initialState: IUser[] = [
     name: 'Михаил',
     email: 'mike123@mail.com',
     username: 'mike',
-    password: 'mike123',
+    password: 'mike123+',
     avatar: MikeAva,
   },
   {
@@ -20,7 +20,7 @@ const initialState: IUser[] = [
     name: 'Анна',
     email: 'anna321@mail.com',
     username: 'anna',
-    password: 'anna321',
+    password: 'anna321+',
     avatar: AnnaAva,
   },
   {

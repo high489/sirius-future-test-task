@@ -18,8 +18,8 @@ const LoginView = () => {
           setShowModal={setShowUsersInfo}
           mainStyle={styles['users-info']}
         >
-          <p>User 1: mike123@mail.com / mike123</p>
-          <p>User 2: anna321@mail.com / anna321</p>
+          <p>User 1: mike123@mail.com / mike123+</p>
+          <p>User 2: anna321@mail.com / anna321+</p>
         </ModalWindow>
 
         <div className={`${styles['login-content']}`}>
